@@ -1,0 +1,1287 @@
+/*
+==============================================================================
+CODEX DOCUMENT MASTER CSS
+==============================================================================
+Purpose:
+  Complete dark-only design system for standalone technical HTML documents
+  generated or maintained by Codex.
+
+Design principles:
+  - Entire interface uses the local system monospace stack.
+  - Three-column desktop layout: navigation, content, page index.
+  - Compact spacing without sacrificing hierarchy or readability.
+  - Native HTML interactions only; no JavaScript is required.
+  - No external fonts, frameworks, images, or other dependencies.
+  - CSS is intended to be embedded completely inside each generated HTML file.
+
+Expected top-level structure:
+
+  <div class="doc-shell">
+    <aside class="doc-sidebar">...</aside>
+    <main class="doc-main">
+      <article class="doc-content">...</article>
+    </main>
+    <aside class="doc-toc">...</aside>
+  </div>
+
+Maintenance:
+  Keep component names semantic and reusable. Avoid document-specific selectors.
+==============================================================================
+*/
+
+
+/* ==========================================================================
+   01. DESIGN TOKENS
+   ========================================================================== */
+
+:root {
+  color-scheme: dark;
+
+  /* Neutral palette */
+  --color-background: #2f3235;
+  --color-surface: #3a3e42;
+  --color-surface-alt: #464b50;
+  --color-border: #697078;
+  --color-text-muted: #b8c0c7;
+  --color-text-primary: #f3f6f8;
+
+  /* Identity palette */
+  --color-primary: #35c6d4;
+  --color-secondary: #0e96a6;
+
+  /* Semantic palette */
+  --color-info: #8feaf2;
+  --color-success: #45d16f;
+  --color-warning: #f0b84b;
+  --color-danger: #f05b4f;
+
+  /* Derived surfaces */
+  --color-code-background: #282b2e;
+  --color-overlay: rgb(0 0 0 / 0.48);
+
+  /* Typography */
+  --font-mono:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Liberation Mono",
+    "Courier New",
+    monospace;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.84rem;
+  --font-size-base: 0.94rem;
+  --font-size-md: 1.03rem;
+  --font-size-lg: 1.18rem;
+  --font-size-xl: clamp(1.45rem, 2vw, 1.9rem);
+  --font-size-2xl: clamp(2rem, 3.5vw, 3rem);
+
+  --line-height-tight: 1.25;
+  --line-height-base: 1.62;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+
+  /* Shape and depth */
+  --radius-sm: 6px;
+  --radius-md: 7px;
+  --radius-lg: 8px;
+  --shadow-soft: 0 2px 10px rgb(0 0 0 / 0.14);
+  --shadow-inset: inset 0 1px 0 rgb(255 255 255 / 0.025);
+
+  /* Layout */
+  --sidebar-min: 220px;
+  --sidebar-max: 300px;
+  --toc-min: 180px;
+  --toc-max: 260px;
+  --layout-gap: 1.25rem;
+  --page-padding: clamp(0.9rem, 1.8vw, 1.6rem);
+  --sticky-offset: 1rem;
+
+  /*
+   * Intentional desktop-first constraint.
+   * It keeps both side columns visible and lets narrow screens scroll
+   * horizontally instead of collapsing the document structure.
+   */
+  --document-min-width: 1080px;
+
+  /* Motion */
+  --transition-fast: 140ms ease;
+}
+
+
+/* ==========================================================================
+   02. RESET, INHERITANCE, AND DOCUMENT BASE
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+html {
+  min-width: var(--document-min-width);
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--sticky-offset);
+  background: var(--color-background);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: auto;
+  color: var(--color-text-primary);
+  background: var(--color-background);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+svg text,
+svg tspan {
+  font-family: var(--font-mono);
+}
+
+button,
+input,
+textarea,
+select {
+  color: inherit;
+  font: inherit;
+}
+
+::selection {
+  color: var(--color-background);
+  background: var(--color-primary);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+
+/* ==========================================================================
+   03. THREE-COLUMN DOCUMENT LAYOUT
+   ========================================================================== */
+
+.doc-shell {
+  display: grid;
+  grid-template-columns:
+    minmax(var(--sidebar-min), var(--sidebar-max))
+    minmax(0, 1fr)
+    minmax(var(--toc-min), var(--toc-max));
+  gap: var(--layout-gap);
+  width: 100%;
+  min-height: 100vh;
+  padding: var(--page-padding);
+}
+
+.doc-sidebar,
+.doc-toc {
+  position: sticky;
+  top: var(--sticky-offset);
+  align-self: start;
+  max-height: calc(100vh - (var(--sticky-offset) * 2));
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+.doc-sidebar {
+  min-width: var(--sidebar-min);
+}
+
+.doc-toc {
+  min-width: var(--toc-min);
+}
+
+.doc-main,
+.doc-content {
+  min-width: 0;
+  width: 100%;
+}
+
+
+/* ==========================================================================
+   04. NAVIGATION SIDEBAR AND PAGE INDEX
+   ========================================================================== */
+
+.nav-panel,
+.toc-panel {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft), var(--shadow-inset);
+}
+
+.nav-panel {
+  padding: var(--space-3);
+}
+
+.toc-panel {
+  padding: var(--space-4);
+}
+
+.nav-title,
+.toc-title {
+  margin: 0 0 var(--space-3);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nav-list,
+.nav-list ul,
+.toc-list,
+.toc-list ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-list ul,
+.toc-list ul {
+  margin-top: var(--space-1);
+  padding-left: var(--space-3);
+  border-left: 1px solid
+    color-mix(in srgb, var(--color-border) 70%, transparent);
+}
+
+.nav-list a,
+.toc-list a {
+  display: block;
+  overflow-wrap: anywhere;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition:
+    color var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.nav-list a {
+  padding: 0.48rem 0.58rem;
+}
+
+.toc-list a {
+  padding: 0.3rem 0.4rem;
+  font-size: var(--font-size-xs);
+  line-height: 1.42;
+}
+
+.nav-list a:hover,
+.toc-list a:hover {
+  color: var(--color-text-primary);
+  background: var(--color-surface-alt);
+}
+
+.nav-list a[aria-current="page"],
+.toc-list a[aria-current="true"] {
+  color: var(--color-primary);
+  background:
+    color-mix(in srgb, var(--color-primary) 11%, var(--color-surface));
+}
+
+.nav-group + .nav-group {
+  margin-top: var(--space-2);
+}
+
+.nav-group-label {
+  margin: 0;
+  padding: var(--space-2) 0.58rem var(--space-1);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+
+/* ==========================================================================
+   05. DOCUMENT HEADER AND METADATA
+   ========================================================================== */
+
+.doc-header {
+  margin-bottom: var(--space-6);
+  padding: clamp(1.25rem, 2vw, 2rem);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft), var(--shadow-inset);
+}
+
+.doc-eyebrow {
+  margin: 0 0 var(--space-2);
+  color: var(--color-primary);
+  font-size: var(--font-size-xs);
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.doc-title {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-2xl);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.doc-subtitle {
+  max-width: 90ch;
+  margin: var(--space-3) 0 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-md);
+}
+
+.doc-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+
+/* ==========================================================================
+   06. TYPOGRAPHY AND CONTENT FLOW
+   ========================================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-text-primary);
+  line-height: var(--line-height-tight);
+  text-wrap: balance;
+}
+
+h1 {
+  margin: 0 0 var(--space-5);
+  font-size: var(--font-size-2xl);
+}
+
+h2 {
+  margin: var(--space-8) 0 var(--space-4);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--font-size-xl);
+}
+
+h3 {
+  margin: var(--space-6) 0 var(--space-3);
+  color: var(--color-primary);
+  font-size: var(--font-size-lg);
+}
+
+h4 {
+  margin: var(--space-5) 0 var(--space-2);
+  font-size: var(--font-size-md);
+}
+
+h5,
+h6 {
+  margin: var(--space-4) 0 var(--space-2);
+  font-size: var(--font-size-base);
+}
+
+p,
+ul,
+ol,
+dl,
+blockquote,
+pre,
+table,
+figure,
+details {
+  margin-top: 0;
+  margin-bottom: var(--space-4);
+}
+
+p {
+  max-width: 105ch;
+}
+
+ul,
+ol {
+  padding-left: 1.4rem;
+}
+
+ul ul,
+ul ol,
+ol ul,
+ol ol {
+  margin-top: var(--space-1);
+  margin-bottom: var(--space-1);
+}
+
+li + li {
+  margin-top: var(--space-1);
+}
+
+li::marker {
+  color: var(--color-primary);
+}
+
+dl {
+  display: grid;
+  grid-template-columns: minmax(9rem, max-content) minmax(0, 1fr);
+  gap: var(--space-2) var(--space-4);
+}
+
+dt {
+  color: var(--color-primary);
+  font-weight: 800;
+}
+
+dd {
+  margin: 0;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration-color:
+    color-mix(in srgb, var(--color-primary) 60%, transparent);
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  color: var(--color-info);
+}
+
+strong {
+  color: var(--color-text-primary);
+}
+
+small,
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+abbr[title] {
+  cursor: help;
+  text-decoration-color: var(--color-primary);
+  text-underline-offset: 0.16em;
+}
+
+hr {
+  margin: var(--space-8) 0;
+  border: 0;
+  border-top: 1px solid var(--color-border);
+}
+
+mark {
+  padding: 0.08em 0.28em;
+  border-radius: 4px;
+  color: var(--color-background);
+  background: var(--color-warning);
+}
+
+kbd {
+  display: inline-block;
+  padding: 0.1rem 0.38rem;
+  border: 1px solid var(--color-border);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  color: var(--color-text-primary);
+  background: var(--color-surface-alt);
+  box-shadow: var(--shadow-inset);
+  font-size: 0.86em;
+}
+
+samp,
+var {
+  color: var(--color-info);
+}
+
+
+/* ==========================================================================
+   07. SECTIONS, CARDS, AND CONTENT GRIDS
+   ========================================================================== */
+
+.section {
+  scroll-margin-top: var(--sticky-offset);
+}
+
+.report-section + .report-section {
+  margin-top: var(--space-10);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--color-border);
+}
+
+.card {
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft), var(--shadow-inset);
+}
+
+/*
+ * Vertical spacing is handled by parent layout components.
+ * Do not restore a generic ".card + .card" rule: it offsets cards inside grids.
+ */
+.doc-content > .card + .card {
+  margin-top: var(--space-4);
+}
+
+.card-title {
+  margin: 0 0 var(--space-2);
+  color: var(--color-primary);
+  font-size: var(--font-size-md);
+}
+
+.card > :last-child {
+  margin-bottom: 0;
+}
+
+.card--subtle {
+  background: var(--color-surface-alt);
+  box-shadow: var(--shadow-inset);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  align-items: stretch;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.card-grid > .card {
+  height: 100%;
+  margin-top: 0;
+}
+
+.split-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.stack {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.flow > * + * {
+  margin-top: var(--space-4);
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+
+/* ==========================================================================
+   08. BADGES
+   ========================================================================== */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.6rem;
+  padding: 0.2rem 0.52rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  color: var(--color-text-muted);
+  background: var(--color-surface-alt);
+  font-size: var(--font-size-xs);
+  font-weight: 800;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.badge--primary {
+  color: var(--color-primary);
+  border-color:
+    color-mix(in srgb, var(--color-primary) 48%, var(--color-border));
+  background:
+    color-mix(in srgb, var(--color-primary) 10%, var(--color-surface));
+}
+
+.badge--info {
+  color: var(--color-info);
+}
+
+.badge--success {
+  color: var(--color-success);
+}
+
+.badge--warning {
+  color: var(--color-warning);
+}
+
+.badge--danger {
+  color: var(--color-danger);
+}
+
+
+/* ==========================================================================
+   09. CALLOUTS
+   ========================================================================== */
+
+.callout {
+  padding: var(--space-4) var(--space-4) var(--space-4) 1.15rem;
+  border: 1px solid var(--color-border);
+  border-left-width: 4px;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-inset);
+}
+
+.callout + .callout {
+  margin-top: var(--space-3);
+}
+
+.callout-title {
+  margin: 0 0 var(--space-1);
+  font-size: var(--font-size-sm);
+  font-weight: 800;
+}
+
+.callout > :last-child {
+  margin-bottom: 0;
+}
+
+.callout--info {
+  border-left-color: var(--color-info);
+  background:
+    color-mix(in srgb, var(--color-info) 6%, var(--color-surface));
+}
+
+.callout--info .callout-title {
+  color: var(--color-info);
+}
+
+.callout--success {
+  border-left-color: var(--color-success);
+  background:
+    color-mix(in srgb, var(--color-success) 6%, var(--color-surface));
+}
+
+.callout--success .callout-title {
+  color: var(--color-success);
+}
+
+.callout--warning {
+  border-left-color: var(--color-warning);
+  background:
+    color-mix(in srgb, var(--color-warning) 6%, var(--color-surface));
+}
+
+.callout--warning .callout-title {
+  color: var(--color-warning);
+}
+
+.callout--danger {
+  border-left-color: var(--color-danger);
+  background:
+    color-mix(in srgb, var(--color-danger) 6%, var(--color-surface));
+}
+
+.callout--danger .callout-title {
+  color: var(--color-danger);
+}
+
+
+/* ==========================================================================
+   10. NATIVE ACCORDIONS
+   ========================================================================== */
+
+details {
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-inset);
+}
+
+details + details {
+  margin-top: var(--space-3);
+}
+
+summary {
+  position: relative;
+  padding: var(--space-3) 2.5rem var(--space-3) var(--space-4);
+  color: var(--color-text-primary);
+  font-weight: 800;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary::after {
+  content: "+";
+  position: absolute;
+  top: 50%;
+  right: var(--space-4);
+  color: var(--color-primary);
+  font-size: 1.15rem;
+  transform: translateY(-50%);
+}
+
+summary:hover {
+  background:
+    color-mix(in srgb, var(--color-primary) 5%, var(--color-surface));
+}
+
+details[open] summary {
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface-alt);
+}
+
+details[open] summary::after {
+  content: "−";
+}
+
+.details-body {
+  padding: var(--space-4);
+}
+
+.details-body > :last-child {
+  margin-bottom: 0;
+}
+
+
+/* ==========================================================================
+   11. TABLES
+   ========================================================================== */
+
+.table-wrap {
+  width: 100%;
+  margin-bottom: var(--space-4);
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-inset);
+}
+
+table {
+  width: 100%;
+  min-width: 680px;
+  margin: 0;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+caption {
+  padding: var(--space-3) var(--space-4);
+  color: var(--color-text-muted);
+  text-align: left;
+  caption-side: top;
+}
+
+th,
+td {
+  padding: 0.72rem 0.82rem;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--color-border) 72%, transparent);
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  color: var(--color-primary);
+  background: var(--color-surface-alt);
+  font-weight: 800;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+tbody tr:hover {
+  background:
+    color-mix(in srgb, var(--color-primary) 4%, var(--color-surface));
+}
+
+.cell-number,
+.cell-right {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.table--compact th,
+.table--compact td {
+  padding: 0.48rem 0.62rem;
+}
+
+
+/* ==========================================================================
+   12. INLINE CODE, CODE BLOCKS, AND SYNTAX TOKENS
+   ========================================================================== */
+
+code,
+samp,
+var {
+  font-family: var(--font-mono);
+}
+
+code {
+  color: var(--color-info);
+  font-size: 0.92em;
+}
+
+:not(pre) > code {
+  padding: 0.12em 0.34em;
+  border: 1px solid
+    color-mix(in srgb, var(--color-border) 70%, transparent);
+  border-radius: 5px;
+  background: var(--color-surface-alt);
+  overflow-wrap: anywhere;
+}
+
+.code-block {
+  overflow: hidden;
+  margin-bottom: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-code-background);
+  box-shadow: var(--shadow-soft), var(--shadow-inset);
+}
+
+.code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: 0.58rem 0.78rem;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface-alt);
+}
+
+.code-file {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-xs);
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.code-language {
+  flex: none;
+  color: var(--color-primary);
+  font-size: var(--font-size-xs);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.code-block pre {
+  margin: 0;
+  padding: var(--space-4);
+  overflow: auto;
+  color: var(--color-text-primary);
+  background: transparent;
+  tab-size: 2;
+}
+
+.code-block pre code {
+  color: inherit;
+  font-size: var(--font-size-sm);
+  line-height: 1.58;
+}
+
+.code-block--wrap pre,
+.code-block--wrap code {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/*
+ * Manual syntax-token classes.
+ * Codex may wrap tokens in these classes without requiring a JS highlighter.
+ */
+.token-comment,
+.token-prolog,
+.token-doctype {
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.token-keyword,
+.token-type,
+.token-selector,
+.token-tag {
+  color: var(--color-primary);
+}
+
+.token-function,
+.token-property,
+.token-attribute {
+  color: var(--color-info);
+}
+
+.token-string,
+.token-char,
+.token-inserted {
+  color: var(--color-success);
+}
+
+.token-number,
+.token-boolean,
+.token-constant {
+  color: var(--color-warning);
+}
+
+.token-operator,
+.token-punctuation {
+  color: var(--color-text-primary);
+}
+
+.token-variable,
+.token-class-name {
+  color:
+    color-mix(
+      in srgb,
+      var(--color-warning) 72%,
+      var(--color-text-primary)
+    );
+}
+
+.token-deleted,
+.token-error,
+.token-invalid {
+  color: var(--color-danger);
+}
+
+
+/* ==========================================================================
+   13. QUOTES
+   ========================================================================== */
+
+blockquote {
+  margin-left: 0;
+  padding: var(--space-3) var(--space-4);
+  border-left: 3px solid var(--color-primary);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+}
+
+blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+
+/* ==========================================================================
+   14. IMAGES, FIGURES, AND GENERAL MEDIA
+   ========================================================================== */
+
+figure {
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft), var(--shadow-inset);
+}
+
+figure img,
+figure video {
+  width: 100%;
+  height: auto;
+  background: var(--color-surface-alt);
+}
+
+figcaption {
+  padding: var(--space-3) var(--space-4);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.media-contain img,
+.media-contain video {
+  max-height: 70vh;
+  object-fit: contain;
+}
+
+.media-wide {
+  width: 100%;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: var(--space-3);
+}
+
+
+/* ==========================================================================
+   15. MEDIA GALLERY
+   ========================================================================== */
+
+.gallery {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.gallery--compact {
+  grid-template-columns:
+    repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-2);
+}
+
+.gallery-item {
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft), var(--shadow-inset);
+  transition:
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.gallery-item:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+.gallery-link {
+  display: block;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.gallery-media {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--color-surface-alt);
+}
+
+.gallery-media img,
+.gallery-media svg,
+.gallery-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-fast);
+}
+
+.gallery-link:hover .gallery-media img,
+.gallery-link:hover .gallery-media svg,
+.gallery-link:hover .gallery-media video {
+  transform: scale(1.015);
+}
+
+.gallery-item figcaption {
+  min-height: 3.2rem;
+  padding: var(--space-3);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  line-height: 1.45;
+}
+
+.gallery-item figcaption strong {
+  display: block;
+  margin-bottom: var(--space-1);
+  color: var(--color-text-primary);
+}
+
+.gallery-item--wide {
+  grid-column: span 2;
+}
+
+.gallery-item--portrait .gallery-media {
+  aspect-ratio: 4 / 5;
+}
+
+.gallery-item--square .gallery-media {
+  aspect-ratio: 1;
+}
+
+.gallery-item--contain .gallery-media img,
+.gallery-item--contain .gallery-media svg,
+.gallery-item--contain .gallery-media video {
+  padding: var(--space-3);
+  object-fit: contain;
+}
+
+
+/* ==========================================================================
+   16. ANCHORS AND TARGET HIGHLIGHTING
+   ========================================================================== */
+
+.anchor-heading {
+  position: relative;
+}
+
+.anchor-heading > a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.anchor-heading > a:hover::after {
+  content: " #";
+  color: var(--color-primary);
+}
+
+:target {
+  scroll-margin-top: var(--sticky-offset);
+}
+
+section:target,
+.card:target,
+details:target,
+figure:target {
+  animation: target-flash 900ms ease-out;
+}
+
+@keyframes target-flash {
+  0% {
+    box-shadow:
+      0 0 0 3px
+      color-mix(in srgb, var(--color-primary) 55%, transparent);
+  }
+
+  100% {
+    box-shadow: var(--shadow-soft);
+  }
+}
+
+
+/* ==========================================================================
+   17. GENERIC UTILITIES
+   ========================================================================== */
+
+.no-margin {
+  margin: 0;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.text-info {
+  color: var(--color-info);
+}
+
+.text-success {
+  color: var(--color-success);
+}
+
+.text-warning {
+  color: var(--color-warning);
+}
+
+.text-danger {
+  color: var(--color-danger);
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.break-anywhere {
+  overflow-wrap: anywhere;
+}
+
+
+/* ==========================================================================
+   18. SCROLLBARS
+   ========================================================================== */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background: var(--color-border);
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+  background-clip: padding-box;
+}
+
+
+/* ==========================================================================
+   19. ACCESSIBILITY AND USER PREFERENCES
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
