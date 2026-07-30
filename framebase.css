@@ -153,7 +153,7 @@ No fonts, images, scripts, frameworks, or network resources are required.
 }
 
 html {
-  overflow-x: hidden;
+  overflow-x: clip;
   scroll-behavior: smooth;
   scroll-padding-top: var(--fb-sticky-offset);
   background: var(--fb-color-background);
@@ -162,7 +162,7 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow-x: clip;
   color: var(--fb-color-text);
   background: var(--fb-color-background);
   font-family: var(--fb-font-mono);
@@ -563,12 +563,14 @@ var {
 }
 
 .fb-nav a:hover,
-.fb-nav a[aria-current="page"] {
+.fb-nav a[aria-current="page"],
+.fb-nav a[aria-current="location"] {
   color: var(--fb-color-text);
   background: var(--fb-color-surface-alt);
 }
 
-.fb-nav a[aria-current="page"] {
+.fb-nav a[aria-current="page"],
+.fb-nav a[aria-current="location"] {
   color: var(--fb-color-primary);
 }
 
@@ -614,6 +616,10 @@ var {
 /* ==========================================================================
    06. HERO, METRICS, AND PUBLIC-PAGE CONTENT
    ========================================================================== */
+
+.fb-hero-section {
+  padding-bottom: var(--fb-space-10);
+}
 
 .fb-hero {
   display: grid;
@@ -792,6 +798,7 @@ var {
 }
 
 .nav-list a[aria-current="page"],
+.nav-list a[aria-current="location"],
 .toc-list a[aria-current="true"] {
   color: var(--fb-color-primary);
   background:
@@ -1102,6 +1109,43 @@ textarea {
   box-shadow: var(--fb-shadow-inset);
 }
 
+input,
+select {
+  height: var(--fb-control-height);
+}
+
+.fb-select {
+  position: relative;
+  color: var(--fb-color-text-muted);
+}
+
+.fb-select::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: var(--fb-space-3);
+  width: 0.48rem;
+  height: 0.48rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  pointer-events: none;
+  transform: translateY(-70%) rotate(45deg);
+}
+
+.fb-select:focus-within {
+  color: var(--fb-color-primary);
+}
+
+.fb-select:has(select:disabled)::after {
+  opacity: 0.55;
+}
+
+.fb-select select {
+  padding-right: calc(var(--fb-space-8) + var(--fb-space-1));
+  appearance: none;
+  -webkit-appearance: none;
+}
+
 textarea {
   min-height: 7rem;
   resize: vertical;
@@ -1148,6 +1192,7 @@ input[type="color"] {
 }
 
 input[type="file"] {
+  height: auto;
   min-height: auto;
 }
 
@@ -1171,6 +1216,7 @@ input[type="range"] {
   display: grid;
   grid-template-columns:
     repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  align-items: start;
   gap: var(--fb-space-4);
 }
 
@@ -1848,7 +1894,8 @@ figcaption {
 
 .fb-tab:hover,
 .fb-tab[aria-selected="true"],
-.fb-tab[aria-current="page"] {
+.fb-tab[aria-current="page"],
+.fb-tab[aria-current="location"] {
   border-bottom-color: var(--fb-color-primary);
   color: var(--fb-color-primary);
 }

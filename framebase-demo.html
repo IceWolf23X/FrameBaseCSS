@@ -3,15 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Demo offline dei layout e componenti FrameBaseCSS.">
-  <title>FrameBaseCSS — Demo completa</title>
+  <meta name="description"
+    content="Documentazione pubblica dei componenti e dei contratti HTML di FrameBaseCSS.">
+  <title>FrameBaseCSS — Documentazione dei componenti</title>
   <link rel="stylesheet" href="framebase.css">
 </head>
 <body>
   <a class="fb-skip-link" href="#main-content">Vai al contenuto</a>
 
   <div class="fb-page">
-    <header class="fb-site-header fb-site-header--sticky">
+    <header class="fb-site-header">
       <div class="fb-container fb-container--wide fb-navbar">
         <a class="fb-brand" href="#top" aria-label="FrameBaseCSS, pagina iniziale">
           <span class="fb-brand-mark" aria-hidden="true">FB</span>
@@ -19,10 +20,10 @@
         </a>
 
         <ul class="fb-nav" aria-label="Navigazione principale">
-          <li><a href="#public-site" aria-current="page">Sito pubblico</a></li>
-          <li><a href="#components">Componenti</a></li>
+          <li><a href="#top" aria-current="location">Introduzione</a></li>
+          <li><a href="#components">Esempi</a></li>
           <li><a href="#forms">Form</a></li>
-          <li><a href="#documentation">Documentazione</a></li>
+          <li><a href="#documentation">Contratti HTML</a></li>
         </ul>
 
         <div class="fb-navbar-actions">
@@ -34,19 +35,28 @@
     </header>
 
     <main id="main-content">
-      <section id="public-site" class="fb-container fb-container--wide">
+      <section id="public-site"
+        class="fb-hero-section fb-container fb-container--wide">
         <div class="fb-hero" id="top">
           <div class="fb-hero-copy">
-            <p class="fb-eyebrow">Design system CSS / zero dipendenze</p>
-            <h1 class="fb-display">Una base tecnica per siti e documentazione.</h1>
+            <nav class="fb-breadcrumbs" aria-label="Percorso">
+              <ol>
+                <li><a href="#top">Home</a></li>
+                <li><a href="#documentation">Documentazione</a></li>
+                <li aria-current="page">FrameBaseCSS</li>
+              </ol>
+            </nav>
+            <p class="fb-eyebrow">Documentazione CSS / zero dipendenze</p>
+            <h1 class="fb-display">Contratti HTML pronti per siti reali.</h1>
             <p class="fb-lead">
-              FrameBaseCSS offre token, layout responsive, componenti UI e
-              pattern accessibili mantenendo una sola sorgente CSS leggibile.
+              Questa pagina documenta la struttura richiesta da ogni componente
+              FrameBaseCSS e ne mostra il rendering in contesti applicativi,
+              editoriali e tecnici.
             </p>
             <div class="cluster">
               <a class="fb-button" href="#components">Esplora i componenti</a>
               <a class="fb-button fb-button--secondary" href="#documentation">
-                Apri la documentazione
+                Consulta i contratti
               </a>
               <button class="fb-button fb-button--ghost"
                 type="button"
@@ -73,7 +83,7 @@
         <div class="fb-metrics" aria-label="Caratteristiche principali">
           <div class="fb-metric">
             <span class="fb-metric-value">1</span>
-            <span class="fb-metric-label">file CSS canonico</span>
+            <span class="fb-metric-label">foglio CSS canonico</span>
           </div>
           <div class="fb-metric">
             <span class="fb-metric-value">0</span>
@@ -81,11 +91,11 @@
           </div>
           <div class="fb-metric">
             <span class="fb-metric-value">3</span>
-            <span class="fb-metric-label">fasce responsive</span>
+            <span class="fb-metric-label">breakpoint documentati</span>
           </div>
           <div class="fb-metric">
             <span class="fb-metric-value">100%</span>
-            <span class="fb-metric-label">font monospace locale</span>
+            <span class="fb-metric-label">documentazione offline</span>
           </div>
         </div>
       </section>
@@ -93,6 +103,166 @@
       <div id="demo-popover" class="fb-tooltip" popover>
         Questo popover usa esclusivamente l'API HTML nativa.
       </div>
+
+      <section id="workspace" class="fb-section fb-section--muted">
+        <div class="fb-container fb-container--wide">
+          <header class="fb-section-header">
+            <p class="fb-eyebrow">Workspace operativo</p>
+            <h2 class="u-no-margin">Una dashboard pronta per dati reali</h2>
+            <p class="fb-lead">
+              Metriche, attività, stati e azioni compongono un'interfaccia
+              applicativa completa senza dipendere da un framework.
+            </p>
+          </header>
+
+          <div class="fb-grid fb-grid--4">
+            <article class="fb-metric">
+              <span class="fb-metric-value">24</span>
+              <span class="fb-metric-label">deploy questo mese</span>
+            </article>
+            <article class="fb-metric">
+              <span class="fb-metric-value">99,98%</span>
+              <span class="fb-metric-label">uptime ultimi 30 giorni</span>
+            </article>
+            <article class="fb-metric">
+              <span class="fb-metric-value">184 ms</span>
+              <span class="fb-metric-label">risposta API mediana</span>
+            </article>
+            <article class="fb-metric">
+              <span class="fb-metric-value">7</span>
+              <span class="fb-metric-label">collaboratori attivi</span>
+            </article>
+          </div>
+
+          <div class="fb-sidebar-layout">
+            <div class="stack">
+              <article class="card">
+                <div class="cluster">
+                  <div>
+                    <p class="fb-eyebrow">Produzione / eu-west</p>
+                    <h3 class="card-title">Attività recente</h3>
+                  </div>
+                  <span class="badge badge--success">operativa</span>
+                </div>
+
+                <nav class="fb-tabs" aria-label="Periodo attività">
+                  <a class="fb-tab" href="#workspace"
+                    aria-current="location">Oggi</a>
+                  <a class="fb-tab" href="#workspace">7 giorni</a>
+                  <a class="fb-tab" href="#workspace">30 giorni</a>
+                </nav>
+
+                <div class="table-wrap" tabindex="0"
+                  aria-label="Attività recente, scorribile orizzontalmente">
+                  <table class="table--compact">
+                    <thead>
+                      <tr>
+                        <th scope="col">Evento</th>
+                        <th scope="col">Autore</th>
+                        <th scope="col">Stato</th>
+                        <th scope="col">Durata</th>
+                        <th scope="col">Ora</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><code>deploy/web-184</code></td>
+                        <td>A. Ferri</td>
+                        <td><span class="fb-status fb-status--success">riuscito</span></td>
+                        <td class="cell-number">42 s</td>
+                        <td class="u-nowrap"><time datetime="2026-07-31T10:42">10:42</time></td>
+                      </tr>
+                      <tr>
+                        <td><code>test/css-992</code></td>
+                        <td>M. Riva</td>
+                        <td><span class="fb-status fb-status--warning">in corso</span></td>
+                        <td class="cell-number">1 m 18 s</td>
+                        <td class="u-nowrap"><time datetime="2026-07-31T10:31">10:31</time></td>
+                      </tr>
+                      <tr>
+                        <td><code>audit/a11y-71</code></td>
+                        <td>L. Conti</td>
+                        <td><span class="fb-status fb-status--danger">attenzione</span></td>
+                        <td class="cell-number">16 s</td>
+                        <td class="u-nowrap"><time datetime="2026-07-31T09:58">09:58</time></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </article>
+
+              <article class="card">
+                <h3 class="card-title">Console di distribuzione</h3>
+                <pre class="fb-terminal" aria-label="Output terminale">$ framebase deploy --environment production
+✓ CSS validato
+✓ Demo offline verificata
+✓ 0 dipendenze esterne
+→ release pronta: framebase@1.0.0</pre>
+              </article>
+            </div>
+
+            <aside class="stack" aria-label="Riepilogo workspace">
+              <article class="card card--subtle">
+                <h3 class="card-title">Release corrente</h3>
+                <p class="fb-status fb-status--success">Tutti i sistemi operativi</p>
+
+                <label for="release-progress">Avanzamento release</label>
+                <progress id="release-progress" value="86" max="100">86%</progress>
+
+                <label for="quality-meter">Qualità verificata</label>
+                <meter id="quality-meter" min="0" max="100"
+                  low="60" high="85" optimum="100" value="94">94%</meter>
+
+                <dl>
+                  <dt>Versione</dt>
+                  <dd><code>1.0.0</code></dd>
+                  <dt>Commit</dt>
+                  <dd><code>18662a7</code></dd>
+                  <dt>Canale</dt>
+                  <dd>stabile</dd>
+                </dl>
+
+                <div class="fb-button-group" role="group"
+                  aria-label="Azioni release">
+                  <button class="fb-button fb-button--sm" type="button">
+                    Pubblica
+                  </button>
+                  <button class="fb-button fb-button--secondary fb-button--sm"
+                    type="button">
+                    Dettagli
+                  </button>
+                </div>
+              </article>
+
+              <article class="card">
+                <h3 class="card-title">Team di progetto</h3>
+                <div class="stack">
+                  <div class="cluster">
+                    <svg class="fb-avatar" viewBox="0 0 48 48" role="img"
+                      aria-label="Avatar di Ada Ferri">
+                      <rect width="48" height="48" fill="#464b50"/>
+                      <circle cx="24" cy="18" r="9" fill="#35c6d4"/>
+                      <path d="M8 46c2-11 8-16 16-16s14 5 16 16" fill="#0e96a6"/>
+                    </svg>
+                    <span><strong>Ada Ferri</strong><br>
+                      <small>Frontend lead</small></span>
+                  </div>
+                  <div class="cluster">
+                    <svg class="fb-avatar" viewBox="0 0 48 48" role="img"
+                      aria-label="Avatar di Marco Riva">
+                      <rect width="48" height="48" fill="#464b50"/>
+                      <circle cx="24" cy="18" r="9" fill="#f0b84b"/>
+                      <path d="M8 46c2-11 8-16 16-16s14 5 16 16" fill="#9c762d"/>
+                    </svg>
+                    <span><strong>Marco Riva</strong><br>
+                      <small>Quality engineer</small></span>
+                  </div>
+                </div>
+              </article>
+            </aside>
+          </div>
+        </div>
+      </section>
 
       <section id="components" class="fb-section">
         <div class="fb-container fb-container--wide">
@@ -193,6 +363,101 @@
         </div>
       </section>
 
+      <section id="content-patterns" class="fb-section">
+        <div class="fb-container fb-container--wide">
+          <header class="fb-section-header">
+            <p class="fb-eyebrow">Contenuti e comunicazione</p>
+            <h2 class="u-no-margin">Dalla landing page al contenuto editoriale</h2>
+            <p class="fb-lead">
+              Tipografia, piani, profili e micro-pattern mantengono la stessa
+              gerarchia visiva dei componenti applicativi.
+            </p>
+          </header>
+
+          <div class="stack">
+            <div class="fb-grid fb-grid--3">
+              <article class="card">
+                <p class="fb-eyebrow">Starter</p>
+                <h3 class="card-title">Prototipo</h3>
+                <p><strong class="u-text-primary">Gratis</strong> per progetti personali.</p>
+                <ul>
+                  <li>CSS completo</li>
+                  <li>Demo offline</li>
+                  <li>Token personalizzabili</li>
+                </ul>
+                <a class="fb-button fb-button--secondary fb-button--block"
+                  href="#quick-start">Inizia ora</a>
+              </article>
+
+              <article class="card card--interactive">
+                <p class="fb-eyebrow">Consigliato</p>
+                <h3 class="card-title">Produzione</h3>
+                <p><strong class="u-text-success">Pronto</strong> per siti completi.</p>
+                <ul>
+                  <li>Layout pubblici e tecnici</li>
+                  <li>Form e tabelle</li>
+                  <li>Responsive integrato</li>
+                </ul>
+                <a class="fb-button fb-button--block" href="#documentation">
+                  Consulta la guida
+                </a>
+              </article>
+
+              <article class="card">
+                <p class="fb-eyebrow">Personalizzato</p>
+                <h3 class="card-title">Tema proprietario</h3>
+                <p><strong class="u-text-info">Flessibile</strong> tramite pochi token.</p>
+                <ul>
+                  <li>Palette sostituibile</li>
+                  <li>Densità configurabile</li>
+                  <li>Nessun lock-in</li>
+                </ul>
+                <a class="fb-button fb-button--ghost fb-button--block"
+                  href="#doc-tokens">Esplora i token</a>
+              </article>
+            </div>
+
+            <div class="fb-grid fb-grid--2">
+              <article class="card">
+                <h3 class="card-title">Tipografia semantica</h3>
+                <p>
+                  FrameBaseCSS gestisce <abbr title="HyperText Markup Language">HTML</abbr>
+                  semantico, testo <mark>evidenziato</mark>, abbreviazioni,
+                  collegamenti e comandi da tastiera come <kbd>Ctrl</kbd> +
+                  <kbd>K</kbd>.
+                </p>
+                <p class="u-text-muted">
+                  Il testo secondario resta leggibile senza competere con il contenuto
+                  principale. Le parole molto lunghe possono usare
+                  <span class="u-break-anywhere">release-candidate-with-an-exceptionally-long-identifier</span>.
+                </p>
+                <ol>
+                  <li>Scrivi una struttura semantica.</li>
+                  <li>Applica il componente necessario.</li>
+                  <li>Personalizza soltanto i token.</li>
+                </ol>
+              </article>
+
+              <article class="card card--subtle">
+                <h3 class="card-title">Una voce coerente</h3>
+                <blockquote>
+                  <p>
+                    La pagina rimane tecnica e compatta, ma ogni stato conserva
+                    una gerarchia immediatamente riconoscibile.
+                  </p>
+                  <cite>— Team FrameBaseCSS</cite>
+                </blockquote>
+                <div class="cluster">
+                  <span class="u-text-success">● stabile</span>
+                  <span class="u-text-warning">● attenzione</span>
+                  <span class="u-text-danger">● critico</span>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="fb-section fb-section--muted" id="native-controls">
         <div class="fb-container fb-container--wide">
           <header class="fb-section-header">
@@ -237,14 +502,12 @@
             </ol>
           </div>
 
-          <div class="fb-tabs" role="tablist" aria-label="Esempio tab statiche">
-            <a class="fb-tab" href="#native-controls" aria-selected="true"
-              role="tab">Panoramica</a>
-            <a class="fb-tab" href="#data-table" aria-selected="false"
-              role="tab">Dati</a>
-            <a class="fb-tab" href="#forms" aria-selected="false"
-              role="tab">Configurazione</a>
-          </div>
+          <nav class="fb-tabs" aria-label="Sezioni correlate">
+            <a class="fb-tab" href="#native-controls"
+              aria-current="location">Panoramica</a>
+            <a class="fb-tab" href="#data-table">Dati</a>
+            <a class="fb-tab" href="#forms">Configurazione</a>
+          </nav>
         </div>
       </section>
 
@@ -266,11 +529,13 @@
 
               <div class="fb-field">
                 <label for="environment">Ambiente</label>
-                <select id="environment" name="environment">
-                  <option>Sviluppo</option>
-                  <option>Staging</option>
-                  <option>Produzione</option>
-                </select>
+                <div class="fb-select">
+                  <select id="environment" name="environment">
+                    <option>Sviluppo</option>
+                    <option>Staging</option>
+                    <option>Produzione</option>
+                  </select>
+                </div>
               </div>
 
               <div class="fb-field">
@@ -323,6 +588,40 @@
                 <input id="file" name="attachment" type="file">
               </div>
             </div>
+
+            <div class="fb-form-grid">
+              <div class="fb-field">
+                <label for="project-email">Email responsabile</label>
+                <input id="project-email" name="email" type="email"
+                  placeholder="nome@esempio.it">
+              </div>
+              <div class="fb-field">
+                <label for="release-date">Data rilascio</label>
+                <input id="release-date" name="release-date" type="date"
+                  value="2026-08-15">
+              </div>
+              <div class="fb-field">
+                <label for="accent-color">Colore identificativo</label>
+                <input id="accent-color" name="accent-color" type="color"
+                  value="#35c6d4">
+              </div>
+            </div>
+
+            <div class="fb-field">
+              <label for="member-search">Invita un collaboratore</label>
+              <div class="fb-input-group">
+                <input id="member-search" name="member" type="email"
+                  placeholder="collaboratore@esempio.it">
+                <button class="fb-button" type="button">Invita</button>
+              </div>
+              <span class="fb-field-help">
+                L'invito verrà associato all'ambiente selezionato.
+              </span>
+            </div>
+
+            <output class="fb-output" for="project-name environment">
+              Anteprima: il progetto verrà creato nel canale di sviluppo.
+            </output>
 
             <div class="cluster">
               <button class="fb-button" type="submit">Salva configurazione</button>
@@ -480,12 +779,18 @@
         <div class="doc-shell">
           <aside class="doc-sidebar">
             <nav class="nav-panel" aria-label="Sezioni della documentazione">
-              <p class="nav-title">Documentazione</p>
+              <p class="nav-title">Contratti HTML</p>
               <ul class="nav-list">
-                <li><a href="#doc-overview" aria-current="page">Panoramica</a></li>
-                <li><a href="#doc-install">Installazione</a></li>
-                <li><a href="#doc-tokens">Token</a></li>
-                <li><a href="#doc-api">Riferimento</a></li>
+                <li>
+                  <a href="#doc-overview" aria-current="location">Uso</a>
+                </li>
+                <li><a href="#doc-layouts">Layout</a></li>
+                <li><a href="#doc-navigation">Navigazione</a></li>
+                <li><a href="#doc-content">Contenuto</a></li>
+                <li><a href="#doc-forms">Form</a></li>
+                <li><a href="#doc-feedback">Feedback</a></li>
+                <li><a href="#doc-data">Dati e codice</a></li>
+                <li><a href="#doc-media">Media</a></li>
               </ul>
             </nav>
           </aside>
@@ -493,116 +798,685 @@
           <div class="doc-main">
             <article class="doc-content">
               <header class="doc-header">
-                <p class="doc-eyebrow">Guida / versione 1.0</p>
+                <p class="doc-eyebrow">Riferimento pubblico / versione 1.0</p>
                 <h2 id="documentation-title" class="doc-title">
-                  FrameBaseCSS Documentation
+                  Contratti dei componenti
                 </h2>
                 <p class="doc-subtitle">
-                  Esempio realistico del layout tecnico a più colonne, con
-                  navigazione locale e indice contestuale.
+                  Strutture HTML canoniche da copiare e adattare. Le classi di
+                  layout controllano la composizione; i componenti non dipendono
+                  da ID, testo dimostrativo o posizione accidentale nella pagina.
                 </p>
                 <div class="doc-meta">
-                  <span class="badge badge--success">stabile</span>
+                  <span class="badge badge--success">plug and use</span>
                   <span class="badge badge--primary">CSS</span>
-                  <span class="badge">offline</span>
+                  <span class="badge">zero dipendenze</span>
                 </div>
               </header>
 
               <section id="doc-overview" class="section report-section">
                 <h2 class="anchor-heading">
-                  <a href="#doc-overview">Panoramica</a>
+                  <a href="#doc-overview">1. Installazione e regole d’uso</a>
                 </h2>
                 <p>
-                  FrameBaseCSS mantiene separati i token, le primitive di layout,
-                  i componenti e le utility. Le classi storiche della base
-                  documentale restano compatibili.
+                  Collega il foglio dopo il meta viewport. Usa gli elementi HTML
+                  per il loro significato e applica una classe FrameBaseCSS solo
+                  quando serve un contratto visivo o di layout.
                 </p>
-
-                <dl>
-                  <dt>Sorgente</dt>
-                  <dd><code>framebase.css</code></dd>
-                  <dt>Namespace</dt>
-                  <dd><code>--fb-*</code>, <code>.fb-*</code> e <code>.u-*</code></dd>
-                  <dt>Runtime</dt>
-                  <dd>Browser moderno, nessun JavaScript obbligatorio</dd>
-                </dl>
-              </section>
-
-              <section id="doc-install" class="section report-section">
-                <h2 class="anchor-heading">
-                  <a href="#doc-install">Installazione</a>
-                </h2>
                 <div class="code-block">
                   <div class="code-header">
-                    <span class="code-file">document.html</span>
+                    <span class="code-file">index.html</span>
                     <span class="code-language">HTML</span>
                   </div>
-                  <pre><code><span class="token-tag">&lt;link</span>
-  <span class="token-attribute">rel</span>=<span class="token-string">"stylesheet"</span>
-  <span class="token-attribute">href</span>=<span class="token-string">"framebase.css"</span>
-<span class="token-tag">&gt;</span></code></pre>
+                  <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+&lt;link rel="stylesheet" href="framebase.css"&gt;</code></pre>
                 </div>
+                <div class="callout callout--info">
+                  <p class="callout-title">Regola di composizione</p>
+                  <p>
+                    Usa <code>.stack</code>, <code>.cluster</code>,
+                    <code>.fb-grid</code> o una sezione dedicata per lo spazio
+                    tra componenti. Non aggiungere margini esterni ai componenti
+                    per correggere una singola pagina.
+                  </p>
+                </div>
+                <dl>
+                  <dt>Namespace principale</dt>
+                  <dd><code>--fb-*</code>, <code>.fb-*</code> e <code>.u-*</code></dd>
+                  <dt>Classi compatibili</dt>
+                  <dd>
+                    <code>.card</code>, <code>.badge</code>,
+                    <code>.callout</code>, <code>.doc-*</code>,
+                    <code>.code-*</code> e <code>.gallery*</code>
+                  </dd>
+                  <dt>JavaScript</dt>
+                  <dd>
+                    Non richiesto dal CSS; resta necessario per comportamenti
+                    applicativi come l’apertura programmatica di un dialog.
+                  </dd>
+                </dl>
               </section>
 
               <section id="doc-tokens" class="section report-section">
                 <h2 class="anchor-heading">
-                  <a href="#doc-tokens">Personalizzazione</a>
+                  <a href="#doc-tokens">2. Token e personalizzazione</a>
                 </h2>
-                <div class="card-grid">
-                  <article class="card">
-                    <h3 class="card-title">Identità</h3>
-                    <p>
-                      Sovrascrivi <code>--fb-color-primary</code> e
-                      <code>--fb-color-secondary</code>.
-                    </p>
-                  </article>
-                  <article class="card">
-                    <h3 class="card-title">Densità</h3>
-                    <p>
-                      Regola i token <code>--fb-space-*</code> e
-                      <code>--fb-control-height</code>.
-                    </p>
-                  </article>
+                <p>
+                  Sovrascrivi i token dopo <code>framebase.css</code>. Non
+                  modificare le regole interne per creare un tema.
+                </p>
+                <div class="code-block">
+                  <div class="code-header">
+                    <span class="code-file">theme.css</span>
+                    <span class="code-language">CSS</span>
+                  </div>
+                  <pre><code>:root {
+  --fb-color-primary: #7dd3fc;
+  --fb-color-background: #111827;
+  --fb-container-max: 72rem;
+  --fb-content-max: 90rem;
+  --fb-control-height: 2.75rem;
+  --fb-stack-gap: var(--fb-space-5);
+}</code></pre>
+                </div>
+                <p>
+                  I gruppi pubblici comprendono colori, tipografia, spaziatura,
+                  raggi, ombre, larghezze, transizioni e dimensioni dei controlli.
+                </p>
+              </section>
+
+              <section id="doc-layouts" class="section report-section">
+                <h2 class="anchor-heading">
+                  <a href="#doc-layouts">3. Pagina, contenitori e layout</a>
+                </h2>
+                <dl>
+                  <dt><code>.fb-page</code></dt>
+                  <dd>Shell con altezza minima pari alla viewport.</dd>
+                  <dt><code>.fb-container</code></dt>
+                  <dd>Contenitore centrato; aggiungi <code>--wide</code> per il limite ampio.</dd>
+                  <dt><code>.fb-main</code> e <code>.fb-section</code></dt>
+                  <dd>Spaziatura verticale del contenuto e delle sezioni.</dd>
+                  <dt><code>.fb-grid</code></dt>
+                  <dd>Griglia automatica; le varianti <code>--2</code>, <code>--3</code> e <code>--4</code> fissano le colonne.</dd>
+                  <dt><code>.fb-sidebar-layout</code></dt>
+                  <dd>Contenuto principale con colonna laterale responsive.</dd>
+                  <dt><code>.stack</code>, <code>.flow</code>, <code>.cluster</code>, <code>.split-grid</code></dt>
+                  <dd>Composizioni verticali, flusso tipografico, gruppi flessibili e divisione in due colonne.</dd>
+                </dl>
+                <div class="code-block">
+                  <div class="code-header">
+                    <span class="code-file">layout.html</span>
+                    <span class="code-language">HTML</span>
+                  </div>
+                  <pre><code>&lt;div class="fb-page"&gt;
+  &lt;main class="fb-main"&gt;
+    &lt;section class="fb-section fb-section--muted"&gt;
+      &lt;div class="fb-container fb-container--wide"&gt;
+        &lt;header class="fb-section-header"&gt;...&lt;/header&gt;
+        &lt;div class="fb-grid fb-grid--3"&gt;...&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+&lt;/div&gt;
+
+&lt;div class="fb-sidebar-layout"&gt;
+  &lt;div class="stack"&gt;...&lt;/div&gt;
+  &lt;aside class="stack"&gt;...&lt;/aside&gt;
+&lt;/div&gt;
+
+&lt;div class="split-grid"&gt;
+  &lt;div&gt;Colonna principale&lt;/div&gt;
+  &lt;div&gt;Colonna secondaria&lt;/div&gt;
+&lt;/div&gt;</code></pre>
                 </div>
               </section>
 
-              <section id="doc-api" class="section report-section">
+              <section id="doc-hero" class="section report-section">
                 <h2 class="anchor-heading">
-                  <a href="#doc-api">Riferimento componenti</a>
+                  <a href="#doc-hero">4. Hero e metriche</a>
                 </h2>
+                <p>
+                  <code>.fb-hero-section</code> definisce il confine e lo spazio
+                  della composizione. Hero e metriche restano componenti
+                  indipendenti e possono essere omessi o riordinati.
+                </p>
+                <div class="code-block">
+                  <div class="code-header">
+                    <span class="code-file">hero.html</span>
+                    <span class="code-language">HTML</span>
+                  </div>
+                  <pre><code>&lt;section class="fb-hero-section fb-container fb-container--wide"&gt;
+  &lt;div class="fb-hero"&gt;
+    &lt;div class="fb-hero-copy"&gt;
+      &lt;p class="fb-eyebrow"&gt;Categoria&lt;/p&gt;
+      &lt;h1 class="fb-display"&gt;Titolo della pagina&lt;/h1&gt;
+      &lt;p class="fb-lead"&gt;Descrizione introduttiva.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;aside class="fb-hero-panel"&gt;Contenuto complementare&lt;/aside&gt;
+  &lt;/div&gt;
+
+  &lt;div class="fb-metrics" aria-label="Metriche principali"&gt;
+    &lt;div class="fb-metric"&gt;
+      &lt;span class="fb-metric-value"&gt;42&lt;/span&gt;
+      &lt;span class="fb-metric-label"&gt;progetti attivi&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+                </div>
+              </section>
+
+              <section id="doc-navigation" class="section report-section">
+                <h2 class="anchor-heading">
+                  <a href="#doc-navigation">5. Header, navigazione e breadcrumb</a>
+                </h2>
+                <p>
+                  Il link di salto è il primo elemento interattivo. Usa
+                  <code>aria-current="page"</code> per una pagina distinta e
+                  <code>aria-current="location"</code> per un’ancora della
+                  pagina corrente.
+                </p>
+                <div class="code-block">
+                  <div class="code-header">
+                    <span class="code-file">navigation.html</span>
+                    <span class="code-language">HTML</span>
+                  </div>
+                  <pre><code>&lt;a class="fb-skip-link" href="#main-content"&gt;Vai al contenuto&lt;/a&gt;
+&lt;header class="fb-site-header fb-site-header--sticky"&gt;
+  &lt;div class="fb-container fb-navbar"&gt;
+    &lt;a class="fb-brand" href="/"&gt;
+      &lt;span class="fb-brand-mark" aria-hidden="true"&gt;FB&lt;/span&gt;
+      Progetto
+    &lt;/a&gt;
+    &lt;ul class="fb-nav" aria-label="Navigazione principale"&gt;
+      &lt;li&gt;&lt;a href="/" aria-current="page"&gt;Home&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="/docs"&gt;Documentazione&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div class="fb-navbar-actions"&gt;...&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/header&gt;
+
+&lt;nav class="fb-breadcrumbs" aria-label="Percorso"&gt;
+  &lt;ol&gt;
+    &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li aria-current="page"&gt;Pagina&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;
+
+&lt;footer class="fb-site-footer"&gt;
+  &lt;div class="fb-container"&gt;...&lt;/div&gt;
+&lt;/footer&gt;</code></pre>
+                </div>
+              </section>
+
+              <section id="doc-documentation-layout"
+                class="section report-section">
+                <h2 class="anchor-heading">
+                  <a href="#doc-documentation-layout">6. Layout documentazione</a>
+                </h2>
+                <p>
+                  La struttura a tre colonne diventa a due colonne sotto
+                  1180 px e a colonna singola sotto 860 px. Le barre laterali
+                  sono sticky soltanto quando la viewport lo consente.
+                </p>
+                <div class="code-block">
+                  <div class="code-header">
+                    <span class="code-file">documentation.html</span>
+                    <span class="code-language">HTML</span>
+                  </div>
+                  <pre><code>&lt;div class="doc-shell"&gt;
+  &lt;aside class="doc-sidebar"&gt;
+    &lt;nav class="nav-panel" aria-label="Documentazione"&gt;
+      &lt;p class="nav-title"&gt;Sezioni&lt;/p&gt;
+      &lt;ul class="nav-list"&gt;
+        &lt;li class="nav-group"&gt;
+          &lt;p class="nav-group-label"&gt;Fondamenti&lt;/p&gt;
+          &lt;ul&gt;&lt;li&gt;&lt;a href="#start"&gt;Introduzione&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/aside&gt;
+
+  &lt;main class="doc-main"&gt;
+    &lt;article class="doc-content"&gt;
+      &lt;header class="doc-header"&gt;
+        &lt;p class="doc-eyebrow"&gt;Guida&lt;/p&gt;
+        &lt;h1 class="doc-title"&gt;Titolo&lt;/h1&gt;
+        &lt;p class="doc-subtitle"&gt;Sommario&lt;/p&gt;
+        &lt;div class="doc-meta"&gt;...&lt;/div&gt;
+      &lt;/header&gt;
+      &lt;section class="section report-section"&gt;...&lt;/section&gt;
+    &lt;/article&gt;
+  &lt;/main&gt;
+
+  &lt;aside class="doc-toc"&gt;
+    &lt;nav class="toc-panel" aria-label="In questa pagina"&gt;
+      &lt;p class="toc-title"&gt;Indice&lt;/p&gt;
+      &lt;ul class="toc-list"&gt;...&lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/aside&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+              </section>
+
+              <section id="doc-content" class="section report-section">
+                <h2 class="anchor-heading">
+                  <a href="#doc-content">7. Card, badge e contenuto</a>
+                </h2>
+                <p>
+                  La card accetta contenuto semantico libero. Usa
+                  <code>.card-grid</code> per gruppi uniformi e
+                  <code>.card-title</code> per il titolo interno.
+                </p>
+                <div class="code-block">
+                  <div class="code-header">
+                    <span class="code-file">content.html</span>
+                    <span class="code-language">HTML</span>
+                  </div>
+                  <pre><code>&lt;div class="card-grid"&gt;
+  &lt;article class="card card--interactive"&gt;
+    &lt;div class="cluster"&gt;
+      &lt;h2 class="card-title"&gt;Titolo&lt;/h2&gt;
+      &lt;span class="badge badge--success"&gt;attivo&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Contenuto della card.&lt;/p&gt;
+  &lt;/article&gt;
+  &lt;article class="card card--subtle"&gt;...&lt;/article&gt;
+&lt;/div&gt;
+
+&lt;span class="badge badge--primary"&gt;primario&lt;/span&gt;
+&lt;span class="badge badge--info"&gt;informazione&lt;/span&gt;
+&lt;span class="badge badge--warning"&gt;attenzione&lt;/span&gt;
+&lt;span class="badge badge--danger"&gt;errore&lt;/span&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Citazione.&lt;/p&gt;
+  &lt;cite&gt;Autore&lt;/cite&gt;
+&lt;/blockquote&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;Termine&lt;/dt&gt;
+  &lt;dd&gt;Definizione&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+                </div>
+              </section>
+
+              <section id="doc-actions" class="section report-section">
+                <h2 class="anchor-heading">
+                  <a href="#doc-actions">8. Pulsanti e gruppi di azioni</a>
+                </h2>
+                <p>
+                  Usa un <code>&lt;button&gt;</code> per un’azione e un
+                  <code>&lt;a&gt;</code> per la navigazione. Le varianti
+                  cambiano presentazione, non semantica.
+                </p>
+                <div class="code-block">
+                  <div class="code-header">
+                    <span class="code-file">actions.html</span>
+                    <span class="code-language">HTML</span>
+                  </div>
+                  <pre><code>&lt;button class="fb-button" type="button"&gt;Conferma&lt;/button&gt;
+&lt;a class="fb-button fb-button--secondary" href="/docs"&gt;Apri guida&lt;/a&gt;
+&lt;button class="fb-button fb-button--ghost fb-button--sm" type="button"&gt;Annulla&lt;/button&gt;
+&lt;button class="fb-button fb-button--danger" type="button"&gt;Elimina&lt;/button&gt;
+&lt;button class="fb-button fb-button--block" type="button"&gt;A tutta larghezza&lt;/button&gt;
+&lt;button class="fb-button" type="button" disabled&gt;Non disponibile&lt;/button&gt;
+
+&lt;div class="fb-button-group" role="group" aria-label="Vista"&gt;
+  &lt;button class="fb-button" type="button"&gt;Griglia&lt;/button&gt;
+  &lt;button class="fb-button fb-button--secondary" type="button"&gt;Lista&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+              </section>
+
+              <section id="doc-forms" class="section report-section">
+                <h2 class="anchor-heading">
+                  <a href="#doc-forms">9. Form e controlli nativi</a>
+                </h2>
+                <p>
+                  Ogni controllo ha una label associata. Il wrapper
+                  <code>.fb-select</code> fornisce la freccia coerente; lo stato
+                  non valido usa <code>aria-invalid="true"</code> e un messaggio
+                  separato.
+                </p>
+                <div class="code-block">
+                  <div class="code-header">
+                    <span class="code-file">form.html</span>
+                    <span class="code-language">HTML</span>
+                  </div>
+                  <pre><code>&lt;form class="stack"&gt;
+  &lt;div class="fb-form-grid"&gt;
+    &lt;div class="fb-field"&gt;
+      &lt;label for="name"&gt;Nome&lt;/label&gt;
+      &lt;input id="name" name="name" type="text" aria-describedby="name-help"&gt;
+      &lt;span id="name-help" class="fb-field-help"&gt;Testo di supporto.&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;div class="fb-field"&gt;
+      &lt;label for="environment"&gt;Ambiente&lt;/label&gt;
+      &lt;div class="fb-select"&gt;
+        &lt;select id="environment" name="environment"&gt;
+          &lt;option&gt;Sviluppo&lt;/option&gt;
+          &lt;option&gt;Produzione&lt;/option&gt;
+        &lt;/select&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="fb-field"&gt;
+      &lt;label for="slug"&gt;Slug&lt;/label&gt;
+      &lt;input id="slug" name="slug" aria-invalid="true"
+        aria-describedby="slug-error"&gt;
+      &lt;span id="slug-error" class="fb-field-error"&gt;Valore non valido.&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;label class="fb-check"&gt;
+    &lt;input type="checkbox" name="terms"&gt;
+    &lt;span&gt;Accetto le condizioni&lt;/span&gt;
+  &lt;/label&gt;
+
+  &lt;div class="fb-input-group"&gt;
+    &lt;input type="search" aria-label="Cerca"&gt;
+    &lt;button class="fb-button" type="submit"&gt;Cerca&lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;output class="fb-output"&gt;Risultato dell’operazione.&lt;/output&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+                <p>
+                  Sono stilizzati anche <code>textarea</code>,
+                  <code>fieldset</code>, radio, checkbox, color, date, file,
+                  range, <code>progress</code> e <code>meter</code>.
+                </p>
+              </section>
+
+              <section id="doc-feedback" class="section report-section">
+                <h2 class="anchor-heading">
+                  <a href="#doc-feedback">10. Callout, stato e avanzamento</a>
+                </h2>
+                <div class="code-block">
+                  <div class="code-header">
+                    <span class="code-file">feedback.html</span>
+                    <span class="code-language">HTML</span>
+                  </div>
+                  <pre><code>&lt;aside class="callout callout--info"&gt;
+  &lt;p class="callout-title"&gt;Informazione&lt;/p&gt;
+  &lt;p&gt;Messaggio contestuale.&lt;/p&gt;
+&lt;/aside&gt;
+
+&lt;p class="fb-status fb-status--success"&gt;Operativo&lt;/p&gt;
+&lt;p class="fb-status fb-status--warning"&gt;Da controllare&lt;/p&gt;
+&lt;p class="fb-status fb-status--danger"&gt;Errore&lt;/p&gt;
+
+&lt;label for="upload-progress"&gt;Caricamento&lt;/label&gt;
+&lt;progress id="upload-progress" value="72" max="100"&gt;72%&lt;/progress&gt;
+
+&lt;label for="quality"&gt;Qualità&lt;/label&gt;
+&lt;meter id="quality" min="0" max="100" low="60"
+  high="85" optimum="100" value="94"&gt;94%&lt;/meter&gt;</code></pre>
+                </div>
+                <p>
+                  I callout supportano <code>--info</code>,
+                  <code>--success</code>, <code>--warning</code> e
+                  <code>--danger</code>.
+                </p>
+              </section>
+
+              <section id="doc-native" class="section report-section">
+                <h2 class="anchor-heading">
+                  <a href="#doc-native">11. Accordion, dialog e popover</a>
+                </h2>
+                <p>
+                  Accordion e popover funzionano con HTML nativo. Per un dialog
+                  modale, collega un evento a <code>showModal()</code> e a
+                  <code>close()</code>; FrameBaseCSS gestisce solo il rendering.
+                </p>
+                <div class="code-block">
+                  <div class="code-header">
+                    <span class="code-file">native.html</span>
+                    <span class="code-language">HTML</span>
+                  </div>
+                  <pre><code>&lt;details&gt;
+  &lt;summary&gt;Titolo accordion&lt;/summary&gt;
+  &lt;div class="details-body"&gt;Contenuto espandibile.&lt;/div&gt;
+&lt;/details&gt;
+
+&lt;button class="fb-button" type="button" popovertarget="help"&gt;Aiuto&lt;/button&gt;
+&lt;div id="help" class="fb-tooltip" popover&gt;Testo del popover.&lt;/div&gt;
+
+&lt;dialog id="confirm-dialog"&gt;
+  &lt;form method="dialog" class="stack"&gt;
+    &lt;h2&gt;Conferma operazione&lt;/h2&gt;
+    &lt;button class="fb-button" value="confirm"&gt;Conferma&lt;/button&gt;
+    &lt;button class="fb-button fb-button--secondary" value="cancel"&gt;Annulla&lt;/button&gt;
+  &lt;/form&gt;
+&lt;/dialog&gt;</code></pre>
+                </div>
+              </section>
+
+              <section id="doc-data" class="section report-section">
+                <h2 class="anchor-heading">
+                  <a href="#doc-data">12. Tabelle e dati</a>
+                </h2>
+                <p>
+                  Inserisci sempre la tabella in <code>.table-wrap</code> per
+                  confinare lo scorrimento orizzontale. Rendi il wrapper
+                  focalizzabile quando contiene dati più larghi della viewport.
+                </p>
+                <div class="code-block">
+                  <div class="code-header">
+                    <span class="code-file">table.html</span>
+                    <span class="code-language">HTML</span>
+                  </div>
+                  <pre><code>&lt;div class="table-wrap" tabindex="0"
+  aria-label="Dati progetto, scorribili orizzontalmente"&gt;
+  &lt;table class="table--compact table--striped"&gt;
+    &lt;caption&gt;Riepilogo progetti&lt;/caption&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th scope="col"&gt;Progetto&lt;/th&gt;
+        &lt;th scope="col" class="cell-right"&gt;Richieste&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;Portale&lt;/td&gt;
+        &lt;td class="cell-number"&gt;1.240&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+              </section>
+
+              <section id="doc-code" class="section report-section">
+                <h2 class="anchor-heading">
+                  <a href="#doc-code">13. Codice e terminale</a>
+                </h2>
+                <p>
+                  <code>.code-block</code> mantiene intestazione e contenuto
+                  nello stesso frame. Aggiungi <code>.code-block--wrap</code>
+                  solo quando il ritorno a capo è preferibile allo scorrimento.
+                </p>
+                <div class="code-block">
+                  <div class="code-header">
+                    <span class="code-file">example.css</span>
+                    <span class="code-language">CSS</span>
+                  </div>
+                  <pre><code>&lt;div class="code-block"&gt;
+  &lt;div class="code-header"&gt;
+    &lt;span class="code-file"&gt;config.yml&lt;/span&gt;
+    &lt;span class="code-language"&gt;YAML&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;pre&gt;&lt;code&gt;enabled: true&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;pre class="fb-terminal" aria-label="Output terminale"&gt;$ command --flag
+✓ operazione completata&lt;/pre&gt;</code></pre>
+                </div>
+                <p>
+                  Per l’evidenziazione manuale sono disponibili
+                  <code>.token-comment</code>, <code>.token-prolog</code>,
+                  <code>.token-doctype</code>, <code>.token-keyword</code>,
+                  <code>.token-type</code>, <code>.token-selector</code>,
+                  <code>.token-tag</code>, <code>.token-function</code>,
+                  <code>.token-property</code>, <code>.token-attribute</code>,
+                  <code>.token-string</code>, <code>.token-char</code>,
+                  <code>.token-inserted</code>, <code>.token-number</code>,
+                  <code>.token-boolean</code>, <code>.token-constant</code>,
+                  <code>.token-operator</code>, <code>.token-punctuation</code>,
+                  <code>.token-variable</code>, <code>.token-class-name</code>,
+                  <code>.token-deleted</code>, <code>.token-error</code> e
+                  <code>.token-invalid</code>.
+                </p>
+              </section>
+
+              <section id="doc-media" class="section report-section">
+                <h2 class="anchor-heading">
+                  <a href="#doc-media">14. Figure, gallery e avatar</a>
+                </h2>
+                <p>
+                  Usa sempre un testo alternativo utile per immagini informative.
+                  Le immagini decorative devono avere <code>alt=""</code>.
+                </p>
+                <div class="code-block">
+                  <div class="code-header">
+                    <span class="code-file">media.html</span>
+                    <span class="code-language">HTML</span>
+                  </div>
+                  <pre><code>&lt;figure class="media-wide media-contain"&gt;
+  &lt;img src="diagram.png" alt="Flusso di distribuzione"&gt;
+  &lt;figcaption&gt;Architettura della distribuzione.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;div class="gallery gallery--compact"&gt;
+  &lt;figure class="gallery-item gallery-item--square gallery-item--contain"&gt;
+    &lt;a class="gallery-link" href="image.png"&gt;
+      &lt;div class="gallery-media"&gt;
+        &lt;img src="thumb.png" alt="Anteprima del progetto"&gt;
+      &lt;/div&gt;
+      &lt;figcaption&gt;&lt;strong&gt;Progetto&lt;/strong&gt;Descrizione.&lt;/figcaption&gt;
+    &lt;/a&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;img class="fb-avatar" src="avatar.jpg" alt="Ada Ferri"&gt;</code></pre>
+                </div>
+                <p>
+                  Le varianti gallery sono <code>.gallery--compact</code>,
+                  <code>.gallery-item--wide</code>,
+                  <code>.gallery-item--portrait</code>,
+                  <code>.gallery-item--square</code> e
+                  <code>.gallery-item--contain</code>. Per semplici raccolte
+                  responsive è disponibile anche <code>.image-grid</code>.
+                </p>
+              </section>
+
+              <section id="doc-secondary-nav" class="section report-section">
+                <h2 class="anchor-heading">
+                  <a href="#doc-secondary-nav">15. Tab, paginazione, passi e vuoto</a>
+                </h2>
+                <p>
+                  I link usati come tab statiche sono navigazione e non richiedono
+                  <code>role="tab"</code>. Usa il pattern ARIA tab soltanto con
+                  il comportamento da tastiera completo implementato in JavaScript.
+                </p>
+                <div class="code-block">
+                  <div class="code-header">
+                    <span class="code-file">secondary-navigation.html</span>
+                    <span class="code-language">HTML</span>
+                  </div>
+                  <pre><code>&lt;nav class="fb-tabs" aria-label="Sezioni correlate"&gt;
+  &lt;a class="fb-tab" href="#overview" aria-current="location"&gt;Panoramica&lt;/a&gt;
+  &lt;a class="fb-tab" href="#settings"&gt;Impostazioni&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;nav aria-label="Pagine risultati"&gt;
+  &lt;ul class="fb-pagination"&gt;
+    &lt;li&gt;&lt;a href="?page=1"&gt;1&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span aria-current="page"&gt;2&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;ol class="fb-steps"&gt;
+  &lt;li class="fb-step"&gt;&lt;strong&gt;Configura&lt;/strong&gt;&lt;br&gt;Scegli le opzioni.&lt;/li&gt;
+  &lt;li class="fb-step"&gt;&lt;strong&gt;Verifica&lt;/strong&gt;&lt;br&gt;Controlla i dati.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class="fb-empty"&gt;
+  &lt;h2&gt;Nessun risultato&lt;/h2&gt;
+  &lt;p&gt;Modifica i filtri e riprova.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+              </section>
+
+              <section id="doc-utilities" class="section report-section">
+                <h2 class="anchor-heading">
+                  <a href="#doc-utilities">16. Ancore e utility</a>
+                </h2>
+                <p>
+                  Le utility sono eccezioni intenzionali e a responsabilità
+                  singola. Preferisci componenti e primitive di layout quando
+                  descrivono meglio la struttura.
+                </p>
                 <div class="table-wrap" tabindex="0"
-                  aria-label="Riferimento classi, scorribile orizzontalmente">
-                  <table class="table--compact">
+                  aria-label="Riferimento utility, scorribile orizzontalmente">
+                  <table class="table--compact table--striped">
                     <thead>
                       <tr>
                         <th scope="col">Classe</th>
-                        <th scope="col">Responsabilità</th>
-                        <th scope="col">Variante</th>
+                        <th scope="col">Contratto</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td><code>.fb-container</code></td>
-                        <td>Limita e centra il contenuto.</td>
-                        <td><code>--wide</code></td>
+                        <td><code>.anchor-heading</code></td>
+                        <td>Il titolo contiene un link alla propria sezione.</td>
                       </tr>
                       <tr>
-                        <td><code>.fb-button</code></td>
-                        <td>Azione o link con aspetto coerente.</td>
-                        <td><code>--secondary</code>, <code>--ghost</code></td>
+                        <td><code>.u-sr-only</code></td>
+                        <td>Contenuto disponibile alle tecnologie assistive.</td>
                       </tr>
                       <tr>
-                        <td><code>.card</code></td>
-                        <td>Contenitore compatibile con la base originaria.</td>
-                        <td><code>--subtle</code>, <code>--interactive</code></td>
+                        <td><code>.u-no-margin</code>, <code>.u-full-width</code></td>
+                        <td>Rimuove il margine o imposta la larghezza completa.</td>
+                      </tr>
+                      <tr>
+                        <td><code>.u-text-primary</code>, <code>--info</code>, <code>--success</code>, <code>--warning</code>, <code>--danger</code></td>
+                        <td>Applica un colore semantico al testo.</td>
+                      </tr>
+                      <tr>
+                        <td><code>.u-text-left</code>, <code>.u-text-center</code>, <code>.u-text-right</code></td>
+                        <td>Imposta l’allineamento del testo.</td>
+                      </tr>
+                      <tr>
+                        <td><code>.u-nowrap</code>, <code>.u-break-anywhere</code></td>
+                        <td>Controlla la gestione delle stringhe lunghe.</td>
+                      </tr>
+                      <tr>
+                        <td><code>.u-overflow-auto</code></td>
+                        <td>Confina lo scorrimento al componente.</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
-
-                <div class="fb-empty">
-                  <h3>Nessun risultato aggiuntivo</h3>
-                  <p>Modifica i filtri o consulta l'indice laterale.</p>
+                <p>
+                  Per compatibilità con la base originale restano disponibili
+                  gli alias <code>.no-margin</code>, <code>.full-width</code>,
+                  <code>.text-primary</code>, <code>.text-info</code>,
+                  <code>.text-success</code>, <code>.text-warning</code>,
+                  <code>.text-danger</code>, <code>.text-left</code>,
+                  <code>.text-center</code>, <code>.text-right</code>,
+                  <code>.nowrap</code> e <code>.break-anywhere</code>. Nei nuovi
+                  progetti sono preferite le equivalenti classi
+                  <code>.u-*</code>.
+                </p>
+                <div class="callout callout--success">
+                  <p class="callout-title">Comportamenti globali inclusi</p>
+                  <p>
+                    Breakpoint responsive, focus visibile, target highlighting,
+                    scrollbar, stampa, contrasto elevato e riduzione del movimento
+                    sono forniti dal foglio senza classi aggiuntive.
+                  </p>
                 </div>
               </section>
             </article>
@@ -612,10 +1486,22 @@
             <nav class="toc-panel" aria-label="Indice della pagina">
               <p class="toc-title">In questa pagina</p>
               <ul class="toc-list">
-                <li><a href="#doc-overview" aria-current="true">Panoramica</a></li>
-                <li><a href="#doc-install">Installazione</a></li>
-                <li><a href="#doc-tokens">Personalizzazione</a></li>
-                <li><a href="#doc-api">Riferimento</a></li>
+                <li><a href="#doc-overview" aria-current="true">Installazione</a></li>
+                <li><a href="#doc-tokens">Token</a></li>
+                <li><a href="#doc-layouts">Layout</a></li>
+                <li><a href="#doc-hero">Hero</a></li>
+                <li><a href="#doc-navigation">Navigazione</a></li>
+                <li><a href="#doc-documentation-layout">Documentazione</a></li>
+                <li><a href="#doc-content">Contenuto</a></li>
+                <li><a href="#doc-actions">Azioni</a></li>
+                <li><a href="#doc-forms">Form</a></li>
+                <li><a href="#doc-feedback">Feedback</a></li>
+                <li><a href="#doc-native">Controlli nativi</a></li>
+                <li><a href="#doc-data">Dati</a></li>
+                <li><a href="#doc-code">Codice</a></li>
+                <li><a href="#doc-media">Media</a></li>
+                <li><a href="#doc-secondary-nav">Navigazione secondaria</a></li>
+                <li><a href="#doc-utilities">Utility</a></li>
               </ul>
             </nav>
           </aside>
@@ -625,7 +1511,7 @@
 
     <footer class="fb-site-footer">
       <div class="fb-container fb-container--wide cluster">
-        <span>FrameBaseCSS demo offline</span>
+        <span>FrameBaseCSS documentazione offline</span>
         <span aria-hidden="true">·</span>
         <a href="#top">Torna all'inizio</a>
       </div>

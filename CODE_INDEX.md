@@ -6,8 +6,9 @@ Mappa tecnica compatta del progetto. I percorsi sono relativi alla root.
 
 | Percorso | Ruolo | Contenuto e relazioni |
 | --- | --- | --- |
-| `framebase.css` | Sorgente canonica e contratto pubblico | Design system dark monospace senza dipendenze. Definisce token `--fb-*`, layout e componenti `.fb-*`, utility `.u-*` e mantiene le classi documentali preesistenti (`.doc-*`, `.card`, `.badge`, `.callout`, `.code-*`, `.gallery*`). È consumato direttamente da `framebase-demo.html`. |
-| `framebase-demo.html` | Demo e verifica manuale | Pagina HTML offline che usa esclusivamente `framebase.css`. Mostra shell di sito pubblico, hero, navigazione, card, feedback, form, controlli HTML nativi, tabelle, codice, media inline e layout documentazione a più colonne. |
+| `framebase.css` | Sorgente canonica e contratto pubblico | Design system dark monospace senza dipendenze. Definisce token `--fb-*`, layout e componenti `.fb-*` (inclusi la composizione `.fb-hero-section` e il wrapper select `.fb-select`), utility `.u-*` e mantiene le classi documentali preesistenti (`.doc-*`, `.card`, `.badge`, `.callout`, `.code-*`, `.gallery*`). È consumato direttamente da `framebase-demo.html`. |
+| `framebase-demo.html` | Documentazione pubblica e verifica manuale | Pagina HTML offline che usa esclusivamente `framebase.css`. Documenta i contratti HTML pubblici e mostra gli stessi componenti in esempi realistici: sito pubblico, dashboard, contenuto editoriale, form, dati, codice, media e documentazione tecnica responsive. |
+| `README.md` | Entrypoint pubblico | Presenta obiettivi, quick start, percorso della documentazione, personalizzazione, requisiti di compatibilità e mappa dei file pubblici. |
 
 ## Riferimenti conservati
 
