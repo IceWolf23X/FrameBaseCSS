@@ -72,18 +72,17 @@ Sovrascrivi i token dopo il foglio principale:
 ```
 
 I componenti non devono essere corretti tramite ID o selettori specifici della
-singola pagina. Usa le primitive `.stack`, `.flow`, `.cluster`, `.fb-grid` e le
-classi di composizione documentate per controllare lo spazio e il layout.
+singola pagina. Usa le primitive `.fb-stack`, `.fb-flow`, `.fb-cluster`,
+`.fb-grid` e le classi di composizione documentate per controllare lo spazio e
+il layout.
 
-## Compatibilità
+## Requisiti browser
 
 FrameBaseCSS usa CSS moderno, inclusi custom properties, `color-mix()`, `:has()`
 e `overflow: clip`. È destinato alle versioni moderne dei browser principali.
-La compatibilità con browser legacy non è un obiettivo del progetto.
 
 ## File
 
 - `framebase.css`: sorgente canonica.
 - `framebase-demo.html`: documentazione e verifica visuale offline.
-- `codex-document-master-final.css`: riferimento storico originale, non caricato.
 - `CODE_INDEX.md`: mappa tecnica del repository.
