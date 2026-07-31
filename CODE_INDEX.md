@@ -6,18 +6,13 @@ Mappa tecnica compatta del progetto. I percorsi sono relativi alla root.
 
 | Percorso | Ruolo | Contenuto e relazioni |
 | --- | --- | --- |
-| `framebase.css` | Sorgente canonica e contratto pubblico | Design system dark monospace senza dipendenze. Definisce token `--fb-*`, layout e componenti `.fb-*`, utility `.u-*` e mantiene le classi documentali preesistenti (`.doc-*`, `.card`, `.badge`, `.callout`, `.code-*`, `.gallery*`). È consumato direttamente da `framebase-demo.html`. |
-| `framebase-demo.html` | Demo e verifica manuale | Pagina HTML offline che usa esclusivamente `framebase.css`. Mostra shell di sito pubblico, hero, navigazione, card, feedback, form, controlli HTML nativi, tabelle, codice, media inline e layout documentazione a più colonne. |
-
-## Riferimenti conservati
-
-| Percorso | Ruolo | Contenuto e relazioni |
-| --- | --- | --- |
-| `codex-document-master-final.css` | Base originale, non modificata | Foglio CSS documentale da cui derivano palette, tipografia, classi compatibili e componenti tecnici. Non è caricato dalla demo e resta disponibile per confronto storico. |
+| `framebase.css` | Sorgente canonica e contratto pubblico | Design system dark monospace senza dipendenze. Definisce token `--fb-*`, layout e componenti `.fb-*` e utility `.u-*` con un unico contratto namespaced. È consumato direttamente da `framebase-demo.html`. |
+| `framebase-demo.html` | Documentazione pubblica e verifica manuale | Pagina HTML offline che usa esclusivamente `framebase.css`. Documenta i contratti HTML pubblici e mostra gli stessi componenti in esempi realistici: sito pubblico, dashboard, contenuto editoriale, form, dati, codice, media e documentazione tecnica responsive. |
+| `README.md` | Entrypoint pubblico | Presenta obiettivi, quick start, percorso della documentazione, personalizzazione, requisiti browser e mappa dei file pubblici. |
 
 ## Struttura di `framebase.css`
 
-1. Design token e alias di compatibilità.
+1. Design token.
 2. Reset, ereditarietà e base documento.
 3. Tipografia.
 4. Layout generali.

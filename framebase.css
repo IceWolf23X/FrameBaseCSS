@@ -8,10 +8,8 @@ technical documentation.
 
 Conventions:
   - Design tokens use the --fb-* prefix.
-  - New general-purpose components and layouts use the fb-* prefix.
-  - Compatibility classes inherited from the original document stylesheet
-    retain their established names (doc-*, card, badge, callout, gallery...).
-  - Utilities use the u-* prefix; legacy utility aliases are retained.
+  - Components and layouts use the fb-* prefix.
+  - Utilities use the u-* prefix.
   - Variants use --modifier and state hooks use aria-* or data-state.
 
 The complete file can be linked or embedded in a <style> element.
@@ -95,49 +93,6 @@ No fonts, images, scripts, frameworks, or network resources are required.
   --fb-page-padding: clamp(0.9rem, 2.5vw, 1.6rem);
   --fb-sticky-offset: 1rem;
   --fb-control-height: 2.5rem;
-
-  /* Compatibility aliases for the source stylesheet. */
-  --color-background: var(--fb-color-background);
-  --color-surface: var(--fb-color-surface);
-  --color-surface-alt: var(--fb-color-surface-alt);
-  --color-border: var(--fb-color-border);
-  --color-text-muted: var(--fb-color-text-muted);
-  --color-text-primary: var(--fb-color-text);
-  --color-primary: var(--fb-color-primary);
-  --color-secondary: var(--fb-color-secondary);
-  --color-info: var(--fb-color-info);
-  --color-success: var(--fb-color-success);
-  --color-warning: var(--fb-color-warning);
-  --color-danger: var(--fb-color-danger);
-  --color-code-background: var(--fb-color-code-background);
-  --color-overlay: var(--fb-color-backdrop);
-  --font-mono: var(--fb-font-mono);
-  --font-size-xs: var(--fb-font-size-xs);
-  --font-size-sm: var(--fb-font-size-sm);
-  --font-size-base: var(--fb-font-size-base);
-  --font-size-md: var(--fb-font-size-md);
-  --font-size-lg: var(--fb-font-size-lg);
-  --font-size-xl: var(--fb-font-size-xl);
-  --font-size-2xl: var(--fb-font-size-2xl);
-  --line-height-tight: var(--fb-line-height-tight);
-  --line-height-base: var(--fb-line-height-base);
-  --space-1: var(--fb-space-1);
-  --space-2: var(--fb-space-2);
-  --space-3: var(--fb-space-3);
-  --space-4: var(--fb-space-4);
-  --space-5: var(--fb-space-5);
-  --space-6: var(--fb-space-6);
-  --space-8: var(--fb-space-8);
-  --space-10: var(--fb-space-10);
-  --radius-sm: var(--fb-radius-sm);
-  --radius-md: var(--fb-radius-md);
-  --radius-lg: var(--fb-radius-lg);
-  --shadow-soft: var(--fb-shadow-soft);
-  --shadow-inset: var(--fb-shadow-inset);
-  --layout-gap: var(--fb-layout-gap);
-  --page-padding: var(--fb-page-padding);
-  --sticky-offset: var(--fb-sticky-offset);
-  --transition-fast: var(--fb-transition-fast);
 }
 
 /* ==========================================================================
@@ -153,7 +108,7 @@ No fonts, images, scripts, frameworks, or network resources are required.
 }
 
 html {
-  overflow-x: hidden;
+  overflow-x: clip;
   scroll-behavior: smooth;
   scroll-padding-top: var(--fb-sticky-offset);
   background: var(--fb-color-background);
@@ -162,7 +117,7 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow-x: clip;
   color: var(--fb-color-text);
   background: var(--fb-color-background);
   font-family: var(--fb-font-mono);
@@ -342,7 +297,6 @@ strong {
 }
 
 small,
-.text-muted,
 .u-text-muted {
   color: var(--fb-color-text-muted);
 }
@@ -454,23 +408,23 @@ var {
   align-items: start;
 }
 
-.stack {
+.fb-stack {
   display: grid;
   gap: var(--fb-stack-gap, var(--fb-space-4));
 }
 
-.flow > * + * {
+.fb-flow > * + * {
   margin-top: var(--fb-flow-space, var(--fb-space-4));
 }
 
-.cluster {
+.fb-cluster {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: var(--fb-cluster-gap, var(--fb-space-2));
 }
 
-.split-grid {
+.fb-split-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--fb-space-4);
@@ -563,12 +517,14 @@ var {
 }
 
 .fb-nav a:hover,
-.fb-nav a[aria-current="page"] {
+.fb-nav a[aria-current="page"],
+.fb-nav a[aria-current="location"] {
   color: var(--fb-color-text);
   background: var(--fb-color-surface-alt);
 }
 
-.fb-nav a[aria-current="page"] {
+.fb-nav a[aria-current="page"],
+.fb-nav a[aria-current="location"] {
   color: var(--fb-color-primary);
 }
 
@@ -614,6 +570,10 @@ var {
 /* ==========================================================================
    06. HERO, METRICS, AND PUBLIC-PAGE CONTENT
    ========================================================================== */
+
+.fb-hero-section {
+  padding-bottom: var(--fb-space-10);
+}
 
 .fb-hero {
   display: grid;
@@ -691,7 +651,7 @@ var {
    07. DOCUMENTATION LAYOUT
    ========================================================================== */
 
-.doc-shell {
+.fb-doc-shell {
   display: grid;
   grid-template-columns:
     var(--fb-sidebar-width)
@@ -704,8 +664,8 @@ var {
   padding: var(--fb-page-padding);
 }
 
-.doc-sidebar,
-.doc-toc {
+.fb-doc-sidebar,
+.fb-doc-toc {
   position: sticky;
   top: var(--fb-sticky-offset);
   align-self: start;
@@ -715,29 +675,29 @@ var {
   scrollbar-color: var(--fb-color-border) transparent;
 }
 
-.doc-main,
-.doc-content {
+.fb-doc-main,
+.fb-doc-content {
   width: 100%;
 }
 
-.nav-panel,
-.toc-panel {
+.fb-doc-nav-panel,
+.fb-doc-toc-panel {
   border: 1px solid var(--fb-color-border);
   border-radius: var(--fb-radius-lg);
   background: var(--fb-color-surface);
   box-shadow: var(--fb-shadow-soft), var(--fb-shadow-inset);
 }
 
-.nav-panel {
+.fb-doc-nav-panel {
   padding: var(--fb-space-3);
 }
 
-.toc-panel {
+.fb-doc-toc-panel {
   padding: var(--fb-space-4);
 }
 
-.nav-title,
-.toc-title {
+.fb-doc-nav-title,
+.fb-doc-toc-title {
   margin: 0 0 var(--fb-space-3);
   color: var(--fb-color-text);
   font-size: var(--fb-font-size-sm);
@@ -746,25 +706,25 @@ var {
   text-transform: uppercase;
 }
 
-.nav-list,
-.nav-list ul,
-.toc-list,
-.toc-list ul {
+.fb-doc-nav-list,
+.fb-doc-nav-list ul,
+.fb-doc-toc-list,
+.fb-doc-toc-list ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.nav-list ul,
-.toc-list ul {
+.fb-doc-nav-list ul,
+.fb-doc-toc-list ul {
   margin-top: var(--fb-space-1);
   padding-left: var(--fb-space-3);
   border-left: 1px solid
     color-mix(in srgb, var(--fb-color-border) 70%, transparent);
 }
 
-.nav-list a,
-.toc-list a {
+.fb-doc-nav-list a,
+.fb-doc-toc-list a {
   display: block;
   overflow-wrap: anywhere;
   border-radius: var(--fb-radius-sm);
@@ -775,34 +735,35 @@ var {
     background-color var(--fb-transition-fast);
 }
 
-.nav-list a {
+.fb-doc-nav-list a {
   padding: 0.48rem 0.58rem;
 }
 
-.toc-list a {
+.fb-doc-toc-list a {
   padding: 0.3rem 0.4rem;
   font-size: var(--fb-font-size-xs);
   line-height: 1.42;
 }
 
-.nav-list a:hover,
-.toc-list a:hover {
+.fb-doc-nav-list a:hover,
+.fb-doc-toc-list a:hover {
   color: var(--fb-color-text);
   background: var(--fb-color-surface-alt);
 }
 
-.nav-list a[aria-current="page"],
-.toc-list a[aria-current="true"] {
+.fb-doc-nav-list a[aria-current="page"],
+.fb-doc-nav-list a[aria-current="location"],
+.fb-doc-toc-list a[aria-current="true"] {
   color: var(--fb-color-primary);
   background:
     color-mix(in srgb, var(--fb-color-primary) 11%, var(--fb-color-surface));
 }
 
-.nav-group + .nav-group {
+.fb-doc-nav-group + .fb-doc-nav-group {
   margin-top: var(--fb-space-2);
 }
 
-.nav-group-label {
+.fb-doc-nav-group-label {
   margin: 0;
   padding: var(--fb-space-2) 0.58rem var(--fb-space-1);
   color: var(--fb-color-text-muted);
@@ -812,7 +773,7 @@ var {
   text-transform: uppercase;
 }
 
-.doc-header {
+.fb-doc-header {
   margin-bottom: var(--fb-space-6);
   padding: clamp(1.25rem, 2vw, 2rem);
   border: 1px solid var(--fb-color-border);
@@ -821,7 +782,7 @@ var {
   box-shadow: var(--fb-shadow-soft), var(--fb-shadow-inset);
 }
 
-.doc-eyebrow {
+.fb-doc-eyebrow {
   margin: 0 0 var(--fb-space-2);
   color: var(--fb-color-primary);
   font-size: var(--fb-font-size-xs);
@@ -830,7 +791,7 @@ var {
   text-transform: uppercase;
 }
 
-.doc-title {
+.fb-doc-title {
   margin: 0;
   color: var(--fb-color-text);
   font-size: var(--fb-font-size-2xl);
@@ -838,25 +799,25 @@ var {
   letter-spacing: -0.035em;
 }
 
-.doc-subtitle {
+.fb-doc-subtitle {
   max-width: 90ch;
   margin: var(--fb-space-3) 0 0;
   color: var(--fb-color-text-muted);
   font-size: var(--fb-font-size-md);
 }
 
-.doc-meta {
+.fb-doc-meta {
   display: flex;
   flex-wrap: wrap;
   gap: var(--fb-space-2);
   margin-top: var(--fb-space-4);
 }
 
-.section {
+.fb-doc-section {
   scroll-margin-top: var(--fb-sticky-offset);
 }
 
-.report-section + .report-section {
+.fb-doc-section + .fb-doc-section {
   margin-top: var(--fb-space-10);
   padding-top: var(--fb-space-2);
   border-top: 1px solid var(--fb-color-border);
@@ -866,7 +827,7 @@ var {
    08. CARDS, BADGES, AND TAGS
    ========================================================================== */
 
-.card {
+.fb-card {
   padding: var(--fb-space-5);
   border: 1px solid var(--fb-color-border);
   border-radius: var(--fb-radius-md);
@@ -874,38 +835,38 @@ var {
   box-shadow: var(--fb-shadow-soft), var(--fb-shadow-inset);
 }
 
-.doc-content > .card + .card {
+.fb-doc-content > .fb-card + .fb-card {
   margin-top: var(--fb-space-4);
 }
 
-.card-title {
+.fb-card-title {
   margin: 0 0 var(--fb-space-2);
   color: var(--fb-color-primary);
   font-size: var(--fb-font-size-md);
 }
 
-.card > :last-child {
+.fb-card > :last-child {
   margin-bottom: 0;
 }
 
-.card--subtle {
+.fb-card--subtle {
   background: var(--fb-color-surface-alt);
   box-shadow: var(--fb-shadow-inset);
 }
 
-.card--interactive {
+.fb-card--interactive {
   transition:
     border-color var(--fb-transition-fast),
     transform var(--fb-transition-fast);
 }
 
-.card--interactive:hover,
-.card--interactive:focus-within {
+.fb-card--interactive:hover,
+.fb-card--interactive:focus-within {
   border-color: var(--fb-color-primary);
   transform: translateY(-1px);
 }
 
-.card-grid {
+.fb-card-grid {
   display: grid;
   grid-template-columns:
     repeat(auto-fit, minmax(min(100%, 250px), 1fr));
@@ -914,12 +875,12 @@ var {
   margin-bottom: var(--fb-space-4);
 }
 
-.card-grid > .card {
+.fb-card-grid > .fb-card {
   height: 100%;
   margin-top: 0;
 }
 
-.badge {
+.fb-badge {
   display: inline-flex;
   align-items: center;
   min-height: 1.6rem;
@@ -934,7 +895,7 @@ var {
   white-space: nowrap;
 }
 
-.badge--primary {
+.fb-badge--primary {
   color: var(--fb-color-primary);
   border-color:
     color-mix(in srgb, var(--fb-color-primary) 48%, var(--fb-color-border));
@@ -942,19 +903,19 @@ var {
     color-mix(in srgb, var(--fb-color-primary) 10%, var(--fb-color-surface));
 }
 
-.badge--info {
+.fb-badge--info {
   color: var(--fb-color-info);
 }
 
-.badge--success {
+.fb-badge--success {
   color: var(--fb-color-success);
 }
 
-.badge--warning {
+.fb-badge--warning {
   color: var(--fb-color-warning);
 }
 
-.badge--danger {
+.fb-badge--danger {
   color: var(--fb-color-danger);
 }
 
@@ -1102,6 +1063,43 @@ textarea {
   box-shadow: var(--fb-shadow-inset);
 }
 
+input,
+select {
+  height: var(--fb-control-height);
+}
+
+.fb-select {
+  position: relative;
+  color: var(--fb-color-text-muted);
+}
+
+.fb-select::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: var(--fb-space-3);
+  width: 0.48rem;
+  height: 0.48rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  pointer-events: none;
+  transform: translateY(-70%) rotate(45deg);
+}
+
+.fb-select:focus-within {
+  color: var(--fb-color-primary);
+}
+
+.fb-select:has(select:disabled)::after {
+  opacity: 0.55;
+}
+
+.fb-select select {
+  padding-right: calc(var(--fb-space-8) + var(--fb-space-1));
+  appearance: none;
+  -webkit-appearance: none;
+}
+
 textarea {
   min-height: 7rem;
   resize: vertical;
@@ -1148,6 +1146,7 @@ input[type="color"] {
 }
 
 input[type="file"] {
+  height: auto;
   min-height: auto;
 }
 
@@ -1171,6 +1170,7 @@ input[type="range"] {
   display: grid;
   grid-template-columns:
     repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  align-items: start;
   gap: var(--fb-space-4);
 }
 
@@ -1235,7 +1235,7 @@ output,
    11. FEEDBACK, CALLOUTS, PROGRESS, AND STATUS
    ========================================================================== */
 
-.callout {
+.fb-callout {
   padding: var(--fb-space-4) var(--fb-space-4) var(--fb-space-4) 1.15rem;
   border: 1px solid var(--fb-color-border);
   border-left-width: 4px;
@@ -1244,57 +1244,57 @@ output,
   box-shadow: var(--fb-shadow-inset);
 }
 
-.callout + .callout {
+.fb-callout + .fb-callout {
   margin-top: var(--fb-space-3);
 }
 
-.callout-title {
+.fb-callout-title {
   margin: 0 0 var(--fb-space-1);
   font-size: var(--fb-font-size-sm);
   font-weight: 800;
 }
 
-.callout > :last-child {
+.fb-callout > :last-child {
   margin-bottom: 0;
 }
 
-.callout--info {
+.fb-callout--info {
   border-left-color: var(--fb-color-info);
   background:
     color-mix(in srgb, var(--fb-color-info) 6%, var(--fb-color-surface));
 }
 
-.callout--info .callout-title {
+.fb-callout--info .fb-callout-title {
   color: var(--fb-color-info);
 }
 
-.callout--success {
+.fb-callout--success {
   border-left-color: var(--fb-color-success);
   background:
     color-mix(in srgb, var(--fb-color-success) 6%, var(--fb-color-surface));
 }
 
-.callout--success .callout-title {
+.fb-callout--success .fb-callout-title {
   color: var(--fb-color-success);
 }
 
-.callout--warning {
+.fb-callout--warning {
   border-left-color: var(--fb-color-warning);
   background:
     color-mix(in srgb, var(--fb-color-warning) 6%, var(--fb-color-surface));
 }
 
-.callout--warning .callout-title {
+.fb-callout--warning .fb-callout-title {
   color: var(--fb-color-warning);
 }
 
-.callout--danger {
+.fb-callout--danger {
   border-left-color: var(--fb-color-danger);
   background:
     color-mix(in srgb, var(--fb-color-danger) 6%, var(--fb-color-surface));
 }
 
-.callout--danger .callout-title {
+.fb-callout--danger .fb-callout-title {
   color: var(--fb-color-danger);
 }
 
@@ -1404,11 +1404,11 @@ details[open] summary::after {
   content: "\2212";
 }
 
-.details-body {
+.fb-details-body {
   padding: var(--fb-space-4);
 }
 
-.details-body > :last-child {
+.fb-details-body > :last-child {
   margin-bottom: 0;
 }
 
@@ -1444,7 +1444,7 @@ dialog::backdrop,
    13. TABLES AND DATA
    ========================================================================== */
 
-.table-wrap {
+.fb-table-wrap {
   width: 100%;
   margin-bottom: var(--fb-space-4);
   overflow-x: auto;
@@ -1495,18 +1495,18 @@ tbody tr:hover {
     color-mix(in srgb, var(--fb-color-primary) 4%, var(--fb-color-surface));
 }
 
-.cell-number,
-.cell-right {
+.fb-cell-number,
+.fb-cell-right {
   text-align: right;
   white-space: nowrap;
 }
 
-.table--compact th,
-.table--compact td {
+.fb-table--compact th,
+.fb-table--compact td {
   padding: 0.48rem 0.62rem;
 }
 
-.table--striped tbody tr:nth-child(even) {
+.fb-table--striped tbody tr:nth-child(even) {
   background:
     color-mix(in srgb, var(--fb-color-surface-alt) 38%, transparent);
 }
@@ -1535,7 +1535,7 @@ code {
   overflow-wrap: anywhere;
 }
 
-.code-block {
+.fb-code-block {
   overflow: hidden;
   margin-bottom: var(--fb-space-4);
   border: 1px solid var(--fb-color-border);
@@ -1544,7 +1544,7 @@ code {
   box-shadow: var(--fb-shadow-soft), var(--fb-shadow-inset);
 }
 
-.code-header {
+.fb-code-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1554,7 +1554,7 @@ code {
   background: var(--fb-color-surface-alt);
 }
 
-.code-file {
+.fb-code-file {
   overflow: hidden;
   color: var(--fb-color-text);
   font-size: var(--fb-font-size-xs);
@@ -1563,7 +1563,7 @@ code {
   white-space: nowrap;
 }
 
-.code-language {
+.fb-code-language {
   flex: none;
   color: var(--fb-color-primary);
   font-size: var(--fb-font-size-xs);
@@ -1572,7 +1572,7 @@ code {
   text-transform: uppercase;
 }
 
-.code-block pre,
+.fb-code-block pre,
 .fb-terminal {
   margin: 0;
   padding: var(--fb-space-4);
@@ -1583,14 +1583,14 @@ code {
   tab-size: 2;
 }
 
-.code-block pre code {
+.fb-code-block pre code {
   color: inherit;
   font-size: var(--fb-font-size-sm);
   line-height: 1.58;
 }
 
-.code-block--wrap pre,
-.code-block--wrap code {
+.fb-code-block--wrap pre,
+.fb-code-block--wrap code {
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
@@ -1603,45 +1603,45 @@ code {
   white-space: pre;
 }
 
-.token-comment,
-.token-prolog,
-.token-doctype {
+.fb-token-comment,
+.fb-token-prolog,
+.fb-token-doctype {
   color: var(--fb-color-text-muted);
   font-style: italic;
 }
 
-.token-keyword,
-.token-type,
-.token-selector,
-.token-tag {
+.fb-token-keyword,
+.fb-token-type,
+.fb-token-selector,
+.fb-token-tag {
   color: var(--fb-color-primary);
 }
 
-.token-function,
-.token-property,
-.token-attribute {
+.fb-token-function,
+.fb-token-property,
+.fb-token-attribute {
   color: var(--fb-color-info);
 }
 
-.token-string,
-.token-char,
-.token-inserted {
+.fb-token-string,
+.fb-token-char,
+.fb-token-inserted {
   color: var(--fb-color-success);
 }
 
-.token-number,
-.token-boolean,
-.token-constant {
+.fb-token-number,
+.fb-token-boolean,
+.fb-token-constant {
   color: var(--fb-color-warning);
 }
 
-.token-operator,
-.token-punctuation {
+.fb-token-operator,
+.fb-token-punctuation {
   color: var(--fb-color-text);
 }
 
-.token-variable,
-.token-class-name {
+.fb-token-variable,
+.fb-token-class-name {
   color:
     color-mix(
       in srgb,
@@ -1650,9 +1650,9 @@ code {
     );
 }
 
-.token-deleted,
-.token-error,
-.token-invalid {
+.fb-token-deleted,
+.fb-token-error,
+.fb-token-invalid {
   color: var(--fb-color-danger);
 }
 
@@ -1702,24 +1702,24 @@ figcaption {
   font-size: var(--fb-font-size-sm);
 }
 
-.media-contain img,
-.media-contain video {
+.fb-media-contain img,
+.fb-media-contain video {
   max-height: 70vh;
   object-fit: contain;
 }
 
-.media-wide {
+.fb-media-wide {
   width: 100%;
 }
 
-.image-grid {
+.fb-image-grid {
   display: grid;
   grid-template-columns:
     repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: var(--fb-space-3);
 }
 
-.gallery {
+.fb-gallery {
   display: grid;
   grid-template-columns:
     repeat(auto-fit, minmax(min(100%, 220px), 1fr));
@@ -1727,13 +1727,13 @@ figcaption {
   margin-bottom: var(--fb-space-4);
 }
 
-.gallery--compact {
+.fb-gallery--compact {
   grid-template-columns:
     repeat(auto-fit, minmax(min(100%, 160px), 1fr));
   gap: var(--fb-space-2);
 }
 
-.gallery-item {
+.fb-gallery-item {
   overflow: hidden;
   margin: 0;
   border: 1px solid var(--fb-color-border);
@@ -1745,41 +1745,41 @@ figcaption {
     transform var(--fb-transition-fast);
 }
 
-.gallery-item:hover {
+.fb-gallery-item:hover {
   border-color: var(--fb-color-primary);
   transform: translateY(-1px);
 }
 
-.gallery-link {
+.fb-gallery-link {
   display: block;
   height: 100%;
   color: inherit;
   text-decoration: none;
 }
 
-.gallery-media {
+.fb-gallery-media {
   width: 100%;
   aspect-ratio: 16 / 10;
   overflow: hidden;
   background: var(--fb-color-surface-alt);
 }
 
-.gallery-media img,
-.gallery-media svg,
-.gallery-media video {
+.fb-gallery-media img,
+.fb-gallery-media svg,
+.fb-gallery-media video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform var(--fb-transition-fast);
 }
 
-.gallery-link:hover .gallery-media img,
-.gallery-link:hover .gallery-media svg,
-.gallery-link:hover .gallery-media video {
+.fb-gallery-link:hover .fb-gallery-media img,
+.fb-gallery-link:hover .fb-gallery-media svg,
+.fb-gallery-link:hover .fb-gallery-media video {
   transform: scale(1.015);
 }
 
-.gallery-item figcaption {
+.fb-gallery-item figcaption {
   min-height: 3.2rem;
   padding: var(--fb-space-3);
   border-top: 1px solid var(--fb-color-border);
@@ -1788,27 +1788,27 @@ figcaption {
   line-height: 1.45;
 }
 
-.gallery-item figcaption strong {
+.fb-gallery-item figcaption strong {
   display: block;
   margin-bottom: var(--fb-space-1);
   color: var(--fb-color-text);
 }
 
-.gallery-item--wide {
+.fb-gallery-item--wide {
   grid-column: span 2;
 }
 
-.gallery-item--portrait .gallery-media {
+.fb-gallery-item--portrait .fb-gallery-media {
   aspect-ratio: 4 / 5;
 }
 
-.gallery-item--square .gallery-media {
+.fb-gallery-item--square .fb-gallery-media {
   aspect-ratio: 1;
 }
 
-.gallery-item--contain .gallery-media img,
-.gallery-item--contain .gallery-media svg,
-.gallery-item--contain .gallery-media video {
+.fb-gallery-item--contain .fb-gallery-media img,
+.fb-gallery-item--contain .fb-gallery-media svg,
+.fb-gallery-item--contain .fb-gallery-media video {
   padding: var(--fb-space-3);
   object-fit: contain;
 }
@@ -1848,7 +1848,8 @@ figcaption {
 
 .fb-tab:hover,
 .fb-tab[aria-selected="true"],
-.fb-tab[aria-current="page"] {
+.fb-tab[aria-current="page"],
+.fb-tab[aria-current="location"] {
   border-bottom-color: var(--fb-color-primary);
   color: var(--fb-color-primary);
 }
@@ -1929,22 +1930,22 @@ figcaption {
    18. ANCHORS AND TARGET HIGHLIGHTING
    ========================================================================== */
 
-.anchor-heading {
+.fb-anchor-heading {
   position: relative;
 }
 
-.anchor-heading > a {
+.fb-anchor-heading > a {
   color: inherit;
   text-decoration: none;
 }
 
-.anchor-heading > a:hover::after {
+.fb-anchor-heading > a:hover::after {
   content: " #";
   color: var(--fb-color-primary);
 }
 
 section:target,
-.card:target,
+.fb-card:target,
 details:target,
 figure:target {
   animation: fb-target-flash 900ms ease-out;
@@ -1977,63 +1978,51 @@ figure:target {
   border: 0;
 }
 
-.u-no-margin,
-.no-margin {
+.u-no-margin {
   margin: 0;
 }
 
-.u-full-width,
-.full-width {
+.u-full-width {
   width: 100%;
 }
 
-.u-text-primary,
-.text-primary {
+.u-text-primary {
   color: var(--fb-color-primary);
 }
 
-.u-text-info,
-.text-info {
+.u-text-info {
   color: var(--fb-color-info);
 }
 
-.u-text-success,
-.text-success {
+.u-text-success {
   color: var(--fb-color-success);
 }
 
-.u-text-warning,
-.text-warning {
+.u-text-warning {
   color: var(--fb-color-warning);
 }
 
-.u-text-danger,
-.text-danger {
+.u-text-danger {
   color: var(--fb-color-danger);
 }
 
-.u-text-left,
-.text-left {
+.u-text-left {
   text-align: left;
 }
 
-.u-text-center,
-.text-center {
+.u-text-center {
   text-align: center;
 }
 
-.u-text-right,
-.text-right {
+.u-text-right {
   text-align: right;
 }
 
-.u-nowrap,
-.nowrap {
+.u-nowrap {
   white-space: nowrap;
 }
 
-.u-break-anywhere,
-.break-anywhere {
+.u-break-anywhere {
   overflow-wrap: anywhere;
 }
 
@@ -2077,11 +2066,11 @@ figure:target {
    ========================================================================== */
 
 @media (max-width: 1180px) {
-  .doc-shell {
+  .fb-doc-shell {
     grid-template-columns: var(--fb-sidebar-width) minmax(0, 1fr);
   }
 
-  .doc-toc {
+  .fb-doc-toc {
     display: none;
   }
 
@@ -2100,33 +2089,33 @@ figure:target {
     order: -1;
   }
 
-  .doc-shell {
+  .fb-doc-shell {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .doc-sidebar {
+  .fb-doc-sidebar {
     position: static;
     max-height: none;
   }
 
-  .nav-panel {
+  .fb-doc-nav-panel {
     padding: var(--fb-space-2);
   }
 
-  .nav-list {
+  .fb-doc-nav-list {
     display: flex;
     gap: var(--fb-space-1);
     overflow-x: auto;
     overscroll-behavior-inline: contain;
   }
 
-  .nav-list > li {
+  .fb-doc-nav-list > li {
     flex: none;
     margin: 0;
   }
 
-  .nav-list ul,
-  .nav-group-label {
+  .fb-doc-nav-list ul,
+  .fb-doc-nav-group-label {
     display: none;
   }
 
@@ -2168,7 +2157,7 @@ figure:target {
   .fb-grid--2,
   .fb-grid--3,
   .fb-grid--4,
-  .split-grid {
+  .fb-split-grid {
     grid-template-columns: 1fr;
   }
 
@@ -2190,20 +2179,20 @@ figure:target {
     margin-top: var(--fb-space-3);
   }
 
-  .doc-header,
-  .card {
+  .fb-doc-header,
+  .fb-card {
     padding: var(--fb-space-4);
   }
 
-  .gallery-item--wide {
+  .fb-gallery-item--wide {
     grid-column: auto;
   }
 
-  .table-wrap {
+  .fb-table-wrap {
     max-width: calc(100vw - (var(--fb-page-padding) * 2));
   }
 
-  .code-header {
+  .fb-code-header {
     align-items: flex-start;
   }
 }
@@ -2252,14 +2241,14 @@ figure:target {
 
   .fb-site-header,
   .fb-site-footer,
-  .doc-sidebar,
-  .doc-toc,
+  .fb-doc-sidebar,
+  .fb-doc-toc,
   .fb-button,
   .fb-skip-link {
     display: none;
   }
 
-  .doc-shell {
+  .fb-doc-shell {
     display: block;
     width: 100%;
     padding: 0;
@@ -2270,9 +2259,9 @@ figure:target {
     text-decoration: underline;
   }
 
-  .card,
-  .callout,
-  .code-block,
+  .fb-card,
+  .fb-callout,
+  .fb-code-block,
   figure,
   details {
     break-inside: avoid;
