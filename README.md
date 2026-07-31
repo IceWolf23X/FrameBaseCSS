@@ -104,6 +104,22 @@ classes to control spacing and layout.
 FrameBaseCSS uses modern CSS, including custom properties, `color-mix()`,
 `:has()`, and `overflow: clip`. It targets modern versions of major browsers.
 
+## License and attribution
+
+FrameBaseCSS is released under the [MIT License](LICENSE). You may use, copy,
+modify, and distribute it, including in commercial projects, subject to the
+license terms. The copyright and license notice must be retained in copies or
+substantial portions of the software.
+
+Visible attribution is not required, but a link to FrameBaseCSS is greatly
+appreciated. An optional credit can be added with:
+
+```html
+<a href="https://github.com/IceWolf23X/FrameBaseCSS">
+  Built with FrameBaseCSS
+</a>
+```
+
 ## Files
 
 - `framebase.css`: canonical source.
@@ -111,4 +127,5 @@ FrameBaseCSS uses modern CSS, including custom properties, `color-mix()`,
 - `framebase-light.css`: light theme importing the canonical source.
 - `framebase-light-demo.html`: offline light-theme visual check.
 - `.nojekyll`: static GitHub Pages publishing without Jekyll transforms.
+- `LICENSE`: MIT license terms and copyright notice.
 - `CODE_INDEX.md`: technical repository map.

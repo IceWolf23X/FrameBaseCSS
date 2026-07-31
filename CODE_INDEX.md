@@ -7,12 +7,13 @@ root.
 
 | Path | Role | Content and relationships |
 | --- | --- | --- |
-| `framebase.css` | Canonical source and public contract | Dependency-free monospace design system with a dark default theme. Defines `--fb-*` tokens, `.fb-*` layouts and components, and `.u-*` utilities under one namespaced contract. It is consumed directly by the documentation and imported by the light theme. |
-| `framebase-light.css` | Official theme override | Imports `framebase.css` and redefines only the color scheme, semantic palette, and shadows. It does not duplicate component or layout rules. |
+| `framebase.css` | Canonical source and public contract | MIT-licensed, dependency-free monospace design system with a dark default theme. Defines `--fb-*` tokens, `.fb-*` layouts and components, and `.u-*` utilities under one namespaced contract. It is consumed directly by the documentation and imported by the light theme. |
+| `framebase-light.css` | Official theme override | MIT-licensed theme entry point that imports `framebase.css` and redefines only the color scheme, semantic palette, and shadows. It does not duplicate component or layout rules. |
 | `index.html` | GitHub Pages homepage and dark verification | Public static entry point using only `framebase.css`. Documents public HTML contracts and renders the same components in realistic public-site, dashboard, editorial, form, data, code, media, and responsive technical-documentation examples. |
 | `framebase-light-demo.html` | Manual light verification | Structurally identical copy of `index.html`; only the `framebase-light.css` link and reciprocal switch back to the dark theme differ. Components contain no theme-specific markup. |
 | `.nojekyll` | GitHub Pages configuration | Disables Jekyll transforms and publishes the static assets in the root of `main` directly. |
-| `README.md` | Public entry point | Describes the goals, quick start, official themes, documentation path, customization model, browser requirements, and public file map. |
+| `README.md` | Public entry point | Describes the goals, quick start, official themes, documentation path, customization model, browser requirements, licensing, optional attribution, and public file map. |
+| `LICENSE` | Public legal contract | Standard MIT License granting permissive reuse while requiring preservation of the copyright and license notice. |
 
 ## `framebase.css` structure
 
