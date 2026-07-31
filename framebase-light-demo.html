@@ -7,6 +7,7 @@
     content="Public documentation for FrameBaseCSS components and HTML contracts.">
   <title>FrameBaseCSS — Component documentation</title>
   <link rel="stylesheet" href="framebase-light.css">
+  <link rel="stylesheet" href="framebase-highlight.css">
 </head>
 <body>
   <a class="fb-skip-link" href="#main-content">Skip to content</a>
@@ -50,7 +51,7 @@
                 <li aria-current="page">FrameBaseCSS</li>
               </ol>
             </nav>
-            <p class="fb-eyebrow">CSS documentation / zero dependencies</p>
+            <p class="fb-eyebrow">CSS documentation / zero runtime dependencies</p>
             <h1 class="fb-display">HTML contracts ready for real websites.</h1>
             <p class="fb-lead">
               This page documents the structure required by every FrameBaseCSS
@@ -76,12 +77,12 @@
               <span class="fb-code-file">index.html</span>
               <span class="fb-code-language">HTML</span>
             </div>
-            <pre class="u-overflow-auto"><code><span class="fb-token-tag">&lt;link</span> <span class="fb-token-attribute">rel</span>=<span class="fb-token-string">"stylesheet"</span>
-  <span class="fb-token-attribute">href</span>=<span class="fb-token-string">"framebase.css"</span><span class="fb-token-tag">&gt;</span>
+            <pre class="u-overflow-auto"><code class="language-html">&lt;link rel="stylesheet"
+  href="framebase.css"&gt;
 
-<span class="fb-token-tag">&lt;button</span> <span class="fb-token-attribute">class</span>=<span class="fb-token-string">"fb-button"</span><span class="fb-token-tag">&gt;</span>
+&lt;button class="fb-button"&gt;
   Ready
-<span class="fb-token-tag">&lt;/button&gt;</span></code></pre>
+&lt;/button&gt;</code></pre>
           </aside>
         </div>
 
@@ -682,11 +683,11 @@
               <span class="fb-code-file">theme.css</span>
               <span class="fb-code-language">CSS</span>
             </div>
-            <pre><code><span class="fb-token-selector">:root</span> <span class="fb-token-punctuation">{</span>
-  <span class="fb-token-property">--fb-color-primary</span><span class="fb-token-punctuation">:</span> <span class="fb-token-number">#35c6d4</span><span class="fb-token-punctuation">;</span>
-  <span class="fb-token-property">--fb-radius-md</span><span class="fb-token-punctuation">:</span> <span class="fb-token-number">7px</span><span class="fb-token-punctuation">;</span>
-  <span class="fb-token-property">--fb-container-max</span><span class="fb-token-punctuation">:</span> <span class="fb-token-number">1200px</span><span class="fb-token-punctuation">;</span>
-<span class="fb-token-punctuation">}</span></code></pre>
+            <pre><code class="language-css">:root {
+  --fb-color-primary: #35c6d4;
+  --fb-radius-md: 7px;
+  --fb-container-max: 1200px;
+}</code></pre>
           </div>
 
           <blockquote>
@@ -816,7 +817,7 @@
                 <div class="fb-doc-meta">
                   <span class="fb-badge fb-badge--success">plug and use</span>
                   <span class="fb-badge fb-badge--primary">CSS</span>
-                  <span class="fb-badge">zero dependencies</span>
+                  <span class="fb-badge">zero runtime dependencies</span>
                 </div>
               </header>
 
@@ -834,9 +835,15 @@
                     <span class="fb-code-file">index.html</span>
                     <span class="fb-code-language">HTML</span>
                   </div>
-                  <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+                  <pre><code class="language-html">&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
 &lt;link rel="stylesheet" href="framebase.css"&gt;</code></pre>
                 </div>
+                <p>
+                  Use <code>framebase.css</code> while inspecting or customizing
+                  the source. Use <code>framebase.min.css</code> for the equivalent
+                  production distribution. Both expose the same public contract;
+                  never edit the generated minified file directly.
+                </p>
                 <div class="fb-stack">
                   <div class="fb-callout fb-callout--info">
                     <p class="fb-callout-title">Composition rule</p>
@@ -858,7 +865,8 @@
                     <dt>JavaScript</dt>
                     <dd>
                       Not required by the CSS; it remains necessary for application
-                      behavior such as opening a dialog programmatically.
+                      behavior such as opening a dialog programmatically. Optional
+                      integrations such as Highlight.js remain user-provided.
                     </dd>
                   </dl>
                 </div>
@@ -869,15 +877,16 @@
                   <a href="#doc-tokens">2. Tokens and customization</a>
                 </h2>
                 <p>
-                  Override tokens after <code>framebase.css</code>. Do not
-                  modify internal rules to create a theme.
+                  Override tokens after the selected readable or minified theme
+                  entry point and any optional addon. Do not modify internal or
+                  generated rules to create a theme.
                 </p>
                 <div class="fb-code-block">
                   <div class="fb-code-header">
                     <span class="fb-code-file">theme.css</span>
                     <span class="fb-code-language">CSS</span>
                   </div>
-                  <pre><code>:root {
+                  <pre><code class="language-css">:root {
   --fb-color-primary: #7dd3fc;
   --fb-color-background: #111827;
   --fb-container-max: 72rem;
@@ -899,21 +908,23 @@
                 <p>
                   <code>framebase-light.css</code> imports the canonical CSS and
                   overrides visual tokens only. HTML contracts, components,
-                  responsive behavior, and utilities remain unchanged.
+                  responsive behavior, and utilities remain unchanged. Its
+                  production counterpart, <code>framebase-light.min.css</code>,
+                  imports <code>framebase.min.css</code> instead.
                 </p>
                 <div class="fb-code-block">
                   <div class="fb-code-header">
                     <span class="fb-code-file">index.html</span>
                     <span class="fb-code-language">HTML</span>
                   </div>
-                  <pre><code>&lt;link rel="stylesheet" href="framebase-light.css"&gt;</code></pre>
+                  <pre><code class="language-html">&lt;link rel="stylesheet" href="framebase-light.css"&gt;</code></pre>
                 </div>
                 <div class="fb-code-block">
                   <div class="fb-code-header">
                     <span class="fb-code-file">framebase-light.css</span>
                     <span class="fb-code-language">CSS</span>
                   </div>
-                  <pre><code>@import url("./framebase.css");
+                  <pre><code class="language-css">@import url("./framebase.css");
 
 :root {
   --fb-color-scheme: light;
@@ -928,7 +939,9 @@
                     <p class="fb-callout-title">One link only</p>
                     <p>
                       Link the light file instead of <code>framebase.css</code>,
-                      not alongside it. The import loads the base automatically.
+                      not alongside it. The import loads the matching base
+                      automatically. Keep readable files together or keep minified
+                      files together; do not mix the two distribution sets.
                     </p>
                   </div>
                   <div class="fb-cluster">
@@ -963,7 +976,7 @@
                     <span class="fb-code-file">layout.html</span>
                     <span class="fb-code-language">HTML</span>
                   </div>
-                  <pre><code>&lt;div class="fb-page"&gt;
+                  <pre><code class="language-html">&lt;div class="fb-page"&gt;
   &lt;main class="fb-main"&gt;
     &lt;section class="fb-section fb-section--muted"&gt;
       &lt;div class="fb-container fb-container--wide"&gt;
@@ -1000,7 +1013,7 @@
                     <span class="fb-code-file">hero.html</span>
                     <span class="fb-code-language">HTML</span>
                   </div>
-                  <pre><code>&lt;section class="fb-hero-section fb-container fb-container--wide"&gt;
+                  <pre><code class="language-html">&lt;section class="fb-hero-section fb-container fb-container--wide"&gt;
   &lt;div class="fb-hero"&gt;
     &lt;div class="fb-hero-copy"&gt;
       &lt;p class="fb-eyebrow"&gt;Category&lt;/p&gt;
@@ -1035,7 +1048,7 @@
                     <span class="fb-code-file">navigation.html</span>
                     <span class="fb-code-language">HTML</span>
                   </div>
-                  <pre><code>&lt;a class="fb-skip-link" href="#main-content"&gt;Skip to content&lt;/a&gt;
+                  <pre><code class="language-html">&lt;a class="fb-skip-link" href="#main-content"&gt;Skip to content&lt;/a&gt;
 &lt;header class="fb-site-header fb-site-header--sticky"&gt;
   &lt;div class="fb-container fb-navbar"&gt;
     &lt;a class="fb-brand" href="/"&gt;
@@ -1078,7 +1091,7 @@
                     <span class="fb-code-file">documentation.html</span>
                     <span class="fb-code-language">HTML</span>
                   </div>
-                  <pre><code>&lt;div class="fb-doc-shell"&gt;
+                  <pre><code class="language-html">&lt;div class="fb-doc-shell"&gt;
   &lt;aside class="fb-doc-sidebar"&gt;
     &lt;nav class="fb-doc-nav-panel" aria-label="Documentation"&gt;
       &lt;p class="fb-doc-nav-title"&gt;Sections&lt;/p&gt;
@@ -1127,7 +1140,7 @@
                     <span class="fb-code-file">content.html</span>
                     <span class="fb-code-language">HTML</span>
                   </div>
-                  <pre><code>&lt;div class="fb-card-grid"&gt;
+                  <pre><code class="language-html">&lt;div class="fb-card-grid"&gt;
   &lt;article class="fb-card fb-card--interactive"&gt;
     &lt;div class="fb-cluster"&gt;
       &lt;h2 class="fb-card-title"&gt;Title&lt;/h2&gt;
@@ -1169,7 +1182,7 @@
                     <span class="fb-code-file">actions.html</span>
                     <span class="fb-code-language">HTML</span>
                   </div>
-                  <pre><code>&lt;button class="fb-button" type="button"&gt;Confirm&lt;/button&gt;
+                  <pre><code class="language-html">&lt;button class="fb-button" type="button"&gt;Confirm&lt;/button&gt;
 &lt;a class="fb-button fb-button--secondary" href="/docs"&gt;Open guide&lt;/a&gt;
 &lt;button class="fb-button fb-button--ghost fb-button--sm" type="button"&gt;Cancel&lt;/button&gt;
 &lt;button class="fb-button fb-button--danger" type="button"&gt;Delete&lt;/button&gt;
@@ -1198,7 +1211,7 @@
                     <span class="fb-code-file">form.html</span>
                     <span class="fb-code-language">HTML</span>
                   </div>
-                  <pre><code>&lt;form class="fb-stack"&gt;
+                  <pre><code class="language-html">&lt;form class="fb-stack"&gt;
   &lt;div class="fb-form-grid"&gt;
     &lt;div class="fb-field"&gt;
       &lt;label for="name"&gt;Name&lt;/label&gt;
@@ -1253,7 +1266,7 @@
                     <span class="fb-code-file">feedback.html</span>
                     <span class="fb-code-language">HTML</span>
                   </div>
-                  <pre><code>&lt;aside class="fb-callout fb-callout--info"&gt;
+                  <pre><code class="language-html">&lt;aside class="fb-callout fb-callout--info"&gt;
   &lt;p class="fb-callout-title"&gt;Information&lt;/p&gt;
   &lt;p&gt;Contextual message.&lt;/p&gt;
 &lt;/aside&gt;
@@ -1290,7 +1303,7 @@
                     <span class="fb-code-file">native.html</span>
                     <span class="fb-code-language">HTML</span>
                   </div>
-                  <pre><code>&lt;details&gt;
+                  <pre><code class="language-html">&lt;details&gt;
   &lt;summary&gt;Accordion title&lt;/summary&gt;
   &lt;div class="fb-details-body"&gt;Expandable content.&lt;/div&gt;
 &lt;/details&gt;
@@ -1322,7 +1335,7 @@
                     <span class="fb-code-file">table.html</span>
                     <span class="fb-code-language">HTML</span>
                   </div>
-                  <pre><code>&lt;div class="fb-table-wrap" tabindex="0"
+                  <pre><code class="language-html">&lt;div class="fb-table-wrap" tabindex="0"
   aria-label="Project data, horizontally scrollable"&gt;
   &lt;table class="fb-table--compact fb-table--striped"&gt;
     &lt;caption&gt;Project summary&lt;/caption&gt;
@@ -1354,34 +1367,54 @@
                 </p>
                 <div class="fb-code-block">
                   <div class="fb-code-header">
-                    <span class="fb-code-file">example.css</span>
-                    <span class="fb-code-language">CSS</span>
+                    <span class="fb-code-file">example.html</span>
+                    <span class="fb-code-language">HTML</span>
                   </div>
-                  <pre><code>&lt;div class="fb-code-block"&gt;
+                  <pre><code class="language-html">&lt;div class="fb-code-block"&gt;
   &lt;div class="fb-code-header"&gt;
     &lt;span class="fb-code-file"&gt;config.yml&lt;/span&gt;
     &lt;span class="fb-code-language"&gt;YAML&lt;/span&gt;
   &lt;/div&gt;
-  &lt;pre&gt;&lt;code&gt;enabled: true&lt;/code&gt;&lt;/pre&gt;
+  &lt;pre&gt;&lt;code class="language-yaml"&gt;enabled: true&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
 &lt;pre class="fb-terminal" aria-label="Terminal output"&gt;$ command --flag
 ✓ operation completed&lt;/pre&gt;</code></pre>
                 </div>
                 <p>
-                  For manual syntax highlighting, the available classes are
-                  <code>.fb-token-comment</code>, <code>.fb-token-prolog</code>,
-                  <code>.fb-token-doctype</code>, <code>.fb-token-keyword</code>,
-                  <code>.fb-token-type</code>, <code>.fb-token-selector</code>,
-                  <code>.fb-token-tag</code>, <code>.fb-token-function</code>,
-                  <code>.fb-token-property</code>, <code>.fb-token-attribute</code>,
-                  <code>.fb-token-string</code>, <code>.fb-token-char</code>,
-                  <code>.fb-token-inserted</code>, <code>.fb-token-number</code>,
-                  <code>.fb-token-boolean</code>, <code>.fb-token-constant</code>,
-                  <code>.fb-token-operator</code>, <code>.fb-token-punctuation</code>,
-                  <code>.fb-token-variable</code>, <code>.fb-token-class-name</code>,
-                  <code>.fb-token-deleted</code>, <code>.fb-token-error</code>, and
-                  <code>.fb-token-invalid</code>.
+                  Automatic syntax highlighting is optional. Load
+                  <code>framebase-highlight.css</code> after the selected readable
+                  theme, or use <code>framebase-highlight.min.css</code> after the
+                  matching minified theme. Provide your own Highlight.js build and
+                  declare each language with a <code>language-*</code> class.
+                </p>
+                <div class="fb-code-block">
+                  <div class="fb-code-header">
+                    <span class="fb-code-file">optional-highlight.html</span>
+                    <span class="fb-code-language">HTML</span>
+                  </div>
+                  <pre><code class="language-html">&lt;link rel="stylesheet" href="framebase.min.css"&gt;
+&lt;link rel="stylesheet" href="framebase-highlight.min.css"&gt;
+
+&lt;div class="fb-code-block"&gt;
+  &lt;div class="fb-code-header"&gt;
+    &lt;span class="fb-code-file"&gt;theme.css&lt;/span&gt;
+    &lt;span class="fb-code-language"&gt;CSS&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;pre&gt;&lt;code class="language-css"&gt;:root { color-scheme: dark; }&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;script src="/assets/highlight.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;hljs.highlightAll();&lt;/script&gt;</code></pre>
+                </div>
+                <p>
+                  Light pages replace <code>framebase.min.css</code> with
+                  <code>framebase-light.min.css</code>. The addon contains only
+                  styles for Highlight.js output; it does not bundle or download
+                  JavaScript. These demos pin Highlight.js <code>11.11.1</code>
+                  and remain readable when the script is unavailable. Do not load
+                  a separate Highlight.js visual theme unless it should override
+                  the FrameBaseCSS addon.
                 </p>
               </section>
 
@@ -1398,7 +1431,7 @@
                     <span class="fb-code-file">media.html</span>
                     <span class="fb-code-language">HTML</span>
                   </div>
-                  <pre><code>&lt;figure class="fb-media-wide fb-media-contain"&gt;
+                  <pre><code class="language-html">&lt;figure class="fb-media-wide fb-media-contain"&gt;
   &lt;img src="diagram.png" alt="Deployment flow"&gt;
   &lt;figcaption&gt;Deployment architecture.&lt;/figcaption&gt;
 &lt;/figure&gt;
@@ -1440,7 +1473,7 @@
                     <span class="fb-code-file">secondary-navigation.html</span>
                     <span class="fb-code-language">HTML</span>
                   </div>
-                  <pre><code>&lt;nav class="fb-tabs" aria-label="Related sections"&gt;
+                  <pre><code class="language-html">&lt;nav class="fb-tabs" aria-label="Related sections"&gt;
   &lt;a class="fb-tab" href="#overview" aria-current="location"&gt;Overview&lt;/a&gt;
   &lt;a class="fb-tab" href="#settings"&gt;Settings&lt;/a&gt;
 &lt;/nav&gt;
@@ -1562,5 +1595,10 @@
       </div>
     </footer>
   </div>
+  <script
+    src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"
+    integrity="sha384-RH2xi4eIQ/gjtbs9fUXM68sLSi99C7ZWBRX1vDrVv6GQXRibxXLbwO2NGZB74MbU"
+    crossorigin="anonymous"></script>
+  <script>globalThis.hljs?.highlightAll();</script>
 </body>
 </html>

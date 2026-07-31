@@ -1,0 +1,6 @@
+/*!
+ * FrameBaseCSS Light Theme v1.1.0
+ * Copyright (c) 2026 IceWolf23X
+ * Released under the MIT License.
+ * https://github.com/IceWolf23X/FrameBaseCSS
+ */@import url(framebase.min.css);:root{--fb-color-scheme:light;--fb-color-background:#f4f6f8;--fb-color-surface:#ffffff;--fb-color-surface-alt:#edf1f4;--fb-color-surface-raised:#e3e8ec;--fb-color-border:#7c8790;--fb-color-text-muted:#4f5b65;--fb-color-text:#171a1d;--fb-color-primary:#08747f;--fb-color-primary-hover:#065d66;--fb-color-on-primary:#ffffff;--fb-color-secondary:#075e68;--fb-color-info:#075f75;--fb-color-success:#176b35;--fb-color-warning:#765000;--fb-color-on-warning:#ffffff;--fb-color-danger:#b42318;--fb-color-danger-action:#b42318;--fb-color-danger-action-hover:#8f1d14;--fb-color-on-danger:#ffffff;--fb-color-code-background:#e9eef1;--fb-color-backdrop:rgb(20 24 28 / 0.45);--fb-shadow-soft:0 2px 10px rgb(27 39 51 / 0.1);--fb-shadow-inset:inset 0 1px 0 rgb(255 255 255 / 0.72);--fb-shadow-overlay:0 14px 40px rgb(27 39 51 / 0.22)}@media (prefers-contrast:more){:root{--fb-color-border:#4b5660;--fb-color-text-muted:#303940}}

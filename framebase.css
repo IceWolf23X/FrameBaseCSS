@@ -1538,7 +1538,7 @@ tbody tr:hover {
 }
 
 /* ==========================================================================
-   14. CODE, TERMINAL OUTPUT, AND SYNTAX TOKENS
+   14. CODE AND TERMINAL OUTPUT
    ========================================================================== */
 
 code,
@@ -1628,59 +1628,6 @@ code {
   background: var(--fb-color-code-background);
   font-size: var(--fb-font-size-sm);
   white-space: pre;
-}
-
-.fb-token-comment,
-.fb-token-prolog,
-.fb-token-doctype {
-  color: var(--fb-color-text-muted);
-  font-style: italic;
-}
-
-.fb-token-keyword,
-.fb-token-type,
-.fb-token-selector,
-.fb-token-tag {
-  color: var(--fb-color-primary);
-}
-
-.fb-token-function,
-.fb-token-property,
-.fb-token-attribute {
-  color: var(--fb-color-info);
-}
-
-.fb-token-string,
-.fb-token-char,
-.fb-token-inserted {
-  color: var(--fb-color-success);
-}
-
-.fb-token-number,
-.fb-token-boolean,
-.fb-token-constant {
-  color: var(--fb-color-warning);
-}
-
-.fb-token-operator,
-.fb-token-punctuation {
-  color: var(--fb-color-text);
-}
-
-.fb-token-variable,
-.fb-token-class-name {
-  color:
-    color-mix(
-      in srgb,
-      var(--fb-color-warning) 72%,
-      var(--fb-color-text)
-    );
-}
-
-.fb-token-deleted,
-.fb-token-error,
-.fb-token-invalid {
-  color: var(--fb-color-danger);
 }
 
 /* ==========================================================================
