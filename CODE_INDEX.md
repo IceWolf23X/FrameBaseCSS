@@ -1,35 +1,36 @@
 # FrameBaseCSS code index
 
-Mappa tecnica compatta del progetto. I percorsi sono relativi alla root.
+Compact technical map of the project. Paths are relative to the repository
+root.
 
-## Sorgenti
+## Sources
 
-| Percorso | Ruolo | Contenuto e relazioni |
+| Path | Role | Content and relationships |
 | --- | --- | --- |
-| `framebase.css` | Sorgente canonica e contratto pubblico | Design system monospace senza dipendenze con tema dark predefinito. Definisce token `--fb-*`, layout e componenti `.fb-*` e utility `.u-*` con un unico contratto namespaced. È consumato direttamente dalla documentazione e importato dal tema light. |
-| `framebase-light.css` | Override ufficiale del tema | Importa `framebase.css` e ridefinisce esclusivamente schema colore, palette semantica e ombre. Non duplica regole di componenti o layout. |
-| `index.html` | Homepage GitHub Pages e verifica dark | Entrypoint statico pubblico che usa esclusivamente `framebase.css`. Documenta i contratti HTML pubblici e mostra gli stessi componenti in esempi realistici: sito pubblico, dashboard, contenuto editoriale, form, dati, codice, media e documentazione tecnica responsive. |
-| `framebase-light-demo.html` | Verifica manuale light | Copia strutturalmente identica di `index.html`; differiscono soltanto il collegamento a `framebase-light.css` e il selettore reciproco che torna al tema dark. I componenti restano privi di markup specifico del tema. |
-| `.nojekyll` | Configurazione GitHub Pages | Disabilita la trasformazione Jekyll e pubblica direttamente gli asset statici presenti nella root di `main`. |
-| `README.md` | Entrypoint pubblico | Presenta obiettivi, quick start, temi ufficiali, percorso della documentazione, personalizzazione, requisiti browser e mappa dei file pubblici. |
+| `framebase.css` | Canonical source and public contract | Dependency-free monospace design system with a dark default theme. Defines `--fb-*` tokens, `.fb-*` layouts and components, and `.u-*` utilities under one namespaced contract. It is consumed directly by the documentation and imported by the light theme. |
+| `framebase-light.css` | Official theme override | Imports `framebase.css` and redefines only the color scheme, semantic palette, and shadows. It does not duplicate component or layout rules. |
+| `index.html` | GitHub Pages homepage and dark verification | Public static entry point using only `framebase.css`. Documents public HTML contracts and renders the same components in realistic public-site, dashboard, editorial, form, data, code, media, and responsive technical-documentation examples. |
+| `framebase-light-demo.html` | Manual light verification | Structurally identical copy of `index.html`; only the `framebase-light.css` link and reciprocal switch back to the dark theme differ. Components contain no theme-specific markup. |
+| `.nojekyll` | GitHub Pages configuration | Disables Jekyll transforms and publishes the static assets in the root of `main` directly. |
+| `README.md` | Public entry point | Describes the goals, quick start, official themes, documentation path, customization model, browser requirements, and public file map. |
 
-## Struttura di `framebase.css`
+## `framebase.css` structure
 
-1. Design token.
-2. Reset, ereditarietà e base documento.
-3. Tipografia.
-4. Layout generali.
-5. Shell di sito e navigazione.
-6. Pagine pubbliche.
-7. Layout documentazione.
-8. Componenti di contenuto e azione.
-9. Form e controlli HTML nativi.
-10. Feedback, dati, codice e media.
-11. Navigazione secondaria e utility.
-12. Responsive, preferenze utente e stampa.
+1. Design tokens.
+2. Reset, inheritance, and document base.
+3. Typography.
+4. General layouts.
+5. Site shell and navigation.
+6. Public pages.
+7. Documentation layouts.
+8. Content and action components.
+9. Forms and native HTML controls.
+10. Feedback, data, code, and media.
+11. Secondary navigation and utilities.
+12. Responsive behavior, user preferences, and print.
 
-## Esclusioni
+## Exclusions
 
-Non sono presenti dipendenze, output di build, file generati, asset binari o
-alberi vendorizzati. Gli SVG dimostrativi sono incorporati direttamente nella
-demo per preservarne il funzionamento offline.
+The project contains no dependencies, build output, generated files, binary
+assets, or vendored trees. Demonstration SVGs are embedded directly in the demo
+to preserve offline operation.

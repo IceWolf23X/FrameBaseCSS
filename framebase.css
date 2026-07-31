@@ -516,6 +516,10 @@ var {
   list-style: none;
 }
 
+.fb-nav li {
+  margin: 0;
+}
+
 .fb-nav a {
   display: block;
   padding: 0.45rem 0.62rem;
@@ -721,6 +725,11 @@ var {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.fb-doc-nav-list li,
+.fb-doc-toc-list li {
+  margin: 0;
 }
 
 .fb-doc-nav-list ul,
@@ -1875,6 +1884,10 @@ figcaption {
   list-style: none;
 }
 
+.fb-pagination li {
+  margin: 0;
+}
+
 .fb-pagination a,
 .fb-pagination span {
   display: grid;
@@ -1906,6 +1919,7 @@ figcaption {
 
 .fb-step {
   position: relative;
+  margin: 0;
   min-height: 2.5rem;
   padding-left: 3.25rem;
   counter-increment: fb-step;
@@ -2123,7 +2137,6 @@ figure:target {
 
   .fb-doc-nav-list > li {
     flex: none;
-    margin: 0;
   }
 
   .fb-doc-nav-list ul,

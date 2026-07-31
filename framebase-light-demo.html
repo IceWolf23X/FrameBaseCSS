@@ -1,35 +1,35 @@
 <!doctype html>
-<html lang="it">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description"
-    content="Documentazione pubblica dei componenti e dei contratti HTML di FrameBaseCSS.">
-  <title>FrameBaseCSS — Documentazione dei componenti</title>
+    content="Public documentation for FrameBaseCSS components and HTML contracts.">
+  <title>FrameBaseCSS — Component documentation</title>
   <link rel="stylesheet" href="framebase-light.css">
 </head>
 <body>
-  <a class="fb-skip-link" href="#main-content">Vai al contenuto</a>
+  <a class="fb-skip-link" href="#main-content">Skip to content</a>
 
   <div class="fb-page">
     <header class="fb-site-header">
       <div class="fb-container fb-container--wide fb-navbar">
-        <a class="fb-brand" href="#top" aria-label="FrameBaseCSS, pagina iniziale">
+        <a class="fb-brand" href="#top" aria-label="FrameBaseCSS, home page">
           <span class="fb-brand-mark" aria-hidden="true">FB</span>
           FrameBaseCSS
         </a>
 
-        <ul class="fb-nav" aria-label="Navigazione principale">
-          <li><a href="#top" aria-current="location">Introduzione</a></li>
-          <li><a href="#components">Esempi</a></li>
-          <li><a href="#forms">Form</a></li>
-          <li><a href="#documentation">Contratti HTML</a></li>
+        <ul class="fb-nav" aria-label="Main navigation">
+          <li><a href="#top" aria-current="location">Introduction</a></li>
+          <li><a href="#components">Examples</a></li>
+          <li><a href="#forms">Forms</a></li>
+          <li><a href="#documentation">HTML contracts</a></li>
         </ul>
 
         <div class="fb-navbar-actions">
           <a class="fb-button fb-button--ghost fb-button--sm"
             href="index.html">
-            Tema dark
+            Dark theme
           </a>
           <a class="fb-button fb-button--secondary fb-button--sm" href="#quick-start">
             Quick start
@@ -43,34 +43,35 @@
         class="fb-hero-section fb-container fb-container--wide">
         <div class="fb-hero" id="top">
           <div class="fb-hero-copy">
-            <nav class="fb-breadcrumbs" aria-label="Percorso">
+            <nav class="fb-breadcrumbs" aria-label="Breadcrumb">
               <ol>
                 <li><a href="#top">Home</a></li>
-                <li><a href="#documentation">Documentazione</a></li>
+                <li><a href="#documentation">Documentation</a></li>
                 <li aria-current="page">FrameBaseCSS</li>
               </ol>
             </nav>
-            <p class="fb-eyebrow">Documentazione CSS / zero dipendenze</p>
-            <h1 class="fb-display">Contratti HTML pronti per siti reali.</h1>
+            <p class="fb-eyebrow">CSS documentation / zero dependencies</p>
+            <h1 class="fb-display">HTML contracts ready for real websites.</h1>
             <p class="fb-lead">
-              Questa pagina documenta la struttura richiesta da ogni componente
-              FrameBaseCSS e ne mostra il rendering in contesti applicativi,
-              editoriali e tecnici.
+              This page documents the structure required by every FrameBaseCSS
+              component and shows its rendering in application,
+              editorial, and technical contexts.
             </p>
             <div class="fb-cluster">
-              <a class="fb-button" href="#components">Esplora i componenti</a>
+              <a class="fb-button" href="#components">Explore components</a>
               <a class="fb-button fb-button--secondary" href="#documentation">
-                Consulta i contratti
+                Browse contracts
               </a>
               <button class="fb-button fb-button--ghost"
                 type="button"
                 popovertarget="demo-popover">
-                Info native
+                Native info
               </button>
             </div>
           </div>
 
-          <aside class="fb-hero-panel" aria-label="Esempio di codice">
+          <aside class="fb-code-block u-no-margin"
+            aria-label="Code example">
             <div class="fb-code-header">
               <span class="fb-code-file">index.html</span>
               <span class="fb-code-language">HTML</span>
@@ -79,62 +80,62 @@
   <span class="fb-token-attribute">href</span>=<span class="fb-token-string">"framebase.css"</span><span class="fb-token-tag">&gt;</span>
 
 <span class="fb-token-tag">&lt;button</span> <span class="fb-token-attribute">class</span>=<span class="fb-token-string">"fb-button"</span><span class="fb-token-tag">&gt;</span>
-  Pronto
+  Ready
 <span class="fb-token-tag">&lt;/button&gt;</span></code></pre>
           </aside>
         </div>
 
-        <div class="fb-metrics" aria-label="Caratteristiche principali">
+        <div class="fb-metrics" aria-label="Key features">
           <div class="fb-metric">
             <span class="fb-metric-value">1</span>
-            <span class="fb-metric-label">foglio CSS canonico</span>
+            <span class="fb-metric-label">canonical CSS file</span>
           </div>
           <div class="fb-metric">
             <span class="fb-metric-value">0</span>
-            <span class="fb-metric-label">dipendenze esterne</span>
+            <span class="fb-metric-label">external dependencies</span>
           </div>
           <div class="fb-metric">
             <span class="fb-metric-value">3</span>
-            <span class="fb-metric-label">breakpoint documentati</span>
+            <span class="fb-metric-label">documented breakpoints</span>
           </div>
           <div class="fb-metric">
             <span class="fb-metric-value">100%</span>
-            <span class="fb-metric-label">documentazione offline</span>
+            <span class="fb-metric-label">offline documentation</span>
           </div>
         </div>
       </section>
 
       <div id="demo-popover" class="fb-tooltip" popover>
-        Questo popover usa esclusivamente l'API HTML nativa.
+        This popover uses the native HTML API exclusively.
       </div>
 
       <section id="workspace" class="fb-section fb-section--muted">
-        <div class="fb-container fb-container--wide">
+        <div class="fb-container fb-container--wide fb-flow">
           <header class="fb-section-header">
-            <p class="fb-eyebrow">Workspace operativo</p>
-            <h2 class="u-no-margin">Una dashboard pronta per dati reali</h2>
+            <p class="fb-eyebrow">Operational workspace</p>
+            <h2 class="u-no-margin">A dashboard ready for real data</h2>
             <p class="fb-lead">
-              Metriche, attività, stati e azioni compongono un'interfaccia
-              applicativa completa senza dipendere da un framework.
+              Metrics, activity, statuses, and actions form a complete
+              application interface without relying on a framework.
             </p>
           </header>
 
           <div class="fb-grid fb-grid--4">
             <article class="fb-metric">
               <span class="fb-metric-value">24</span>
-              <span class="fb-metric-label">deploy questo mese</span>
+              <span class="fb-metric-label">deployments this month</span>
             </article>
             <article class="fb-metric">
-              <span class="fb-metric-value">99,98%</span>
-              <span class="fb-metric-label">uptime ultimi 30 giorni</span>
+              <span class="fb-metric-value">99.98%</span>
+              <span class="fb-metric-label">uptime over the last 30 days</span>
             </article>
             <article class="fb-metric">
               <span class="fb-metric-value">184 ms</span>
-              <span class="fb-metric-label">risposta API mediana</span>
+              <span class="fb-metric-label">median API response</span>
             </article>
             <article class="fb-metric">
               <span class="fb-metric-value">7</span>
-              <span class="fb-metric-label">collaboratori attivi</span>
+              <span class="fb-metric-label">active collaborators</span>
             </article>
           </div>
 
@@ -143,50 +144,50 @@
               <article class="fb-card">
                 <div class="fb-cluster">
                   <div>
-                    <p class="fb-eyebrow">Produzione / eu-west</p>
-                    <h3 class="fb-card-title">Attività recente</h3>
+                    <p class="fb-eyebrow">Production / eu-west</p>
+                    <h3 class="fb-card-title">Recent activity</h3>
                   </div>
-                  <span class="fb-badge fb-badge--success">operativa</span>
+                  <span class="fb-badge fb-badge--success">operational</span>
                 </div>
 
-                <nav class="fb-tabs" aria-label="Periodo attività">
+                <nav class="fb-tabs" aria-label="Activity period">
                   <a class="fb-tab" href="#workspace"
-                    aria-current="location">Oggi</a>
-                  <a class="fb-tab" href="#workspace">7 giorni</a>
-                  <a class="fb-tab" href="#workspace">30 giorni</a>
+                    aria-current="location">Today</a>
+                  <a class="fb-tab" href="#workspace">7 days</a>
+                  <a class="fb-tab" href="#workspace">30 days</a>
                 </nav>
 
                 <div class="fb-table-wrap" tabindex="0"
-                  aria-label="Attività recente, scorribile orizzontalmente">
+                  aria-label="Recent activity, horizontally scrollable">
                   <table class="fb-table--compact">
                     <thead>
                       <tr>
-                        <th scope="col">Evento</th>
-                        <th scope="col">Autore</th>
-                        <th scope="col">Stato</th>
-                        <th scope="col">Durata</th>
-                        <th scope="col">Ora</th>
+                        <th scope="col">Event</th>
+                        <th scope="col">Author</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Duration</th>
+                        <th scope="col">Time</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
                         <td><code>deploy/web-184</code></td>
                         <td>A. Ferri</td>
-                        <td><span class="fb-status fb-status--success">riuscito</span></td>
+                        <td><span class="fb-status fb-status--success">successful</span></td>
                         <td class="fb-cell-number">42 s</td>
                         <td class="u-nowrap"><time datetime="2026-07-31T10:42">10:42</time></td>
                       </tr>
                       <tr>
                         <td><code>test/css-992</code></td>
                         <td>M. Riva</td>
-                        <td><span class="fb-status fb-status--warning">in corso</span></td>
+                        <td><span class="fb-status fb-status--warning">in progress</span></td>
                         <td class="fb-cell-number">1 m 18 s</td>
                         <td class="u-nowrap"><time datetime="2026-07-31T10:31">10:31</time></td>
                       </tr>
                       <tr>
                         <td><code>audit/a11y-71</code></td>
                         <td>L. Conti</td>
-                        <td><span class="fb-status fb-status--danger">attenzione</span></td>
+                        <td><span class="fb-status fb-status--danger">warning</span></td>
                         <td class="fb-cell-number">16 s</td>
                         <td class="u-nowrap"><time datetime="2026-07-31T09:58">09:58</time></td>
                       </tr>
@@ -196,54 +197,54 @@
               </article>
 
               <article class="fb-card">
-                <h3 class="fb-card-title">Console di distribuzione</h3>
-                <pre class="fb-terminal" aria-label="Output terminale">$ framebase deploy --environment production
-✓ CSS validato
-✓ Demo offline verificata
-✓ 0 dipendenze esterne
-→ release pronta: framebase@1.1.0</pre>
+                <h3 class="fb-card-title">Deployment console</h3>
+                <pre class="fb-terminal" aria-label="Terminal output">$ framebase deploy --environment production
+✓ CSS validated
+✓ Offline demo verified
+✓ 0 external dependencies
+→ release ready: framebase@1.1.0</pre>
               </article>
             </div>
 
-            <aside class="fb-stack" aria-label="Riepilogo workspace">
+            <aside class="fb-stack" aria-label="Workspace summary">
               <article class="fb-card fb-card--subtle">
-                <h3 class="fb-card-title">Release corrente</h3>
-                <p class="fb-status fb-status--success">Tutti i sistemi operativi</p>
+                <h3 class="fb-card-title">Current release</h3>
+                <p class="fb-status fb-status--success">All systems operational</p>
 
-                <label for="release-progress">Avanzamento release</label>
+                <label for="release-progress">Release progress</label>
                 <progress id="release-progress" value="86" max="100">86%</progress>
 
-                <label for="quality-meter">Qualità verificata</label>
+                <label for="quality-meter">Verified quality</label>
                 <meter id="quality-meter" min="0" max="100"
                   low="60" high="85" optimum="100" value="94">94%</meter>
 
                 <dl>
-                  <dt>Versione</dt>
+                  <dt>Version</dt>
                   <dd><code>1.1.0</code></dd>
                   <dt>Commit</dt>
                   <dd><code>18662a7</code></dd>
-                  <dt>Canale</dt>
-                  <dd>stabile</dd>
+                  <dt>Channel</dt>
+                  <dd>stable</dd>
                 </dl>
 
                 <div class="fb-button-group" role="group"
-                  aria-label="Azioni release">
+                  aria-label="Release actions">
                   <button class="fb-button fb-button--sm" type="button">
-                    Pubblica
+                    Publish
                   </button>
                   <button class="fb-button fb-button--secondary fb-button--sm"
                     type="button">
-                    Dettagli
+                    Details
                   </button>
                 </div>
               </article>
 
               <article class="fb-card">
-                <h3 class="fb-card-title">Team di progetto</h3>
+                <h3 class="fb-card-title">Project team</h3>
                 <div class="fb-stack">
                   <div class="fb-cluster">
                     <svg class="fb-avatar" viewBox="0 0 48 48" role="img"
-                      aria-label="Avatar di Ada Ferri">
+                      aria-label="Ada Ferri avatar">
                       <rect width="48" height="48" fill="#464b50"/>
                       <circle cx="24" cy="18" r="9" fill="#35c6d4"/>
                       <path d="M8 46c2-11 8-16 16-16s14 5 16 16" fill="#0e96a6"/>
@@ -253,7 +254,7 @@
                   </div>
                   <div class="fb-cluster">
                     <svg class="fb-avatar" viewBox="0 0 48 48" role="img"
-                      aria-label="Avatar di Marco Riva">
+                      aria-label="Marco Riva avatar">
                       <rect width="48" height="48" fill="#464b50"/>
                       <circle cx="24" cy="18" r="9" fill="#f0b84b"/>
                       <path d="M8 46c2-11 8-16 16-16s14 5 16 16" fill="#9c762d"/>
@@ -271,97 +272,97 @@
       <section id="components" class="fb-section">
         <div class="fb-container fb-container--wide">
           <header class="fb-section-header">
-            <p class="fb-eyebrow">Catalogo rapido</p>
-            <h2 class="u-no-margin">Componenti per interfacce reali</h2>
+            <p class="fb-eyebrow">Quick catalog</p>
+            <h2 class="u-no-margin">Components for real interfaces</h2>
             <p class="fb-lead">
-              Le griglie passano da colonne affiancate a una composizione
-              impilata senza introdurre larghezze rigide.
+              Grids move from side-by-side columns to a stacked
+              composition without introducing rigid widths.
             </p>
           </header>
 
           <div class="fb-card-grid">
             <article class="fb-card fb-card--interactive">
               <span class="fb-badge fb-badge--primary">Layout</span>
-              <h3 class="fb-card-title">Contenitori fluidi</h3>
+              <h3 class="fb-card-title">Fluid containers</h3>
               <p>
-                Container, griglie auto-fit, stack, cluster e layout con sidebar.
+                Containers, auto-fit grids, stacks, clusters, and sidebar layouts.
               </p>
-              <a href="#layout-example">Vedi esempio</a>
+              <a href="#layout-example">View example</a>
             </article>
 
             <article class="fb-card fb-card--interactive">
-              <span class="fb-badge fb-badge--success">Accessibile</span>
-              <h3 class="fb-card-title">HTML semantico</h3>
+              <span class="fb-badge fb-badge--success">Accessible</span>
+              <h3 class="fb-card-title">Semantic HTML</h3>
               <p>
-                Focus visibile, skip link e interazioni native senza script.
+                Visible focus, skip links, and native interactions without scripts.
               </p>
-              <a href="#native-controls">Vedi controlli</a>
+              <a href="#native-controls">View controls</a>
             </article>
 
             <article class="fb-card fb-card--interactive">
               <span class="fb-badge fb-badge--warning">Responsive</span>
-              <h3 class="fb-card-title">Overflow locale</h3>
+              <h3 class="fb-card-title">Local overflow</h3>
               <p>
-                Tabelle e codice scorrono nel proprio contenitore, non nella pagina.
+                Tables and code scroll inside their own container, not the page.
               </p>
-              <a href="#data-table">Vedi tabella</a>
+              <a href="#data-table">View table</a>
             </article>
           </div>
 
           <div id="layout-example" class="fb-sidebar-layout">
             <div class="fb-stack">
               <div class="fb-callout fb-callout--info">
-                <p class="fb-callout-title">Informazione</p>
-                <p>Le varianti semantiche condividono struttura e token.</p>
+                <p class="fb-callout-title">Information</p>
+                <p>Semantic variants share structure and tokens.</p>
               </div>
               <div class="fb-callout fb-callout--success">
-                <p class="fb-callout-title">Operazione completata</p>
-                <p>Il pacchetto è stato validato correttamente.</p>
+                <p class="fb-callout-title">Operation completed</p>
+                <p>The package was validated successfully.</p>
               </div>
               <div class="fb-callout fb-callout--warning">
-                <p class="fb-callout-title">Attenzione</p>
-                <p>Controlla i cambiamenti prima della pubblicazione.</p>
+                <p class="fb-callout-title">Warning</p>
+                <p>Review changes before publishing.</p>
               </div>
               <div class="fb-callout fb-callout--danger">
-                <p class="fb-callout-title">Errore</p>
-                <p>Il campo identificativo non può essere vuoto.</p>
+                <p class="fb-callout-title">Error</p>
+                <p>The identifier field cannot be empty.</p>
               </div>
             </div>
 
             <aside class="fb-card fb-card--subtle">
-              <h3 class="fb-card-title">Stato sistema</h3>
-              <p class="fb-status fb-status--success">API operativa</p>
+              <h3 class="fb-card-title">System status</h3>
+              <p class="fb-status fb-status--success">API operational</p>
               <label for="build-progress">Build</label>
               <progress id="build-progress" value="78" max="100">78%</progress>
-              <p class="u-text-muted">78% — fase di packaging</p>
+              <p class="u-text-muted">78% — packaging stage</p>
               <div class="fb-cluster">
                 <span class="fb-badge fb-badge--info">v1.1</span>
-                <span class="fb-badge fb-badge--success">stabile</span>
+                <span class="fb-badge fb-badge--success">stable</span>
                 <span class="fb-badge fb-badge--danger">1 alert</span>
               </div>
             </aside>
           </div>
 
-          <h3>Azioni e navigazione</h3>
+          <h3>Actions and navigation</h3>
           <div class="fb-cluster">
-            <button class="fb-button" type="button">Primaria</button>
+            <button class="fb-button" type="button">Primary</button>
             <button class="fb-button fb-button--secondary" type="button">
-              Secondaria
+              Secondary
             </button>
             <button class="fb-button fb-button--ghost" type="button">Ghost</button>
             <button class="fb-button fb-button--danger" type="button">
-              Pericolosa
+              Dangerous
             </button>
-            <button class="fb-button" type="button" disabled>Disabilitata</button>
+            <button class="fb-button" type="button" disabled>Disabled</button>
           </div>
 
-          <nav aria-label="Pagine catalogo">
+          <nav aria-label="Catalog pages">
             <ul class="fb-pagination">
-              <li><a href="#components" aria-label="Pagina precedente">←</a></li>
+              <li><a href="#components" aria-label="Previous page">←</a></li>
               <li><a href="#components" aria-current="page">1</a></li>
               <li><a href="#components">2</a></li>
               <li><a href="#components">3</a></li>
-              <li><a href="#components" aria-label="Pagina successiva">→</a></li>
+              <li><a href="#components" aria-label="Next page">→</a></li>
             </ul>
           </nav>
         </div>
@@ -370,11 +371,11 @@
       <section id="content-patterns" class="fb-section">
         <div class="fb-container fb-container--wide">
           <header class="fb-section-header">
-            <p class="fb-eyebrow">Contenuti e comunicazione</p>
-            <h2 class="u-no-margin">Dalla landing page al contenuto editoriale</h2>
+            <p class="fb-eyebrow">Content and communication</p>
+            <h2 class="u-no-margin">From landing pages to editorial content</h2>
             <p class="fb-lead">
-              Tipografia, piani, profili e micro-pattern mantengono la stessa
-              gerarchia visiva dei componenti applicativi.
+              Typography, plans, profiles, and micro-patterns preserve the same
+              visual hierarchy as application components.
             </p>
           </header>
 
@@ -382,79 +383,79 @@
             <div class="fb-grid fb-grid--3">
               <article class="fb-card">
                 <p class="fb-eyebrow">Starter</p>
-                <h3 class="fb-card-title">Prototipo</h3>
-                <p><strong class="u-text-primary">Gratis</strong> per progetti personali.</p>
+                <h3 class="fb-card-title">Prototype</h3>
+                <p><strong class="u-text-primary">Free</strong> for personal projects.</p>
                 <ul>
-                  <li>CSS completo</li>
+                  <li>Complete CSS</li>
                   <li>Demo offline</li>
-                  <li>Token personalizzabili</li>
+                  <li>Customizable tokens</li>
                 </ul>
                 <a class="fb-button fb-button--secondary fb-button--block"
-                  href="#quick-start">Inizia ora</a>
+                  href="#quick-start">Start now</a>
               </article>
 
               <article class="fb-card fb-card--interactive">
-                <p class="fb-eyebrow">Consigliato</p>
-                <h3 class="fb-card-title">Produzione</h3>
-                <p><strong class="u-text-success">Pronto</strong> per siti completi.</p>
+                <p class="fb-eyebrow">Recommended</p>
+                <h3 class="fb-card-title">Production</h3>
+                <p><strong class="u-text-success">Ready</strong> for complete websites.</p>
                 <ul>
-                  <li>Layout pubblici e tecnici</li>
-                  <li>Form e tabelle</li>
-                  <li>Responsive integrato</li>
+                  <li>Public and technical layouts</li>
+                  <li>Forms and tables</li>
+                  <li>Built-in responsive behavior</li>
                 </ul>
                 <a class="fb-button fb-button--block" href="#documentation">
-                  Consulta la guida
+                  Read the guide
                 </a>
               </article>
 
               <article class="fb-card">
-                <p class="fb-eyebrow">Personalizzato</p>
-                <h3 class="fb-card-title">Tema proprietario</h3>
-                <p><strong class="u-text-info">Flessibile</strong> tramite pochi token.</p>
+                <p class="fb-eyebrow">Custom</p>
+                <h3 class="fb-card-title">Custom theme</h3>
+                <p><strong class="u-text-info">Flexible</strong> through a small set of tokens.</p>
                 <ul>
-                  <li>Palette sostituibile</li>
-                  <li>Densità configurabile</li>
-                  <li>Nessun lock-in</li>
+                  <li>Replaceable palette</li>
+                  <li>Configurable density</li>
+                  <li>No lock-in</li>
                 </ul>
                 <a class="fb-button fb-button--ghost fb-button--block"
-                  href="#doc-tokens">Esplora i token</a>
+                  href="#doc-tokens">Explore tokens</a>
               </article>
             </div>
 
             <div class="fb-grid fb-grid--2">
               <article class="fb-card">
-                <h3 class="fb-card-title">Tipografia semantica</h3>
+                <h3 class="fb-card-title">Semantic typography</h3>
                 <p>
-                  FrameBaseCSS gestisce <abbr title="HyperText Markup Language">HTML</abbr>
-                  semantico, testo <mark>evidenziato</mark>, abbreviazioni,
-                  collegamenti e comandi da tastiera come <kbd>Ctrl</kbd> +
+                  FrameBaseCSS supports <abbr title="HyperText Markup Language">HTML</abbr>
+                  semantic markup, <mark>highlighted text</mark>, abbreviations,
+                  links, and keyboard commands such as <kbd>Ctrl</kbd> +
                   <kbd>K</kbd>.
                 </p>
                 <p class="u-text-muted">
-                  Il testo secondario resta leggibile senza competere con il contenuto
-                  principale. Le parole molto lunghe possono usare
+                  Secondary text remains readable without competing with the main
+                  content. Very long words can use
                   <span class="u-break-anywhere">release-candidate-with-an-exceptionally-long-identifier</span>.
                 </p>
                 <ol>
-                  <li>Scrivi una struttura semantica.</li>
-                  <li>Applica il componente necessario.</li>
-                  <li>Personalizza soltanto i token.</li>
+                  <li>Write semantic structure.</li>
+                  <li>Apply the required component.</li>
+                  <li>Customize tokens only.</li>
                 </ol>
               </article>
 
               <article class="fb-card fb-card--subtle">
-                <h3 class="fb-card-title">Una voce coerente</h3>
+                <h3 class="fb-card-title">A consistent voice</h3>
                 <blockquote>
                   <p>
-                    La pagina rimane tecnica e compatta, ma ogni stato conserva
-                    una gerarchia immediatamente riconoscibile.
+                    The page remains technical and compact, while every state preserves
+                    an immediately recognizable hierarchy.
                   </p>
-                  <cite>— Team FrameBaseCSS</cite>
+                  <cite>— FrameBaseCSS team</cite>
                 </blockquote>
                 <div class="fb-cluster">
-                  <span class="u-text-success">● stabile</span>
-                  <span class="u-text-warning">● attenzione</span>
-                  <span class="u-text-danger">● critico</span>
+                  <span class="u-text-success">● stable</span>
+                  <span class="u-text-warning">● warning</span>
+                  <span class="u-text-danger">● critical</span>
                 </div>
               </article>
             </div>
@@ -465,26 +466,26 @@
       <section class="fb-section fb-section--muted" id="native-controls">
         <div class="fb-container fb-container--wide">
           <header class="fb-section-header">
-            <p class="fb-eyebrow">Interazione nativa</p>
-            <h2 class="u-no-margin">Accordion, tab statiche e procedure</h2>
+            <p class="fb-eyebrow">Native interaction</p>
+            <h2 class="u-no-margin">Accordions, static tabs, and procedures</h2>
           </header>
 
           <div class="fb-grid fb-grid--2">
             <div>
               <details open>
-                <summary>FrameBaseCSS richiede JavaScript?</summary>
+                <summary>Does FrameBaseCSS require JavaScript?</summary>
                 <div class="fb-details-body">
                   <p>
-                    No. Accordion, popover e controlli base sfruttano primitive HTML.
+                    No. Accordions, popovers, and basic controls use HTML primitives.
                   </p>
                 </div>
               </details>
               <details>
-                <summary>Come si personalizza il tema?</summary>
+                <summary>How do I customize the theme?</summary>
                 <div class="fb-details-body">
                   <p>
-                    Sovrascrivi i token <code>--fb-color-*</code>,
-                    <code>--fb-space-*</code> e <code>--fb-radius-*</code>.
+                    Override tokens <code>--fb-color-*</code>,
+                    <code>--fb-space-*</code> and <code>--fb-radius-*</code>.
                   </p>
                 </div>
               </details>
@@ -492,25 +493,25 @@
 
             <ol class="fb-steps">
               <li class="fb-step">
-                <strong>Collega il CSS</strong><br>
-                <span class="u-text-muted">Usa un file locale o un tag style.</span>
+                <strong>Link the CSS</strong><br>
+                <span class="u-text-muted">Use a local file or a style tag.</span>
               </li>
               <li class="fb-step">
-                <strong>Scrivi HTML semantico</strong><br>
-                <span class="u-text-muted">Aggiungi classi solo per il layout.</span>
+                <strong>Write semantic HTML</strong><br>
+                <span class="u-text-muted">Add classes only for layout.</span>
               </li>
               <li class="fb-step">
-                <strong>Personalizza i token</strong><br>
-                <span class="u-text-muted">Mantieni invariati i componenti.</span>
+                <strong>Customize tokens</strong><br>
+                <span class="u-text-muted">Keep components unchanged.</span>
               </li>
             </ol>
           </div>
 
-          <nav class="fb-tabs" aria-label="Sezioni correlate">
+          <nav class="fb-tabs" aria-label="Related sections">
             <a class="fb-tab" href="#native-controls"
-              aria-current="location">Panoramica</a>
-            <a class="fb-tab" href="#data-table">Dati</a>
-            <a class="fb-tab" href="#forms">Configurazione</a>
+              aria-current="location">Overview</a>
+            <a class="fb-tab" href="#data-table">Data</a>
+            <a class="fb-tab" href="#forms">Configuration</a>
           </nav>
         </div>
       </section>
@@ -519,118 +520,118 @@
         <div class="fb-container fb-container--wide">
           <header class="fb-section-header">
             <p class="fb-eyebrow">Form system</p>
-            <h2 class="u-no-margin">Controlli coerenti e leggibili</h2>
+            <h2 class="u-no-margin">Consistent, readable controls</h2>
           </header>
 
-          <form class="fb-card" action="#" method="get">
+          <form class="fb-card fb-stack" action="#" method="get">
             <div class="fb-form-grid">
               <div class="fb-field">
-                <label for="project-name">Nome progetto</label>
+                <label for="project-name">Project name</label>
                 <input id="project-name" name="project" type="text"
-                  placeholder="es. framebase-site">
-                <span class="fb-field-help">Usa lettere, numeri e trattini.</span>
+                  placeholder="e.g. framebase-site">
+                <span class="fb-field-help">Use letters, numbers, and hyphens.</span>
               </div>
 
               <div class="fb-field">
-                <label for="environment">Ambiente</label>
+                <label for="environment">Environment</label>
                 <div class="fb-select">
                   <select id="environment" name="environment">
-                    <option>Sviluppo</option>
+                    <option>Development</option>
                     <option>Staging</option>
-                    <option>Produzione</option>
+                    <option>Production</option>
                   </select>
                 </div>
               </div>
 
               <div class="fb-field">
-                <label for="invalid-slug">Slug con errore</label>
+                <label for="invalid-slug">Invalid slug</label>
                 <input id="invalid-slug" name="slug" type="text"
-                  value="slug non valido" aria-invalid="true"
+                  value="invalid slug" aria-invalid="true"
                   aria-describedby="slug-error">
                 <span id="slug-error" class="fb-field-error">
-                  Inserisci solo caratteri validi per un URL.
+                  Enter only URL-safe characters.
                 </span>
               </div>
             </div>
 
             <div class="fb-field">
-              <label for="description">Descrizione</label>
+              <label for="description">Description</label>
               <textarea id="description" name="description"
-                placeholder="Descrivi lo scopo del progetto."></textarea>
+                placeholder="Describe the purpose of the project."></textarea>
             </div>
 
             <fieldset>
-              <legend>Preferenze</legend>
+              <legend>Preferences</legend>
               <div class="fb-cluster">
                 <label class="fb-check">
                   <input type="checkbox" name="preference" checked>
-                  Notifiche build
+                  Build notifications
                 </label>
                 <label class="fb-check">
                   <input type="checkbox" name="preference">
-                  Report settimanale
+                  Weekly report
                 </label>
                 <label class="fb-check">
                   <input type="radio" name="channel" checked>
-                  Canale stabile
+                  Stable channel
                 </label>
                 <label class="fb-check">
                   <input type="radio" name="channel">
-                  Canale preview
+                  Preview channel
                 </label>
               </div>
             </fieldset>
 
             <div class="fb-form-grid">
               <div class="fb-field">
-                <label for="range">Soglia: 70%</label>
+                <label for="range">Threshold: 70%</label>
                 <input id="range" name="threshold" type="range"
                   min="0" max="100" value="70">
               </div>
               <div class="fb-field">
-                <label for="file">Allegato</label>
+                <label for="file">Attachment</label>
                 <input id="file" name="attachment" type="file">
               </div>
             </div>
 
             <div class="fb-form-grid">
               <div class="fb-field">
-                <label for="project-email">Email responsabile</label>
+                <label for="project-email">Owner email</label>
                 <input id="project-email" name="email" type="email"
-                  placeholder="nome@esempio.it">
+                  placeholder="name@example.com">
               </div>
               <div class="fb-field">
-                <label for="release-date">Data rilascio</label>
+                <label for="release-date">Release date</label>
                 <input id="release-date" name="release-date" type="date"
                   value="2026-08-15">
               </div>
               <div class="fb-field">
-                <label for="accent-color">Colore identificativo</label>
+                <label for="accent-color">Identification color</label>
                 <input id="accent-color" name="accent-color" type="color"
                   value="#35c6d4">
               </div>
             </div>
 
             <div class="fb-field">
-              <label for="member-search">Invita un collaboratore</label>
+              <label for="member-search">Invite a collaborator</label>
               <div class="fb-input-group">
                 <input id="member-search" name="member" type="email"
-                  placeholder="collaboratore@esempio.it">
-                <button class="fb-button" type="button">Invita</button>
+                  placeholder="collaborator@example.com">
+                <button class="fb-button" type="button">Invite</button>
               </div>
               <span class="fb-field-help">
-                L'invito verrà associato all'ambiente selezionato.
+                The invitation will be associated with the selected environment.
               </span>
             </div>
 
             <output class="fb-output" for="project-name environment">
-              Anteprima: il progetto verrà creato nel canale di sviluppo.
+              Preview: the project will be created in the development channel.
             </output>
 
             <div class="fb-cluster">
-              <button class="fb-button" type="submit">Salva configurazione</button>
+              <button class="fb-button" type="submit">Save configuration</button>
               <button class="fb-button fb-button--secondary" type="reset">
-                Ripristina
+                Reset
               </button>
             </div>
           </form>
@@ -640,36 +641,36 @@
       <section id="data-table" class="fb-section fb-section--muted">
         <div class="fb-container fb-container--wide">
           <header class="fb-section-header">
-            <p class="fb-eyebrow">Dati e contenuti tecnici</p>
-            <h2 class="u-no-margin">Tabelle e codice con overflow locale</h2>
+            <p class="fb-eyebrow">Data and technical content</p>
+            <h2 class="u-no-margin">Tables and code with local overflow</h2>
           </header>
 
           <div class="fb-table-wrap" tabindex="0"
-            aria-label="Tabella versioni, scorribile orizzontalmente">
+            aria-label="Version table, horizontally scrollable">
             <table class="fb-table--striped">
-              <caption>Supporto delle release FrameBaseCSS</caption>
+              <caption>FrameBaseCSS release support</caption>
               <thead>
                 <tr>
-                  <th scope="col">Versione</th>
-                  <th scope="col">Tema</th>
-                  <th scope="col">Componenti</th>
-                  <th scope="col">Ultima verifica</th>
-                  <th scope="col" class="fb-cell-right">Copertura</th>
+                  <th scope="col">Version</th>
+                  <th scope="col">Theme</th>
+                  <th scope="col">Components</th>
+                  <th scope="col">Last verified</th>
+                  <th scope="col" class="fb-cell-right">Coverage</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><code>1.1.0</code></td>
                   <td><span class="fb-badge fb-badge--primary">dark</span></td>
-                  <td>Layout, form, documentazione, media</td>
-                  <td><time datetime="2026-07-31">31 luglio 2026</time></td>
+                  <td>Layout, forms, documentation, media</td>
+                  <td><time datetime="2026-07-31">July 31, 2026</time></td>
                   <td class="fb-cell-number">100%</td>
                 </tr>
                 <tr>
                   <td><code>1.1.0</code></td>
                   <td><span class="fb-badge fb-badge--info">light</span></td>
-                  <td>Stessi contratti, token visivi dedicati</td>
-                  <td><time datetime="2026-07-31">31 luglio 2026</time></td>
+                  <td>Same contracts, dedicated visual tokens</td>
+                  <td><time datetime="2026-07-31">July 31, 2026</time></td>
                   <td class="fb-cell-number">100%</td>
                 </tr>
               </tbody>
@@ -690,10 +691,10 @@
 
           <blockquote>
             <p>
-              Un buon design system riduce le decisioni ripetitive senza
-              nascondere il comportamento del browser.
+              A good design system reduces repetitive decisions without
+              hiding browser behavior.
             </p>
-            <cite>— Principio FrameBaseCSS</cite>
+            <cite>— FrameBaseCSS principle</cite>
           </blockquote>
         </div>
       </section>
@@ -702,9 +703,9 @@
         <div class="fb-container fb-container--wide">
           <header class="fb-section-header">
             <p class="fb-eyebrow">Media</p>
-            <h2 id="gallery-title" class="u-no-margin">Gallery offline</h2>
+            <h2 id="gallery-title" class="u-no-margin">Offline gallery</h2>
             <p class="fb-lead">
-              Le illustrazioni sono SVG inline: la demo non effettua richieste di rete.
+              The illustrations are inline SVGs: the demo makes no network requests.
             </p>
           </header>
 
@@ -712,7 +713,7 @@
             <figure class="fb-gallery-item">
               <div class="fb-gallery-media">
                 <svg viewBox="0 0 640 400" role="img"
-                  aria-label="Schema astratto di un layout a griglia">
+                  aria-label="Abstract diagram of a grid layout">
                   <rect width="640" height="400" fill="#282b2e"/>
                   <rect x="44" y="44" width="552" height="54" rx="7" fill="#3a3e42"
                     stroke="#697078"/>
@@ -727,33 +728,33 @@
                 </svg>
               </div>
               <figcaption>
-                <strong>Layout adattivo</strong>
-                Griglie e regioni semantiche.
+                <strong>Adaptive layout</strong>
+                Grids and semantic regions.
               </figcaption>
             </figure>
 
             <figure class="fb-gallery-item">
               <div class="fb-gallery-media">
                 <svg viewBox="0 0 640 400" role="img"
-                  aria-label="Palette colori FrameBaseCSS">
+                  aria-label="FrameBaseCSS color palette">
                   <rect width="640" height="400" fill="#282b2e"/>
                   <circle cx="180" cy="200" r="92" fill="#35c6d4"/>
                   <circle cx="320" cy="200" r="92" fill="#45d16f" fill-opacity=".8"/>
                   <circle cx="460" cy="200" r="92" fill="#f0b84b" fill-opacity=".8"/>
                   <text x="320" y="372" fill="#f3f6f8" text-anchor="middle"
-                    font-size="24">TOKENS SEMANTICI</text>
+                    font-size="24">SEMANTIC TOKENS</text>
                 </svg>
               </div>
               <figcaption>
-                <strong>Palette centralizzata</strong>
-                Identità e stati tramite custom properties.
+                <strong>Centralized palette</strong>
+                Identity and states through custom properties.
               </figcaption>
             </figure>
 
             <figure class="fb-gallery-item">
               <div class="fb-gallery-media">
                 <svg viewBox="0 0 640 400" role="img"
-                  aria-label="Rappresentazione di codice monospace">
+                  aria-label="Monospace code representation">
                   <rect width="640" height="400" fill="#282b2e"/>
                   <rect x="52" y="55" width="536" height="290" rx="8" fill="#3a3e42"
                     stroke="#697078"/>
@@ -771,8 +772,8 @@
                 </svg>
               </div>
               <figcaption>
-                <strong>Contenuti tecnici</strong>
-                Codice leggibile e sintassi manuale.
+                <strong>Technical content</strong>
+                Readable code and manual syntax highlighting.
               </figcaption>
             </figure>
           </div>
@@ -782,19 +783,19 @@
       <section id="documentation" aria-labelledby="documentation-title">
         <div class="fb-doc-shell">
           <aside class="fb-doc-sidebar">
-            <nav class="fb-doc-nav-panel" aria-label="Sezioni della documentazione">
-              <p class="fb-doc-nav-title">Contratti HTML</p>
+            <nav class="fb-doc-nav-panel" aria-label="Documentation sections">
+              <p class="fb-doc-nav-title">HTML contracts</p>
               <ul class="fb-doc-nav-list">
                 <li>
-                  <a href="#doc-overview" aria-current="location">Uso</a>
+                  <a href="#doc-overview" aria-current="location">Usage</a>
                 </li>
-                <li><a href="#doc-light-theme">Tema light</a></li>
+                <li><a href="#doc-light-theme">Light theme</a></li>
                 <li><a href="#doc-layouts">Layout</a></li>
-                <li><a href="#doc-navigation">Navigazione</a></li>
-                <li><a href="#doc-content">Contenuto</a></li>
-                <li><a href="#doc-forms">Form</a></li>
+                <li><a href="#doc-navigation">Navigation</a></li>
+                <li><a href="#doc-content">Content</a></li>
+                <li><a href="#doc-forms">Forms</a></li>
                 <li><a href="#doc-feedback">Feedback</a></li>
-                <li><a href="#doc-data">Dati e codice</a></li>
+                <li><a href="#doc-data">Data and code</a></li>
                 <li><a href="#doc-media">Media</a></li>
               </ul>
             </nav>
@@ -803,30 +804,30 @@
           <div class="fb-doc-main">
             <article class="fb-doc-content">
               <header class="fb-doc-header">
-                <p class="fb-doc-eyebrow">Riferimento pubblico / versione 1.1</p>
+                <p class="fb-doc-eyebrow">Public reference / version 1.1</p>
                 <h2 id="documentation-title" class="fb-doc-title">
-                  Contratti dei componenti
+                  Component contracts
                 </h2>
                 <p class="fb-doc-subtitle">
-                  Strutture HTML canoniche da copiare e adattare. Le classi di
-                  layout controllano la composizione; i componenti non dipendono
-                  da ID, testo dimostrativo o posizione accidentale nella pagina.
+                  Canonical HTML structures to copy and adapt. Layout classes control
+                  composition; components do not depend on IDs, demonstration text,
+                  or an accidental position on the page.
                 </p>
                 <div class="fb-doc-meta">
                   <span class="fb-badge fb-badge--success">plug and use</span>
                   <span class="fb-badge fb-badge--primary">CSS</span>
-                  <span class="fb-badge">zero dipendenze</span>
+                  <span class="fb-badge">zero dependencies</span>
                 </div>
               </header>
 
               <section id="doc-overview" class="fb-doc-section">
                 <h2 class="fb-anchor-heading">
-                  <a href="#doc-overview">1. Installazione e regole d’uso</a>
+                  <a href="#doc-overview">1. Installation and usage rules</a>
                 </h2>
                 <p>
-                  Collega il foglio dopo il meta viewport. Usa gli elementi HTML
-                  per il loro significato e applica una classe FrameBaseCSS solo
-                  quando serve un contratto visivo o di layout.
+                  Link the stylesheet after the viewport meta tag. Use HTML elements
+                  for their meaning and apply a FrameBaseCSS class only when a visual
+                  or layout contract is required.
                 </p>
                 <div class="fb-code-block">
                   <div class="fb-code-header">
@@ -836,38 +837,40 @@
                   <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
 &lt;link rel="stylesheet" href="framebase.css"&gt;</code></pre>
                 </div>
-                <div class="fb-callout fb-callout--info">
-                  <p class="fb-callout-title">Regola di composizione</p>
-                  <p>
-                    Usa <code>.fb-stack</code>, <code>.fb-cluster</code>,
-                    <code>.fb-grid</code> o una sezione dedicata per lo spazio
-                    tra componenti. Non aggiungere margini esterni ai componenti
-                    per correggere una singola pagina.
-                  </p>
+                <div class="fb-stack">
+                  <div class="fb-callout fb-callout--info">
+                    <p class="fb-callout-title">Composition rule</p>
+                    <p>
+                      Use <code>.fb-stack</code>, <code>.fb-cluster</code>,
+                      <code>.fb-grid</code>, or a dedicated section to control spacing
+                      between components. Do not add external margins to components
+                      to correct a single page.
+                    </p>
+                  </div>
+                  <dl class="u-no-margin">
+                    <dt>Primary namespace</dt>
+                    <dd><code>--fb-*</code>, <code>.fb-*</code>, and <code>.u-*</code></dd>
+                    <dt>Public components</dt>
+                    <dd>
+                      All components and layouts use the
+                      <code>.fb-*</code> namespace; utilities use <code>.u-*</code>.
+                    </dd>
+                    <dt>JavaScript</dt>
+                    <dd>
+                      Not required by the CSS; it remains necessary for application
+                      behavior such as opening a dialog programmatically.
+                    </dd>
+                  </dl>
                 </div>
-                <dl>
-                  <dt>Namespace principale</dt>
-                  <dd><code>--fb-*</code>, <code>.fb-*</code> e <code>.u-*</code></dd>
-                  <dt>Componenti pubblici</dt>
-                  <dd>
-                    Tutti i componenti e i layout usano il namespace
-                    <code>.fb-*</code>; le utility usano <code>.u-*</code>.
-                  </dd>
-                  <dt>JavaScript</dt>
-                  <dd>
-                    Non richiesto dal CSS; resta necessario per comportamenti
-                    applicativi come l’apertura programmatica di un dialog.
-                  </dd>
-                </dl>
               </section>
 
               <section id="doc-tokens" class="fb-doc-section">
                 <h2 class="fb-anchor-heading">
-                  <a href="#doc-tokens">2. Token e personalizzazione</a>
+                  <a href="#doc-tokens">2. Tokens and customization</a>
                 </h2>
                 <p>
-                  Sovrascrivi i token dopo <code>framebase.css</code>. Non
-                  modificare le regole interne per creare un tema.
+                  Override tokens after <code>framebase.css</code>. Do not
+                  modify internal rules to create a theme.
                 </p>
                 <div class="fb-code-block">
                   <div class="fb-code-header">
@@ -884,19 +887,19 @@
 }</code></pre>
                 </div>
                 <p>
-                  I gruppi pubblici comprendono colori, tipografia, spaziatura,
-                  raggi, ombre, larghezze, transizioni e dimensioni dei controlli.
+                  Public groups include colors, typography, spacing, radii, shadows,
+                  widths, transitions, and control sizes.
                 </p>
               </section>
 
               <section id="doc-light-theme" class="fb-doc-section">
                 <h2 class="fb-anchor-heading">
-                  <a href="#doc-light-theme">2.1 Tema light ufficiale</a>
+                  <a href="#doc-light-theme">2.1 Official light theme</a>
                 </h2>
                 <p>
-                  <code>framebase-light.css</code> importa il CSS canonico e
-                  sovrascrive soltanto i token visivi. Contratti HTML,
-                  componenti, responsive e utility restano invariati.
+                  <code>framebase-light.css</code> imports the canonical CSS and
+                  overrides visual tokens only. HTML contracts, components,
+                  responsive behavior, and utilities remain unchanged.
                 </p>
                 <div class="fb-code-block">
                   <div class="fb-code-header">
@@ -920,36 +923,40 @@
   --fb-color-primary: #08747f;
 }</code></pre>
                 </div>
-                <div class="fb-callout fb-callout--info">
-                  <p class="fb-callout-title">Un solo collegamento</p>
-                  <p>
-                    Collega il file light al posto di <code>framebase.css</code>,
-                    non insieme ad esso. L’import carica automaticamente la base.
-                  </p>
+                <div class="fb-stack">
+                  <div class="fb-callout fb-callout--info">
+                    <p class="fb-callout-title">One link only</p>
+                    <p>
+                      Link the light file instead of <code>framebase.css</code>,
+                      not alongside it. The import loads the base automatically.
+                    </p>
+                  </div>
+                  <div class="fb-cluster">
+                    <a class="fb-button fb-button--secondary"
+                      href="framebase-light-demo.html">
+                      Open the light verification
+                    </a>
+                  </div>
                 </div>
-                <a class="fb-button fb-button--secondary"
-                  href="framebase-light-demo.html">
-                  Apri la verifica light
-                </a>
               </section>
 
               <section id="doc-layouts" class="fb-doc-section">
                 <h2 class="fb-anchor-heading">
-                  <a href="#doc-layouts">3. Pagina, contenitori e layout</a>
+                  <a href="#doc-layouts">3. Page, containers, and layouts</a>
                 </h2>
                 <dl>
                   <dt><code>.fb-page</code></dt>
-                  <dd>Shell con altezza minima pari alla viewport.</dd>
+                  <dd>Shell with a minimum height equal to the viewport.</dd>
                   <dt><code>.fb-container</code></dt>
-                  <dd>Contenitore centrato; aggiungi <code>--wide</code> per il limite ampio.</dd>
-                  <dt><code>.fb-main</code> e <code>.fb-section</code></dt>
-                  <dd>Spaziatura verticale del contenuto e delle sezioni.</dd>
+                  <dd>Centered container; add <code>--wide</code> for the wider limit.</dd>
+                  <dt><code>.fb-main</code> and <code>.fb-section</code></dt>
+                  <dd>Vertical spacing for content and sections.</dd>
                   <dt><code>.fb-grid</code></dt>
-                  <dd>Griglia automatica; le varianti <code>--2</code>, <code>--3</code> e <code>--4</code> fissano le colonne.</dd>
+                  <dd>Automatic grid; the <code>--2</code>, <code>--3</code>, and <code>--4</code> variants set fixed column counts.</dd>
                   <dt><code>.fb-sidebar-layout</code></dt>
-                  <dd>Contenuto principale con colonna laterale responsive.</dd>
+                  <dd>Main content with a responsive sidebar.</dd>
                   <dt><code>.fb-stack</code>, <code>.fb-flow</code>, <code>.fb-cluster</code>, <code>.fb-split-grid</code></dt>
-                  <dd>Composizioni verticali, flusso tipografico, gruppi flessibili e divisione in due colonne.</dd>
+                  <dd>Vertical compositions, typographic flow, flexible groups, and two-column splits.</dd>
                 </dl>
                 <div class="fb-code-block">
                   <div class="fb-code-header">
@@ -973,20 +980,20 @@
 &lt;/div&gt;
 
 &lt;div class="fb-split-grid"&gt;
-  &lt;div&gt;Colonna principale&lt;/div&gt;
-  &lt;div&gt;Colonna secondaria&lt;/div&gt;
+  &lt;div&gt;Main column&lt;/div&gt;
+  &lt;div&gt;Secondary column&lt;/div&gt;
 &lt;/div&gt;</code></pre>
                 </div>
               </section>
 
               <section id="doc-hero" class="fb-doc-section">
                 <h2 class="fb-anchor-heading">
-                  <a href="#doc-hero">4. Hero e metriche</a>
+                  <a href="#doc-hero">4. Hero and metrics</a>
                 </h2>
                 <p>
-                  <code>.fb-hero-section</code> definisce il confine e lo spazio
-                  della composizione. Hero e metriche restano componenti
-                  indipendenti e possono essere omessi o riordinati.
+                  <code>.fb-hero-section</code> defines the composition boundary and
+                  spacing. Heroes and metrics remain independent components and
+                  can be omitted or reordered.
                 </p>
                 <div class="fb-code-block">
                   <div class="fb-code-header">
@@ -996,17 +1003,17 @@
                   <pre><code>&lt;section class="fb-hero-section fb-container fb-container--wide"&gt;
   &lt;div class="fb-hero"&gt;
     &lt;div class="fb-hero-copy"&gt;
-      &lt;p class="fb-eyebrow"&gt;Categoria&lt;/p&gt;
-      &lt;h1 class="fb-display"&gt;Titolo della pagina&lt;/h1&gt;
-      &lt;p class="fb-lead"&gt;Descrizione introduttiva.&lt;/p&gt;
+      &lt;p class="fb-eyebrow"&gt;Category&lt;/p&gt;
+      &lt;h1 class="fb-display"&gt;Page title&lt;/h1&gt;
+      &lt;p class="fb-lead"&gt;Introductory description.&lt;/p&gt;
     &lt;/div&gt;
-    &lt;aside class="fb-hero-panel"&gt;Contenuto complementare&lt;/aside&gt;
+    &lt;aside class="fb-hero-panel"&gt;Complementary content&lt;/aside&gt;
   &lt;/div&gt;
 
-  &lt;div class="fb-metrics" aria-label="Metriche principali"&gt;
+  &lt;div class="fb-metrics" aria-label="Key metrics"&gt;
     &lt;div class="fb-metric"&gt;
       &lt;span class="fb-metric-value"&gt;42&lt;/span&gt;
-      &lt;span class="fb-metric-label"&gt;progetti attivi&lt;/span&gt;
+      &lt;span class="fb-metric-label"&gt;active projects&lt;/span&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/section&gt;</code></pre>
@@ -1015,38 +1022,38 @@
 
               <section id="doc-navigation" class="fb-doc-section">
                 <h2 class="fb-anchor-heading">
-                  <a href="#doc-navigation">5. Header, navigazione e breadcrumb</a>
+                  <a href="#doc-navigation">5. Header, navigation, and breadcrumbs</a>
                 </h2>
                 <p>
-                  Il link di salto è il primo elemento interattivo. Usa
-                  <code>aria-current="page"</code> per una pagina distinta e
-                  <code>aria-current="location"</code> per un’ancora della
-                  pagina corrente.
+                  The skip link is the first interactive element. Use
+                  <code>aria-current="page"</code> for a distinct page and
+                  <code>aria-current="location"</code> for an anchor on the
+                  current page.
                 </p>
                 <div class="fb-code-block">
                   <div class="fb-code-header">
                     <span class="fb-code-file">navigation.html</span>
                     <span class="fb-code-language">HTML</span>
                   </div>
-                  <pre><code>&lt;a class="fb-skip-link" href="#main-content"&gt;Vai al contenuto&lt;/a&gt;
+                  <pre><code>&lt;a class="fb-skip-link" href="#main-content"&gt;Skip to content&lt;/a&gt;
 &lt;header class="fb-site-header fb-site-header--sticky"&gt;
   &lt;div class="fb-container fb-navbar"&gt;
     &lt;a class="fb-brand" href="/"&gt;
       &lt;span class="fb-brand-mark" aria-hidden="true"&gt;FB&lt;/span&gt;
-      Progetto
+      Project
     &lt;/a&gt;
-    &lt;ul class="fb-nav" aria-label="Navigazione principale"&gt;
+    &lt;ul class="fb-nav" aria-label="Main navigation"&gt;
       &lt;li&gt;&lt;a href="/" aria-current="page"&gt;Home&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="/docs"&gt;Documentazione&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="/docs"&gt;Documentation&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
     &lt;div class="fb-navbar-actions"&gt;...&lt;/div&gt;
   &lt;/div&gt;
 &lt;/header&gt;
 
-&lt;nav class="fb-breadcrumbs" aria-label="Percorso"&gt;
+&lt;nav class="fb-breadcrumbs" aria-label="Breadcrumb"&gt;
   &lt;ol&gt;
     &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
-    &lt;li aria-current="page"&gt;Pagina&lt;/li&gt;
+    &lt;li aria-current="page"&gt;Page&lt;/li&gt;
   &lt;/ol&gt;
 &lt;/nav&gt;
 
@@ -1059,12 +1066,12 @@
               <section id="doc-documentation-layout"
                 class="fb-doc-section">
                 <h2 class="fb-anchor-heading">
-                  <a href="#doc-documentation-layout">6. Layout documentazione</a>
+                  <a href="#doc-documentation-layout">6. Documentation layout</a>
                 </h2>
                 <p>
-                  La struttura a tre colonne diventa a due colonne sotto
-                  1180 px e a colonna singola sotto 860 px. Le barre laterali
-                  sono sticky soltanto quando la viewport lo consente.
+                  The three-column structure becomes two columns below
+                  1180px and one column below 860px. Sidebars remain sticky only
+                  when the viewport allows it.
                 </p>
                 <div class="fb-code-block">
                   <div class="fb-code-header">
@@ -1073,12 +1080,12 @@
                   </div>
                   <pre><code>&lt;div class="fb-doc-shell"&gt;
   &lt;aside class="fb-doc-sidebar"&gt;
-    &lt;nav class="fb-doc-nav-panel" aria-label="Documentazione"&gt;
-      &lt;p class="fb-doc-nav-title"&gt;Sezioni&lt;/p&gt;
+    &lt;nav class="fb-doc-nav-panel" aria-label="Documentation"&gt;
+      &lt;p class="fb-doc-nav-title"&gt;Sections&lt;/p&gt;
       &lt;ul class="fb-doc-nav-list"&gt;
         &lt;li class="fb-doc-nav-group"&gt;
-          &lt;p class="fb-doc-nav-group-label"&gt;Fondamenti&lt;/p&gt;
-          &lt;ul&gt;&lt;li&gt;&lt;a href="#start"&gt;Introduzione&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+          &lt;p class="fb-doc-nav-group-label"&gt;Foundations&lt;/p&gt;
+          &lt;ul&gt;&lt;li&gt;&lt;a href="#start"&gt;Introduction&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
         &lt;/li&gt;
       &lt;/ul&gt;
     &lt;/nav&gt;
@@ -1087,9 +1094,9 @@
   &lt;main class="fb-doc-main"&gt;
     &lt;article class="fb-doc-content"&gt;
       &lt;header class="fb-doc-header"&gt;
-        &lt;p class="fb-doc-eyebrow"&gt;Guida&lt;/p&gt;
-        &lt;h1 class="fb-doc-title"&gt;Titolo&lt;/h1&gt;
-        &lt;p class="fb-doc-subtitle"&gt;Sommario&lt;/p&gt;
+        &lt;p class="fb-doc-eyebrow"&gt;Guide&lt;/p&gt;
+        &lt;h1 class="fb-doc-title"&gt;Title&lt;/h1&gt;
+        &lt;p class="fb-doc-subtitle"&gt;Summary&lt;/p&gt;
         &lt;div class="fb-doc-meta"&gt;...&lt;/div&gt;
       &lt;/header&gt;
       &lt;section class="fb-doc-section"&gt;...&lt;/section&gt;
@@ -1097,8 +1104,8 @@
   &lt;/main&gt;
 
   &lt;aside class="fb-doc-toc"&gt;
-    &lt;nav class="fb-doc-toc-panel" aria-label="In questa pagina"&gt;
-      &lt;p class="fb-doc-toc-title"&gt;Indice&lt;/p&gt;
+    &lt;nav class="fb-doc-toc-panel" aria-label="On this page"&gt;
+      &lt;p class="fb-doc-toc-title"&gt;Contents&lt;/p&gt;
       &lt;ul class="fb-doc-toc-list"&gt;...&lt;/ul&gt;
     &lt;/nav&gt;
   &lt;/aside&gt;
@@ -1108,12 +1115,12 @@
 
               <section id="doc-content" class="fb-doc-section">
                 <h2 class="fb-anchor-heading">
-                  <a href="#doc-content">7. Card, badge e contenuto</a>
+                  <a href="#doc-content">7. Cards, badges, and content</a>
                 </h2>
                 <p>
-                  La card accetta contenuto semantico libero. Usa
-                  <code>.fb-card-grid</code> per gruppi uniformi e
-                  <code>.fb-card-title</code> per il titolo interno.
+                  A card accepts any semantic content. Use
+                  <code>.fb-card-grid</code> for uniform groups and
+                  <code>.fb-card-title</code> for the internal title.
                 </p>
                 <div class="fb-code-block">
                   <div class="fb-code-header">
@@ -1123,68 +1130,68 @@
                   <pre><code>&lt;div class="fb-card-grid"&gt;
   &lt;article class="fb-card fb-card--interactive"&gt;
     &lt;div class="fb-cluster"&gt;
-      &lt;h2 class="fb-card-title"&gt;Titolo&lt;/h2&gt;
-      &lt;span class="fb-badge fb-badge--success"&gt;attivo&lt;/span&gt;
+      &lt;h2 class="fb-card-title"&gt;Title&lt;/h2&gt;
+      &lt;span class="fb-badge fb-badge--success"&gt;active&lt;/span&gt;
     &lt;/div&gt;
-    &lt;p&gt;Contenuto della card.&lt;/p&gt;
+    &lt;p&gt;Card content.&lt;/p&gt;
   &lt;/article&gt;
   &lt;article class="fb-card fb-card--subtle"&gt;...&lt;/article&gt;
 &lt;/div&gt;
 
-&lt;span class="fb-badge fb-badge--primary"&gt;primario&lt;/span&gt;
-&lt;span class="fb-badge fb-badge--info"&gt;informazione&lt;/span&gt;
-&lt;span class="fb-badge fb-badge--warning"&gt;attenzione&lt;/span&gt;
-&lt;span class="fb-badge fb-badge--danger"&gt;errore&lt;/span&gt;
+&lt;span class="fb-badge fb-badge--primary"&gt;primary&lt;/span&gt;
+&lt;span class="fb-badge fb-badge--info"&gt;information&lt;/span&gt;
+&lt;span class="fb-badge fb-badge--warning"&gt;warning&lt;/span&gt;
+&lt;span class="fb-badge fb-badge--danger"&gt;error&lt;/span&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;Citazione.&lt;/p&gt;
-  &lt;cite&gt;Autore&lt;/cite&gt;
+  &lt;p&gt;Quotation.&lt;/p&gt;
+  &lt;cite&gt;Author&lt;/cite&gt;
 &lt;/blockquote&gt;
 
 &lt;dl&gt;
-  &lt;dt&gt;Termine&lt;/dt&gt;
-  &lt;dd&gt;Definizione&lt;/dd&gt;
+  &lt;dt&gt;Term&lt;/dt&gt;
+  &lt;dd&gt;Definition&lt;/dd&gt;
 &lt;/dl&gt;</code></pre>
                 </div>
               </section>
 
               <section id="doc-actions" class="fb-doc-section">
                 <h2 class="fb-anchor-heading">
-                  <a href="#doc-actions">8. Pulsanti e gruppi di azioni</a>
+                  <a href="#doc-actions">8. Buttons and action groups</a>
                 </h2>
                 <p>
-                  Usa un <code>&lt;button&gt;</code> per un’azione e un
-                  <code>&lt;a&gt;</code> per la navigazione. Le varianti
-                  cambiano presentazione, non semantica.
+                  Use a <code>&lt;button&gt;</code> for an action and an
+                  <code>&lt;a&gt;</code> for navigation. Variants change
+                  presentation, not semantics.
                 </p>
                 <div class="fb-code-block">
                   <div class="fb-code-header">
                     <span class="fb-code-file">actions.html</span>
                     <span class="fb-code-language">HTML</span>
                   </div>
-                  <pre><code>&lt;button class="fb-button" type="button"&gt;Conferma&lt;/button&gt;
-&lt;a class="fb-button fb-button--secondary" href="/docs"&gt;Apri guida&lt;/a&gt;
-&lt;button class="fb-button fb-button--ghost fb-button--sm" type="button"&gt;Annulla&lt;/button&gt;
-&lt;button class="fb-button fb-button--danger" type="button"&gt;Elimina&lt;/button&gt;
-&lt;button class="fb-button fb-button--block" type="button"&gt;A tutta larghezza&lt;/button&gt;
-&lt;button class="fb-button" type="button" disabled&gt;Non disponibile&lt;/button&gt;
+                  <pre><code>&lt;button class="fb-button" type="button"&gt;Confirm&lt;/button&gt;
+&lt;a class="fb-button fb-button--secondary" href="/docs"&gt;Open guide&lt;/a&gt;
+&lt;button class="fb-button fb-button--ghost fb-button--sm" type="button"&gt;Cancel&lt;/button&gt;
+&lt;button class="fb-button fb-button--danger" type="button"&gt;Delete&lt;/button&gt;
+&lt;button class="fb-button fb-button--block" type="button"&gt;Full width&lt;/button&gt;
+&lt;button class="fb-button" type="button" disabled&gt;Unavailable&lt;/button&gt;
 
-&lt;div class="fb-button-group" role="group" aria-label="Vista"&gt;
-  &lt;button class="fb-button" type="button"&gt;Griglia&lt;/button&gt;
-  &lt;button class="fb-button fb-button--secondary" type="button"&gt;Lista&lt;/button&gt;
+&lt;div class="fb-button-group" role="group" aria-label="View"&gt;
+  &lt;button class="fb-button" type="button"&gt;Grid&lt;/button&gt;
+  &lt;button class="fb-button fb-button--secondary" type="button"&gt;List&lt;/button&gt;
 &lt;/div&gt;</code></pre>
                 </div>
               </section>
 
               <section id="doc-forms" class="fb-doc-section">
                 <h2 class="fb-anchor-heading">
-                  <a href="#doc-forms">9. Form e controlli nativi</a>
+                  <a href="#doc-forms">9. Forms and native controls</a>
                 </h2>
                 <p>
-                  Ogni controllo ha una label associata. Il wrapper
-                  <code>.fb-select</code> fornisce la freccia coerente; lo stato
-                  non valido usa <code>aria-invalid="true"</code> e un messaggio
-                  separato.
+                  Every control has an associated label. The
+                  <code>.fb-select</code> wrapper provides a consistent arrow; an
+                  invalid state uses <code>aria-invalid="true"</code> and a separate
+                  message.
                 </p>
                 <div class="fb-code-block">
                   <div class="fb-code-header">
@@ -1194,17 +1201,17 @@
                   <pre><code>&lt;form class="fb-stack"&gt;
   &lt;div class="fb-form-grid"&gt;
     &lt;div class="fb-field"&gt;
-      &lt;label for="name"&gt;Nome&lt;/label&gt;
+      &lt;label for="name"&gt;Name&lt;/label&gt;
       &lt;input id="name" name="name" type="text" aria-describedby="name-help"&gt;
-      &lt;span id="name-help" class="fb-field-help"&gt;Testo di supporto.&lt;/span&gt;
+      &lt;span id="name-help" class="fb-field-help"&gt;Supporting text.&lt;/span&gt;
     &lt;/div&gt;
 
     &lt;div class="fb-field"&gt;
-      &lt;label for="environment"&gt;Ambiente&lt;/label&gt;
+      &lt;label for="environment"&gt;Environment&lt;/label&gt;
       &lt;div class="fb-select"&gt;
         &lt;select id="environment" name="environment"&gt;
-          &lt;option&gt;Sviluppo&lt;/option&gt;
-          &lt;option&gt;Produzione&lt;/option&gt;
+          &lt;option&gt;Development&lt;/option&gt;
+          &lt;option&gt;Production&lt;/option&gt;
         &lt;/select&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -1213,33 +1220,33 @@
       &lt;label for="slug"&gt;Slug&lt;/label&gt;
       &lt;input id="slug" name="slug" aria-invalid="true"
         aria-describedby="slug-error"&gt;
-      &lt;span id="slug-error" class="fb-field-error"&gt;Valore non valido.&lt;/span&gt;
+      &lt;span id="slug-error" class="fb-field-error"&gt;Invalid value.&lt;/span&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 
   &lt;label class="fb-check"&gt;
     &lt;input type="checkbox" name="terms"&gt;
-    &lt;span&gt;Accetto le condizioni&lt;/span&gt;
+    &lt;span&gt;I accept the terms&lt;/span&gt;
   &lt;/label&gt;
 
   &lt;div class="fb-input-group"&gt;
-    &lt;input type="search" aria-label="Cerca"&gt;
-    &lt;button class="fb-button" type="submit"&gt;Cerca&lt;/button&gt;
+    &lt;input type="search" aria-label="Search"&gt;
+    &lt;button class="fb-button" type="submit"&gt;Search&lt;/button&gt;
   &lt;/div&gt;
 
-  &lt;output class="fb-output"&gt;Risultato dell’operazione.&lt;/output&gt;
+  &lt;output class="fb-output"&gt;Operation result.&lt;/output&gt;
 &lt;/form&gt;</code></pre>
                 </div>
                 <p>
-                  Sono stilizzati anche <code>textarea</code>,
-                  <code>fieldset</code>, radio, checkbox, color, date, file,
-                  range, <code>progress</code> e <code>meter</code>.
+                  <code>textarea</code>, <code>fieldset</code>, radio, checkbox,
+                  color, date, file, range, <code>progress</code>, and
+                  <code>meter</code> are also styled.
                 </p>
               </section>
 
               <section id="doc-feedback" class="fb-doc-section">
                 <h2 class="fb-anchor-heading">
-                  <a href="#doc-feedback">10. Callout, stato e avanzamento</a>
+                  <a href="#doc-feedback">10. Callouts, status, and progress</a>
                 </h2>
                 <div class="fb-code-block">
                   <div class="fb-code-header">
@@ -1247,36 +1254,36 @@
                     <span class="fb-code-language">HTML</span>
                   </div>
                   <pre><code>&lt;aside class="fb-callout fb-callout--info"&gt;
-  &lt;p class="fb-callout-title"&gt;Informazione&lt;/p&gt;
-  &lt;p&gt;Messaggio contestuale.&lt;/p&gt;
+  &lt;p class="fb-callout-title"&gt;Information&lt;/p&gt;
+  &lt;p&gt;Contextual message.&lt;/p&gt;
 &lt;/aside&gt;
 
-&lt;p class="fb-status fb-status--success"&gt;Operativo&lt;/p&gt;
-&lt;p class="fb-status fb-status--warning"&gt;Da controllare&lt;/p&gt;
-&lt;p class="fb-status fb-status--danger"&gt;Errore&lt;/p&gt;
+&lt;p class="fb-status fb-status--success"&gt;Operational&lt;/p&gt;
+&lt;p class="fb-status fb-status--warning"&gt;Needs review&lt;/p&gt;
+&lt;p class="fb-status fb-status--danger"&gt;Error&lt;/p&gt;
 
-&lt;label for="upload-progress"&gt;Caricamento&lt;/label&gt;
+&lt;label for="upload-progress"&gt;Upload&lt;/label&gt;
 &lt;progress id="upload-progress" value="72" max="100"&gt;72%&lt;/progress&gt;
 
-&lt;label for="quality"&gt;Qualità&lt;/label&gt;
+&lt;label for="quality"&gt;Quality&lt;/label&gt;
 &lt;meter id="quality" min="0" max="100" low="60"
   high="85" optimum="100" value="94"&gt;94%&lt;/meter&gt;</code></pre>
                 </div>
                 <p>
-                  I callout supportano <code>--info</code>,
-                  <code>--success</code>, <code>--warning</code> e
+                  Callouts support <code>--info</code>,
+                  <code>--success</code>, <code>--warning</code>, and
                   <code>--danger</code>.
                 </p>
               </section>
 
               <section id="doc-native" class="fb-doc-section">
                 <h2 class="fb-anchor-heading">
-                  <a href="#doc-native">11. Accordion, dialog e popover</a>
+                  <a href="#doc-native">11. Accordions, dialogs, and popovers</a>
                 </h2>
                 <p>
-                  Accordion e popover funzionano con HTML nativo. Per un dialog
-                  modale, collega un evento a <code>showModal()</code> e a
-                  <code>close()</code>; FrameBaseCSS gestisce solo il rendering.
+                  Accordions and popovers work with native HTML. For a modal dialog,
+                  connect an event to <code>showModal()</code> and <code>close()</code>;
+                  FrameBaseCSS handles rendering only.
                 </p>
                 <div class="fb-code-block">
                   <div class="fb-code-header">
@@ -1284,18 +1291,18 @@
                     <span class="fb-code-language">HTML</span>
                   </div>
                   <pre><code>&lt;details&gt;
-  &lt;summary&gt;Titolo accordion&lt;/summary&gt;
-  &lt;div class="fb-details-body"&gt;Contenuto espandibile.&lt;/div&gt;
+  &lt;summary&gt;Accordion title&lt;/summary&gt;
+  &lt;div class="fb-details-body"&gt;Expandable content.&lt;/div&gt;
 &lt;/details&gt;
 
-&lt;button class="fb-button" type="button" popovertarget="help"&gt;Aiuto&lt;/button&gt;
-&lt;div id="help" class="fb-tooltip" popover&gt;Testo del popover.&lt;/div&gt;
+&lt;button class="fb-button" type="button" popovertarget="help"&gt;Help&lt;/button&gt;
+&lt;div id="help" class="fb-tooltip" popover&gt;Popover text.&lt;/div&gt;
 
 &lt;dialog id="confirm-dialog"&gt;
   &lt;form method="dialog" class="fb-stack"&gt;
-    &lt;h2&gt;Conferma operazione&lt;/h2&gt;
-    &lt;button class="fb-button" value="confirm"&gt;Conferma&lt;/button&gt;
-    &lt;button class="fb-button fb-button--secondary" value="cancel"&gt;Annulla&lt;/button&gt;
+    &lt;h2&gt;Confirm operation&lt;/h2&gt;
+    &lt;button class="fb-button" value="confirm"&gt;Confirm&lt;/button&gt;
+    &lt;button class="fb-button fb-button--secondary" value="cancel"&gt;Cancel&lt;/button&gt;
   &lt;/form&gt;
 &lt;/dialog&gt;</code></pre>
                 </div>
@@ -1303,12 +1310,12 @@
 
               <section id="doc-data" class="fb-doc-section">
                 <h2 class="fb-anchor-heading">
-                  <a href="#doc-data">12. Tabelle e dati</a>
+                  <a href="#doc-data">12. Tables and data</a>
                 </h2>
                 <p>
-                  Inserisci sempre la tabella in <code>.fb-table-wrap</code> per
-                  confinare lo scorrimento orizzontale. Rendi il wrapper
-                  focalizzabile quando contiene dati più larghi della viewport.
+                  Always place the table inside <code>.fb-table-wrap</code> to
+                  contain horizontal scrolling. Make the wrapper focusable when
+                  it contains data wider than the viewport.
                 </p>
                 <div class="fb-code-block">
                   <div class="fb-code-header">
@@ -1316,19 +1323,19 @@
                     <span class="fb-code-language">HTML</span>
                   </div>
                   <pre><code>&lt;div class="fb-table-wrap" tabindex="0"
-  aria-label="Dati progetto, scorribili orizzontalmente"&gt;
+  aria-label="Project data, horizontally scrollable"&gt;
   &lt;table class="fb-table--compact fb-table--striped"&gt;
-    &lt;caption&gt;Riepilogo progetti&lt;/caption&gt;
+    &lt;caption&gt;Project summary&lt;/caption&gt;
     &lt;thead&gt;
       &lt;tr&gt;
-        &lt;th scope="col"&gt;Progetto&lt;/th&gt;
-        &lt;th scope="col" class="fb-cell-right"&gt;Richieste&lt;/th&gt;
+        &lt;th scope="col"&gt;Project&lt;/th&gt;
+        &lt;th scope="col" class="fb-cell-right"&gt;Requests&lt;/th&gt;
       &lt;/tr&gt;
     &lt;/thead&gt;
     &lt;tbody&gt;
       &lt;tr&gt;
-        &lt;td&gt;Portale&lt;/td&gt;
-        &lt;td class="fb-cell-number"&gt;1.240&lt;/td&gt;
+        &lt;td&gt;Portal&lt;/td&gt;
+        &lt;td class="fb-cell-number"&gt;1,240&lt;/td&gt;
       &lt;/tr&gt;
     &lt;/tbody&gt;
   &lt;/table&gt;
@@ -1338,12 +1345,12 @@
 
               <section id="doc-code" class="fb-doc-section">
                 <h2 class="fb-anchor-heading">
-                  <a href="#doc-code">13. Codice e terminale</a>
+                  <a href="#doc-code">13. Code and terminal</a>
                 </h2>
                 <p>
-                  <code>.fb-code-block</code> mantiene intestazione e contenuto
-                  nello stesso frame. Aggiungi <code>.fb-code-block--wrap</code>
-                  solo quando il ritorno a capo è preferibile allo scorrimento.
+                  <code>.fb-code-block</code> keeps its header and content in the
+                  same frame. Add <code>.fb-code-block--wrap</code> only when
+                  wrapping is preferable to scrolling.
                 </p>
                 <div class="fb-code-block">
                   <div class="fb-code-header">
@@ -1358,11 +1365,11 @@
   &lt;pre&gt;&lt;code&gt;enabled: true&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;pre class="fb-terminal" aria-label="Output terminale"&gt;$ command --flag
-✓ operazione completata&lt;/pre&gt;</code></pre>
+&lt;pre class="fb-terminal" aria-label="Terminal output"&gt;$ command --flag
+✓ operation completed&lt;/pre&gt;</code></pre>
                 </div>
                 <p>
-                  Per l’evidenziazione manuale sono disponibili
+                  For manual syntax highlighting, the available classes are
                   <code>.fb-token-comment</code>, <code>.fb-token-prolog</code>,
                   <code>.fb-token-doctype</code>, <code>.fb-token-keyword</code>,
                   <code>.fb-token-type</code>, <code>.fb-token-selector</code>,
@@ -1373,18 +1380,18 @@
                   <code>.fb-token-boolean</code>, <code>.fb-token-constant</code>,
                   <code>.fb-token-operator</code>, <code>.fb-token-punctuation</code>,
                   <code>.fb-token-variable</code>, <code>.fb-token-class-name</code>,
-                  <code>.fb-token-deleted</code>, <code>.fb-token-error</code> e
+                  <code>.fb-token-deleted</code>, <code>.fb-token-error</code>, and
                   <code>.fb-token-invalid</code>.
                 </p>
               </section>
 
               <section id="doc-media" class="fb-doc-section">
                 <h2 class="fb-anchor-heading">
-                  <a href="#doc-media">14. Figure, gallery e avatar</a>
+                  <a href="#doc-media">14. Figures, galleries, and avatars</a>
                 </h2>
                 <p>
-                  Usa sempre un testo alternativo utile per immagini informative.
-                  Le immagini decorative devono avere <code>alt=""</code>.
+                  Always provide useful alternative text for informative images.
+                  Decorative images must use <code>alt=""</code>.
                 </p>
                 <div class="fb-code-block">
                   <div class="fb-code-header">
@@ -1392,17 +1399,17 @@
                     <span class="fb-code-language">HTML</span>
                   </div>
                   <pre><code>&lt;figure class="fb-media-wide fb-media-contain"&gt;
-  &lt;img src="diagram.png" alt="Flusso di distribuzione"&gt;
-  &lt;figcaption&gt;Architettura della distribuzione.&lt;/figcaption&gt;
+  &lt;img src="diagram.png" alt="Deployment flow"&gt;
+  &lt;figcaption&gt;Deployment architecture.&lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;div class="fb-gallery fb-gallery--compact"&gt;
   &lt;figure class="fb-gallery-item fb-gallery-item--square fb-gallery-item--contain"&gt;
     &lt;a class="fb-gallery-link" href="image.png"&gt;
       &lt;div class="fb-gallery-media"&gt;
-        &lt;img src="thumb.png" alt="Anteprima del progetto"&gt;
+        &lt;img src="thumb.png" alt="Project preview"&gt;
       &lt;/div&gt;
-      &lt;figcaption&gt;&lt;strong&gt;Progetto&lt;/strong&gt;Descrizione.&lt;/figcaption&gt;
+      &lt;figcaption&gt;&lt;strong&gt;Project&lt;/strong&gt; Description.&lt;/figcaption&gt;
     &lt;/a&gt;
   &lt;/figure&gt;
 &lt;/div&gt;
@@ -1410,35 +1417,35 @@
 &lt;img class="fb-avatar" src="avatar.jpg" alt="Ada Ferri"&gt;</code></pre>
                 </div>
                 <p>
-                  Le varianti gallery sono <code>.fb-gallery--compact</code>,
+                  Gallery variants are <code>.fb-gallery--compact</code>,
                   <code>.fb-gallery-item--wide</code>,
                   <code>.fb-gallery-item--portrait</code>,
-                  <code>.fb-gallery-item--square</code> e
-                  <code>.fb-gallery-item--contain</code>. Per semplici raccolte
-                  responsive è disponibile anche <code>.fb-image-grid</code>.
+                  <code>.fb-gallery-item--square</code>, and
+                  <code>.fb-gallery-item--contain</code>. For simple responsive
+                  collections, <code>.fb-image-grid</code> is also available.
                 </p>
               </section>
 
               <section id="doc-secondary-nav" class="fb-doc-section">
                 <h2 class="fb-anchor-heading">
-                  <a href="#doc-secondary-nav">15. Tab, paginazione, passi e vuoto</a>
+                  <a href="#doc-secondary-nav">15. Tabs, pagination, steps, and empty states</a>
                 </h2>
                 <p>
-                  I link usati come tab statiche sono navigazione e non richiedono
-                  <code>role="tab"</code>. Usa il pattern ARIA tab soltanto con
-                  il comportamento da tastiera completo implementato in JavaScript.
+                  Links used as static tabs are navigation and do not require
+                  <code>role="tab"</code>. Use the ARIA tabs pattern only when
+                  complete keyboard behavior is implemented in JavaScript.
                 </p>
                 <div class="fb-code-block">
                   <div class="fb-code-header">
                     <span class="fb-code-file">secondary-navigation.html</span>
                     <span class="fb-code-language">HTML</span>
                   </div>
-                  <pre><code>&lt;nav class="fb-tabs" aria-label="Sezioni correlate"&gt;
-  &lt;a class="fb-tab" href="#overview" aria-current="location"&gt;Panoramica&lt;/a&gt;
-  &lt;a class="fb-tab" href="#settings"&gt;Impostazioni&lt;/a&gt;
+                  <pre><code>&lt;nav class="fb-tabs" aria-label="Related sections"&gt;
+  &lt;a class="fb-tab" href="#overview" aria-current="location"&gt;Overview&lt;/a&gt;
+  &lt;a class="fb-tab" href="#settings"&gt;Settings&lt;/a&gt;
 &lt;/nav&gt;
 
-&lt;nav aria-label="Pagine risultati"&gt;
+&lt;nav aria-label="Result pages"&gt;
   &lt;ul class="fb-pagination"&gt;
     &lt;li&gt;&lt;a href="?page=1"&gt;1&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;span aria-current="page"&gt;2&lt;/span&gt;&lt;/li&gt;
@@ -1446,73 +1453,73 @@
 &lt;/nav&gt;
 
 &lt;ol class="fb-steps"&gt;
-  &lt;li class="fb-step"&gt;&lt;strong&gt;Configura&lt;/strong&gt;&lt;br&gt;Scegli le opzioni.&lt;/li&gt;
-  &lt;li class="fb-step"&gt;&lt;strong&gt;Verifica&lt;/strong&gt;&lt;br&gt;Controlla i dati.&lt;/li&gt;
+  &lt;li class="fb-step"&gt;&lt;strong&gt;Configure&lt;/strong&gt;&lt;br&gt;Choose the options.&lt;/li&gt;
+  &lt;li class="fb-step"&gt;&lt;strong&gt;Verify&lt;/strong&gt;&lt;br&gt;Review the data.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;div class="fb-empty"&gt;
-  &lt;h2&gt;Nessun risultato&lt;/h2&gt;
-  &lt;p&gt;Modifica i filtri e riprova.&lt;/p&gt;
+  &lt;h2&gt;No results&lt;/h2&gt;
+  &lt;p&gt;Change the filters and try again.&lt;/p&gt;
 &lt;/div&gt;</code></pre>
                 </div>
               </section>
 
               <section id="doc-utilities" class="fb-doc-section">
                 <h2 class="fb-anchor-heading">
-                  <a href="#doc-utilities">16. Ancore e utility</a>
+                  <a href="#doc-utilities">16. Anchors and utilities</a>
                 </h2>
                 <p>
-                  Le utility sono eccezioni intenzionali e a responsabilità
-                  singola. Preferisci componenti e primitive di layout quando
-                  descrivono meglio la struttura.
+                  Utilities are intentional, single-purpose exceptions. Prefer
+                  components and layout primitives when they describe the
+                  structure more clearly.
                 </p>
                 <div class="fb-table-wrap" tabindex="0"
-                  aria-label="Riferimento utility, scorribile orizzontalmente">
+                  aria-label="Utility reference, horizontally scrollable">
                   <table class="fb-table--compact fb-table--striped">
                     <thead>
                       <tr>
-                        <th scope="col">Classe</th>
-                        <th scope="col">Contratto</th>
+                        <th scope="col">Class</th>
+                        <th scope="col">Contract</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
                         <td><code>.fb-anchor-heading</code></td>
-                        <td>Il titolo contiene un link alla propria sezione.</td>
+                        <td>The heading contains a link to its own section.</td>
                       </tr>
                       <tr>
                         <td><code>.u-sr-only</code></td>
-                        <td>Contenuto disponibile alle tecnologie assistive.</td>
+                        <td>Content available to assistive technologies.</td>
                       </tr>
                       <tr>
                         <td><code>.u-no-margin</code>, <code>.u-full-width</code></td>
-                        <td>Rimuove il margine o imposta la larghezza completa.</td>
+                        <td>Removes the margin or sets full width.</td>
                       </tr>
                       <tr>
                         <td><code>.u-text-primary</code>, <code>--info</code>, <code>--success</code>, <code>--warning</code>, <code>--danger</code></td>
-                        <td>Applica un colore semantico al testo.</td>
+                        <td>Applies a semantic color to text.</td>
                       </tr>
                       <tr>
                         <td><code>.u-text-left</code>, <code>.u-text-center</code>, <code>.u-text-right</code></td>
-                        <td>Imposta l’allineamento del testo.</td>
+                        <td>Sets text alignment.</td>
                       </tr>
                       <tr>
                         <td><code>.u-nowrap</code>, <code>.u-break-anywhere</code></td>
-                        <td>Controlla la gestione delle stringhe lunghe.</td>
+                        <td>Controls how long strings are handled.</td>
                       </tr>
                       <tr>
                         <td><code>.u-overflow-auto</code></td>
-                        <td>Confina lo scorrimento al componente.</td>
+                        <td>Contains scrolling within the component.</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
                 <div class="fb-callout fb-callout--success">
-                  <p class="fb-callout-title">Comportamenti globali inclusi</p>
+                  <p class="fb-callout-title">Included global behavior</p>
                   <p>
-                    Breakpoint responsive, focus visibile, target highlighting,
-                    scrollbar, stampa, contrasto elevato e riduzione del movimento
-                    sono forniti dal foglio senza classi aggiuntive.
+                    Responsive breakpoints, visible focus, target highlighting,
+                    scrollbars, print styles, high contrast, and reduced motion
+                    are provided by the stylesheet without additional classes.
                   </p>
                 </div>
               </section>
@@ -1520,25 +1527,25 @@
           </div>
 
           <aside class="fb-doc-toc">
-            <nav class="fb-doc-toc-panel" aria-label="Indice della pagina">
-              <p class="fb-doc-toc-title">In questa pagina</p>
+            <nav class="fb-doc-toc-panel" aria-label="Page contents">
+              <p class="fb-doc-toc-title">On this page</p>
               <ul class="fb-doc-toc-list">
-                <li><a href="#doc-overview" aria-current="true">Installazione</a></li>
-                <li><a href="#doc-tokens">Token</a></li>
-                <li><a href="#doc-light-theme">Tema light</a></li>
+                <li><a href="#doc-overview" aria-current="true">Installation</a></li>
+                <li><a href="#doc-tokens">Tokens</a></li>
+                <li><a href="#doc-light-theme">Light theme</a></li>
                 <li><a href="#doc-layouts">Layout</a></li>
                 <li><a href="#doc-hero">Hero</a></li>
-                <li><a href="#doc-navigation">Navigazione</a></li>
-                <li><a href="#doc-documentation-layout">Documentazione</a></li>
-                <li><a href="#doc-content">Contenuto</a></li>
-                <li><a href="#doc-actions">Azioni</a></li>
-                <li><a href="#doc-forms">Form</a></li>
+                <li><a href="#doc-navigation">Navigation</a></li>
+                <li><a href="#doc-documentation-layout">Documentation</a></li>
+                <li><a href="#doc-content">Content</a></li>
+                <li><a href="#doc-actions">Actions</a></li>
+                <li><a href="#doc-forms">Forms</a></li>
                 <li><a href="#doc-feedback">Feedback</a></li>
-                <li><a href="#doc-native">Controlli nativi</a></li>
-                <li><a href="#doc-data">Dati</a></li>
-                <li><a href="#doc-code">Codice</a></li>
+                <li><a href="#doc-native">Native controls</a></li>
+                <li><a href="#doc-data">Data</a></li>
+                <li><a href="#doc-code">Code</a></li>
                 <li><a href="#doc-media">Media</a></li>
-                <li><a href="#doc-secondary-nav">Navigazione secondaria</a></li>
+                <li><a href="#doc-secondary-nav">Secondary navigation</a></li>
                 <li><a href="#doc-utilities">Utility</a></li>
               </ul>
             </nav>
@@ -1549,9 +1556,9 @@
 
     <footer class="fb-site-footer">
       <div class="fb-container fb-container--wide fb-cluster">
-        <span>FrameBaseCSS documentazione offline</span>
+        <span>FrameBaseCSS offline documentation</span>
         <span aria-hidden="true">·</span>
-        <a href="#top">Torna all'inizio</a>
+        <a href="#top">Back to top</a>
       </div>
     </footer>
   </div>
