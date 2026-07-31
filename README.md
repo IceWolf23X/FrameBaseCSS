@@ -1,7 +1,8 @@
 # FrameBaseCSS
 
-FrameBaseCSS è un design system CSS dark, monospace e senza dipendenze,
-progettato per siti pubblici, interfacce applicative e documentazione tecnica.
+FrameBaseCSS è un design system CSS monospace, personalizzabile e senza
+dipendenze, progettato per siti pubblici, interfacce applicative e
+documentazione tecnica. Il tema predefinito è dark.
 
 Il progetto mantiene una sola sorgente canonica leggibile:
 [`framebase.css`](framebase.css).
@@ -58,6 +59,26 @@ python -m http.server 8000
 
 Apri quindi `http://127.0.0.1:8000/framebase-demo.html`.
 
+## Temi
+
+Il tema dark è incluso in `framebase.css`:
+
+```html
+<link rel="stylesheet" href="framebase.css">
+```
+
+Il tema light ufficiale è un entrypoint autonomo che importa la base e
+sovrascrive esclusivamente i token visivi:
+
+```html
+<link rel="stylesheet" href="framebase-light.css">
+```
+
+Non collegare contemporaneamente entrambi i file. La pagina
+[`framebase-light-demo.html`](framebase-light-demo.html) usa lo stesso identico
+markup della documentazione dark: cambia soltanto il collegamento al foglio
+`framebase-light.css`.
+
 ## Personalizzazione
 
 Sovrascrivi i token dopo il foglio principale:
@@ -85,4 +106,6 @@ e `overflow: clip`. È destinato alle versioni moderne dei browser principali.
 
 - `framebase.css`: sorgente canonica.
 - `framebase-demo.html`: documentazione e verifica visuale offline.
+- `framebase-light.css`: tema light che importa la sorgente canonica.
+- `framebase-light-demo.html`: verifica visuale offline del tema light.
 - `CODE_INDEX.md`: mappa tecnica del repository.

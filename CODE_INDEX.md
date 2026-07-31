@@ -6,9 +6,11 @@ Mappa tecnica compatta del progetto. I percorsi sono relativi alla root.
 
 | Percorso | Ruolo | Contenuto e relazioni |
 | --- | --- | --- |
-| `framebase.css` | Sorgente canonica e contratto pubblico | Design system dark monospace senza dipendenze. Definisce token `--fb-*`, layout e componenti `.fb-*` e utility `.u-*` con un unico contratto namespaced. È consumato direttamente da `framebase-demo.html`. |
-| `framebase-demo.html` | Documentazione pubblica e verifica manuale | Pagina HTML offline che usa esclusivamente `framebase.css`. Documenta i contratti HTML pubblici e mostra gli stessi componenti in esempi realistici: sito pubblico, dashboard, contenuto editoriale, form, dati, codice, media e documentazione tecnica responsive. |
-| `README.md` | Entrypoint pubblico | Presenta obiettivi, quick start, percorso della documentazione, personalizzazione, requisiti browser e mappa dei file pubblici. |
+| `framebase.css` | Sorgente canonica e contratto pubblico | Design system monospace senza dipendenze con tema dark predefinito. Definisce token `--fb-*`, layout e componenti `.fb-*` e utility `.u-*` con un unico contratto namespaced. È consumato direttamente dalla documentazione e importato dal tema light. |
+| `framebase-light.css` | Override ufficiale del tema | Importa `framebase.css` e ridefinisce esclusivamente schema colore, palette semantica e ombre. Non duplica regole di componenti o layout. |
+| `framebase-demo.html` | Documentazione pubblica e verifica dark | Pagina HTML offline che usa esclusivamente `framebase.css`. Documenta i contratti HTML pubblici e mostra gli stessi componenti in esempi realistici: sito pubblico, dashboard, contenuto editoriale, form, dati, codice, media e documentazione tecnica responsive. |
+| `framebase-light-demo.html` | Verifica manuale light | Copia strutturalmente identica di `framebase-demo.html`; l’unica differenza ammessa è il collegamento a `framebase-light.css`, così ogni componente viene verificato senza markup specifico del tema. |
+| `README.md` | Entrypoint pubblico | Presenta obiettivi, quick start, temi ufficiali, percorso della documentazione, personalizzazione, requisiti browser e mappa dei file pubblici. |
 
 ## Struttura di `framebase.css`
 

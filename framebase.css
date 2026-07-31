@@ -2,9 +2,9 @@
 ==============================================================================
 FRAMEBASECSS
 ==============================================================================
-Version: 1.0.0
-Purpose: reusable, dependency-free dark design system for websites and
-technical documentation.
+Version: 1.1.0
+Purpose: reusable, themeable, dependency-free design system for websites and
+technical documentation. The default theme is dark.
 
 Conventions:
   - Design tokens use the --fb-* prefix.
@@ -22,7 +22,8 @@ No fonts, images, scripts, frameworks, or network resources are required.
    ========================================================================== */
 
 :root {
-  color-scheme: dark;
+  --fb-color-scheme: dark;
+  color-scheme: var(--fb-color-scheme);
 
   /* Palette */
   --fb-color-background: #2f3235;
@@ -33,11 +34,17 @@ No fonts, images, scripts, frameworks, or network resources are required.
   --fb-color-text-muted: #b8c0c7;
   --fb-color-text: #f3f6f8;
   --fb-color-primary: #35c6d4;
+  --fb-color-primary-hover: #65d5df;
+  --fb-color-on-primary: #172023;
   --fb-color-secondary: #0e96a6;
   --fb-color-info: #8feaf2;
   --fb-color-success: #45d16f;
   --fb-color-warning: #f0b84b;
+  --fb-color-on-warning: #172023;
   --fb-color-danger: #f05b4f;
+  --fb-color-danger-action: #a83f37;
+  --fb-color-danger-action-hover: #c24b42;
+  --fb-color-on-danger: #ffffff;
   --fb-color-code-background: #282b2e;
   --fb-color-backdrop: rgb(0 0 0 / 0.62);
 
@@ -82,6 +89,7 @@ No fonts, images, scripts, frameworks, or network resources are required.
   --fb-radius-pill: 999px;
   --fb-shadow-soft: 0 2px 10px rgb(0 0 0 / 0.14);
   --fb-shadow-inset: inset 0 1px 0 rgb(255 255 255 / 0.025);
+  --fb-shadow-overlay: 0 10px 35px rgb(0 0 0 / 0.35);
   --fb-transition-fast: 140ms ease;
 
   /* Layout */
@@ -170,7 +178,7 @@ svg tspan {
 }
 
 ::selection {
-  color: var(--fb-color-background);
+  color: var(--fb-color-on-primary);
   background: var(--fb-color-primary);
 }
 
@@ -320,7 +328,7 @@ hr {
 mark {
   padding: 0.08em 0.28em;
   border-radius: 4px;
-  color: var(--fb-color-background);
+  color: var(--fb-color-on-warning);
   background: var(--fb-color-warning);
 }
 
@@ -441,7 +449,7 @@ var {
   left: var(--fb-space-2);
   padding: var(--fb-space-2) var(--fb-space-3);
   border-radius: var(--fb-radius-sm);
-  color: var(--fb-color-background);
+  color: var(--fb-color-on-primary);
   background: var(--fb-color-primary);
   font-weight: 800;
   transform: translateY(-160%);
@@ -932,7 +940,7 @@ var {
   padding: 0.52rem 0.85rem;
   border: 1px solid var(--fb-color-primary);
   border-radius: var(--fb-radius-sm);
-  color: var(--fb-color-background);
+  color: var(--fb-color-on-primary);
   background: var(--fb-color-primary);
   font-weight: 800;
   line-height: 1.2;
@@ -947,9 +955,8 @@ var {
 }
 
 .fb-button:hover {
-  color: var(--fb-color-background);
-  background:
-    color-mix(in srgb, var(--fb-color-primary) 86%, white);
+  color: var(--fb-color-on-primary);
+  background: var(--fb-color-primary-hover);
   transform: translateY(-1px);
 }
 
@@ -982,10 +989,15 @@ var {
 }
 
 .fb-button--danger {
-  border-color: var(--fb-color-danger);
-  color: var(--fb-color-text);
-  background:
-    color-mix(in srgb, var(--fb-color-danger) 75%, var(--fb-color-surface));
+  border-color: var(--fb-color-danger-action);
+  color: var(--fb-color-on-danger);
+  background: var(--fb-color-danger-action);
+}
+
+.fb-button--danger:hover {
+  border-color: var(--fb-color-danger-action-hover);
+  color: var(--fb-color-on-danger);
+  background: var(--fb-color-danger-action-hover);
 }
 
 .fb-button--sm {
@@ -1422,7 +1434,7 @@ dialog,
   border-radius: var(--fb-radius-lg);
   color: var(--fb-color-text);
   background: var(--fb-color-surface);
-  box-shadow: 0 10px 35px rgb(0 0 0 / 0.35);
+  box-shadow: var(--fb-shadow-overlay);
 }
 
 dialog::backdrop,
@@ -2220,19 +2232,32 @@ figure:target {
 }
 
 @media print {
-  :root {
-    color-scheme: light;
+  html:root {
+    --fb-color-scheme: light;
     --fb-color-background: #ffffff;
     --fb-color-surface: #ffffff;
     --fb-color-surface-alt: #f2f4f5;
+    --fb-color-surface-raised: #e5e9ec;
     --fb-color-border: #687078;
     --fb-color-text-muted: #343a40;
     --fb-color-text: #111417;
     --fb-color-primary: #06717c;
+    --fb-color-primary-hover: #055d65;
+    --fb-color-on-primary: #ffffff;
+    --fb-color-secondary: #075d66;
     --fb-color-info: #075f75;
+    --fb-color-success: #176b35;
+    --fb-color-warning: #6f4b00;
+    --fb-color-on-warning: #ffffff;
+    --fb-color-danger: #a1261b;
+    --fb-color-danger-action: #a1261b;
+    --fb-color-danger-action-hover: #7f1e16;
+    --fb-color-on-danger: #ffffff;
     --fb-color-code-background: #f2f4f5;
+    --fb-color-backdrop: transparent;
     --fb-shadow-soft: none;
     --fb-shadow-inset: none;
+    --fb-shadow-overlay: none;
   }
 
   body {
