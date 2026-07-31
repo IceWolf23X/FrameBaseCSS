@@ -7,6 +7,9 @@ documentazione tecnica. Il tema predefinito è dark.
 Il progetto mantiene una sola sorgente canonica leggibile:
 [`framebase.css`](framebase.css).
 
+Documentazione pubblica:
+[`icewolf23x.github.io/FrameBaseCSS`](https://icewolf23x.github.io/FrameBaseCSS/).
+
 ## Quick start
 
 ```html
@@ -35,7 +38,7 @@ applicativi che HTML non fornisce autonomamente.
 
 ## Documentazione dei componenti
 
-[`framebase-demo.html`](framebase-demo.html) è sia la documentazione pubblica
+[`index.html`](index.html) è sia la documentazione pubblica
 dei contratti HTML sia una pagina di verifica offline. Contiene:
 
 - installazione e personalizzazione tramite token;
@@ -57,7 +60,7 @@ Per consultarla localmente:
 python -m http.server 8000
 ```
 
-Apri quindi `http://127.0.0.1:8000/framebase-demo.html`.
+Apri quindi `http://127.0.0.1:8000/`.
 
 ## Temi
 
@@ -105,7 +108,8 @@ e `overflow: clip`. È destinato alle versioni moderne dei browser principali.
 ## File
 
 - `framebase.css`: sorgente canonica.
-- `framebase-demo.html`: documentazione e verifica visuale offline.
+- `index.html`: homepage GitHub Pages, documentazione e verifica visuale dark.
 - `framebase-light.css`: tema light che importa la sorgente canonica.
 - `framebase-light-demo.html`: verifica visuale offline del tema light.
+- `.nojekyll`: pubblicazione statica GitHub Pages senza trasformazioni Jekyll.
 - `CODE_INDEX.md`: mappa tecnica del repository.
