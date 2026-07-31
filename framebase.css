@@ -1554,6 +1554,7 @@ code {
   border-radius: 5px;
   background: var(--fb-color-surface-alt);
   overflow-wrap: anywhere;
+  white-space: nowrap;
 }
 
 .fb-code-block {
@@ -2050,6 +2051,7 @@ figure:target {
 
 .u-break-anywhere {
   overflow-wrap: anywhere;
+  white-space: normal;
 }
 
 .u-overflow-auto {
