@@ -79,8 +79,9 @@ sovrascrive esclusivamente i token visivi:
 
 Non collegare contemporaneamente entrambi i file. La pagina
 [`framebase-light-demo.html`](framebase-light-demo.html) usa lo stesso identico
-markup della documentazione dark: cambia soltanto il collegamento al foglio
-`framebase-light.css`.
+markup della documentazione dark. Cambiano soltanto il collegamento al foglio
+`framebase-light.css` e il selettore reciproco, che dalla pagina light torna al
+tema dark.
 
 ## Personalizzazione
 
