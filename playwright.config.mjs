@@ -9,15 +9,31 @@ export default defineConfig({
   reporter: process.env.CI
     ? [["github"], ["html", { open: "never" }]]
     : "list",
-  snapshotPathTemplate: "{testDir}/__screenshots__/{arg}{ext}",
+  snapshotPathTemplate: "{testDir}/__screenshots__/{arg}-{platform}{ext}",
   use: {
-    ...devices["Desktop Chrome"],
     baseURL: "http://127.0.0.1:4173",
+    colorScheme: "dark",
     locale: "en-US",
     timezoneId: "UTC",
-    reducedMotion: "reduce",
+    reducedMotion: "no-preference",
     trace: "retain-on-failure",
   },
+  projects: [
+    {
+      name: "chromium",
+      use: { ...devices["Desktop Chrome"] },
+    },
+    {
+      name: "firefox",
+      testIgnore: /visual\.spec\.mjs/,
+      use: { ...devices["Desktop Firefox"] },
+    },
+    {
+      name: "webkit",
+      testIgnore: /visual\.spec\.mjs/,
+      use: { ...devices["Desktop Safari"] },
+    },
+  ],
   webServer: {
     command: "node scripts/serve-static.mjs",
     url: "http://127.0.0.1:4173",

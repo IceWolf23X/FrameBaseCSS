@@ -2,7 +2,8 @@ import { expect, test } from "@playwright/test";
 
 const screenshotOptions = {
   animations: "disabled",
-  maxDiffPixelRatio: 0.04,
+  caret: "hide",
+  maxDiffPixelRatio: 0.01,
 };
 
 const scenarios = [
@@ -10,10 +11,19 @@ const scenarios = [
   ["light", "/framebase-light-demo.html"],
 ];
 
+/** Opens a local fixture after removing optional remote scripts from screenshot timing. */
+async function openVisualFixture(page, path) {
+  // Keeps the optional Highlight.js CDN request outside deterministic visual tests.
+  await page.route("https://cdn.jsdelivr.net/**", (route) => route.abort());
+  await page.goto(path, { waitUntil: "networkidle" });
+  // Waits for any locally available fonts to settle before measuring geometry.
+  await page.evaluate(() => document.fonts.ready);
+}
+
 for (const [theme, path] of scenarios) {
   /** Captures the stable public-site, form, and documentation composition per theme. */
   test(`${theme} theme keeps the primary component layouts stable`, async ({ page }) => {
-    await page.goto(path);
+    await openVisualFixture(page, path);
 
     await expect(page.locator("#public-site")).toHaveScreenshot(
       `${theme}-public-site.png`,
@@ -33,7 +43,7 @@ for (const [theme, path] of scenarios) {
 /** Captures the mobile stacking and navigation behavior of the public hero. */
 test("dark theme keeps the mobile hero stable", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto("/index.html");
+  await openVisualFixture(page, "/index.html");
 
   await expect(page.locator("#public-site")).toHaveScreenshot(
     "dark-public-site-mobile.png",
@@ -44,7 +54,7 @@ test("dark theme keeps the mobile hero stable", async ({ page }) => {
 for (const theme of ["dark", "light"]) {
   /** Renders one component document under both token sets without changing its HTML. */
   test(`component contracts remain stable in ${theme} theme`, async ({ page }) => {
-    await page.goto("/docs/components.html");
+    await openVisualFixture(page, "/docs/components.html");
     // Switches only the documented theme attribute while preserving all HTML.
     await page.locator("html").evaluate((root, selectedTheme) => {
       root.dataset.theme = selectedTheme;
@@ -71,7 +81,7 @@ for (const theme of ["dark", "light"]) {
 /** Captures narrow responsive table, navigation, stepper, and calendar behavior. */
 test("component contracts remain stable in a narrow mobile layout", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 800 });
-  await page.goto("/docs/components.html");
+  await openVisualFixture(page, "/docs/components.html");
 
   await expect(page.locator("#responsive-navigation")).toHaveScreenshot(
     "components-mobile-navigation.png", screenshotOptions,
@@ -87,7 +97,7 @@ test("component contracts remain stable in a narrow mobile layout", async ({ pag
 /** Captures the intermediate tablet layout where multi-column contracts collapse selectively. */
 test("component contracts remain stable at the tablet breakpoint", async ({ page }) => {
   await page.setViewportSize({ width: 820, height: 900 });
-  await page.goto("/docs/components.html");
+  await openVisualFixture(page, "/docs/components.html");
 
   await expect(page.locator("#inputs")).toHaveScreenshot(
     "components-tablet-inputs.png", screenshotOptions,
@@ -96,7 +106,7 @@ test("component contracts remain stable at the tablet breakpoint", async ({ page
 
 /** Captures native dialog drawer geometry and its modal backdrop. */
 test("open drawer remains stable", async ({ page }) => {
-  await page.goto("/docs/components.html");
+  await openVisualFixture(page, "/docs/components.html");
   // Opens the native dialog for its modal visual state.
   await page.locator("#component-drawer").evaluate((dialog) => dialog.showModal());
 
@@ -108,7 +118,7 @@ test("open drawer remains stable", async ({ page }) => {
 
 /** Captures visible focus, hover, disabled, invalid, popover, and open-details states. */
 test("interactive limit states remain visually distinct", async ({ page }) => {
-  await page.goto("/index.html#forms");
+  await openVisualFixture(page, "/index.html#forms");
   // Removes a fixed-element screenshot artifact outside the form under test.
   await page.locator(".fb-skip-link").evaluate((link) => {
     link.hidden = true;
@@ -140,7 +150,7 @@ test("user preference media queries remain stable", async ({ page }) => {
       { name: "prefers-color-scheme", value: "dark" },
     ],
   });
-  await page.goto("/docs/components.html");
+  await openVisualFixture(page, "/docs/components.html");
 
   await expect(page.locator("#loading")).toHaveScreenshot(
     "preferences-reduced-motion-high-contrast.png", screenshotOptions,
@@ -150,7 +160,7 @@ test("user preference media queries remain stable", async ({ page }) => {
 /** Captures the printable documentation contract with interactive overlays removed. */
 test("print layout remains stable", async ({ page }) => {
   await page.emulateMedia({ media: "print", colorScheme: "light" });
-  await page.goto("/index.html");
+  await openVisualFixture(page, "/index.html");
 
   await expect(page.locator("#public-site")).toHaveScreenshot(
     "print-public-site.png", screenshotOptions,
@@ -159,7 +169,7 @@ test("print layout remains stable", async ({ page }) => {
 
 /** Captures logical navigation, form, timeline, stepper, and table geometry in RTL. */
 test("right-to-left component geometry remains stable", async ({ page }) => {
-  await page.goto("/docs/rtl.html");
+  await openVisualFixture(page, "/docs/rtl.html");
 
   await expect(page.locator("#forms .fb-input-group")).toHaveScreenshot(
     "rtl-input-group.png", screenshotOptions,
@@ -179,7 +189,7 @@ test("right-to-left component geometry remains stable", async ({ page }) => {
 /** Captures the same RTL contracts after their mobile responsive transition. */
 test("right-to-left mobile table remains stable", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto("/docs/rtl.html");
+  await openVisualFixture(page, "/docs/rtl.html");
 
   await expect(page.locator(".fb-table-wrap")).toHaveScreenshot(
     "rtl-mobile-table.png", screenshotOptions,

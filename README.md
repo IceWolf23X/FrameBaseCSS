@@ -64,10 +64,11 @@ No framework, remote font, image, JavaScript, or build step is required.
 JavaScript remains necessary only for application behavior that HTML does not
 provide on its own.
 
-Install the prepared package after its first npm release:
+After the `1.2.0` package is intentionally published, install that exact
+version with:
 
 ```sh
-npm install framebasecss@1.1.0
+npm install framebasecss@1.2.0
 ```
 
 The package exposes the minified dark entry point by default and explicit
@@ -75,13 +76,14 @@ subpaths for `base`, `light`, `themes`, and `highlight`. FrameBaseCSS has not
 been published to npm by this repository update; the metadata is ready, but an
 intentional publication remains a separate maintainer action.
 
-Version-pinned CDN forms for a published `1.1.0` package are:
+The following version-pinned CDN forms become valid only after `1.2.0` is
+published to npm:
 
 ```html
 <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/framebasecss@1.1.0/framebase.min.css">
+  href="https://cdn.jsdelivr.net/npm/framebasecss@1.2.0/framebase.min.css">
 <link rel="stylesheet"
-  href="https://unpkg.com/framebasecss@1.1.0/framebase.min.css">
+  href="https://unpkg.com/framebasecss@1.2.0/framebase.min.css">
 ```
 
 Replace the asset name with `framebase-light.min.css`,
@@ -298,16 +300,21 @@ The fully enhanced compatibility target is:
 
 | Browser | Minimum target | Evidence level |
 | --- | ---: | --- |
-| Chrome / Chromium | 114 | Feature-derived; Chromium 151 tested locally |
+| Chrome / Chromium | 114 | Feature-derived; Chromium 151 automated |
 | Microsoft Edge | 114 | Feature-derived |
-| Mozilla Firefox | 125 | Feature-derived |
-| Apple Safari | 17 | Feature-derived |
+| Mozilla Firefox | 125 | Feature-derived; Firefox 153 automated |
+| Apple Safari | 17 | Feature-derived; Playwright WebKit 26.5 automated |
 
-The repository currently automates Chromium 151 through Playwright 1.62.1 on
-desktop, tablet, narrow mobile, print, reduced-motion, increased-contrast,
-dark, light, auto, and RTL scenarios. GitHub Actions is configured to repeat
-the pinned Chromium suite on Ubuntu; Firefox and Safari are compatibility
-targets and are not yet claimed as directly tested.
+The repository uses Playwright 1.62.1 to run structural, responsive, keyboard,
+accessibility, theme, RTL, dialog, details, native-control, and progressive
+popover checks in Chromium 151, Firefox 153, and WebKit 26.5. Visual regression
+screenshots remain Chromium-only and use operating-system-specific baselines
+because text rasterization and system monospace metrics differ between Windows
+and Ubuntu. WebKit coverage is direct engine coverage; Safari 17 remains a
+feature-derived product target rather than a claim that Safari itself ran in CI.
+WebKit skip-link focus is checked directly because Safari-style full-keyboard
+link navigation is a host preference; disclosure and dialog keyboard behavior
+are still exercised through keyboard input.
 
 `color-mix()` and `:has()` are progressive visual enhancements. Without them,
 semantic content and native states remain usable but some derived backgrounds
@@ -334,7 +341,7 @@ counterparts are generated distribution assets and must not be edited by hand.
 
 ```powershell
 npm ci
-npx playwright install chromium
+npx playwright install chromium firefox webkit
 npm run build
 npm run build:css
 npm run check
@@ -358,11 +365,23 @@ The build is deterministic and intentionally uses fixed source/output pairs.
 It does not discover files through globs, inline theme imports, or perform
 level-two rule restructuring.
 
+Chromium owns the visual baselines; Firefox and WebKit execute the non-visual
+browser contracts. `playwright.config.mjs` defaults to normal motion and the
+suite separately verifies `prefers-reduced-motion: reduce`. Screenshot capture
+disables animations, hides the caret, waits for stable local layout, and uses a
+`0.01` pixel-difference ratio. Baselines are suffixed with `-win32` or `-linux`.
+
+To review an intentional visual change, run `npm run test:visual`, inspect each
+expected/actual/diff image in `test-results`, and update only the current
+platform with `npm run test:browser:update`. Never copy an unreviewed baseline
+between operating systems or increase the tolerance to conceal a regression.
+
 ## Continuous integration
 
 The `CSS distribution` workflow runs on pushes and pull requests with
 read-only repository permissions. It installs the exact lockfile dependency
-set and pinned Chromium browser, then runs `npm run check`. Stale generated
+set and pinned Chromium, Firefox, and WebKit browsers, then runs
+`npm run check`. Stale generated
 assets, invalid HTML, axe violations, visual regressions, missing release files,
 or inconsistent package metadata fail the job. Browser diagnostics are uploaded
 only after failure. The workflow never edits the repository or creates commits.

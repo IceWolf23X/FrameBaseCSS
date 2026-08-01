@@ -14,7 +14,7 @@ Requirements:
 
 ```sh
 npm ci
-npx playwright install chromium
+npx playwright install chromium firefox webkit
 npm run check
 ```
 
@@ -46,10 +46,13 @@ npm run test:visual
 npm run check
 ```
 
-Visual changes must be intentional. Inspect every changed image before running
-`npm run test:browser:update`; never update snapshots merely to silence a
-failure. Tests use local assets only and disable animation for deterministic
-screenshots.
+Visual changes must be intentional. Inspect expected, actual, and diff images
+before running `npm run test:browser:update`; never update snapshots merely to
+silence a failure. Chromium owns the OS-specific `-win32` and `-linux`
+baselines. Firefox and WebKit run the functional, responsive, keyboard, theme,
+RTL, and accessibility contracts without duplicating screenshots. Tests block
+the optional Highlight.js CDN request, disable animation, hide the caret, wait
+for stable local layout, and use a strict `0.01` difference ratio.
 
 ## Accessibility
 

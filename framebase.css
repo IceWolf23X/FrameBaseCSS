@@ -1,5 +1,5 @@
 /*!
- * FrameBaseCSS v1.1.0
+ * FrameBaseCSS v1.2.0
  * Copyright (c) 2026 IceWolf23X
  * Released under the MIT License.
  * https://github.com/IceWolf23X/FrameBaseCSS
@@ -7,7 +7,7 @@
 ==============================================================================
 FRAMEBASECSS
 ==============================================================================
-Version: 1.1.0
+Version: 1.2.0
 Purpose: reusable, themeable, dependency-free design system for websites and
 technical documentation. The default theme is dark.
 
@@ -2170,6 +2170,12 @@ progress.fb-loading-bar--indeterminate::-moz-progress-bar {
 
 .fb-toast-title {
   color: var(--fb-toast-accent, var(--fb-color-info));
+  color:
+    color-mix(
+      in srgb,
+      var(--fb-toast-accent, var(--fb-color-info)) 60%,
+      var(--fb-color-text)
+    );
   font-weight: 800;
 }
 
@@ -2260,11 +2266,23 @@ progress.fb-loading-bar--indeterminate::-moz-progress-bar {
 
 .fb-menu-item--danger {
   color: var(--fb-color-danger);
+  color:
+    color-mix(
+      in srgb,
+      var(--fb-color-danger) 60%,
+      var(--fb-color-text)
+    );
 }
 
 .fb-menu-label {
   padding: var(--fb-space-2) var(--fb-space-3) var(--fb-space-1);
   color: var(--fb-color-text-muted);
+  color:
+    color-mix(
+      in srgb,
+      var(--fb-color-text-muted) 60%,
+      var(--fb-color-text)
+    );
   font-size: var(--fb-font-size-xs);
   font-weight: 800;
   text-transform: uppercase;
@@ -2279,6 +2297,12 @@ progress.fb-loading-bar--indeterminate::-moz-progress-bar {
 .fb-menu-shortcut {
   margin-inline-start: auto;
   color: var(--fb-color-text-muted);
+  color:
+    color-mix(
+      in srgb,
+      var(--fb-color-text-muted) 60%,
+      var(--fb-color-text)
+    );
   font-size: var(--fb-font-size-xs);
 }
 
@@ -3304,24 +3328,24 @@ figure:target {
   *::before,
   *::after {
     scroll-behavior: auto;
-    animation-duration: 0.01ms;
-    animation-iteration-count: 1;
-    transition-duration: 0.01ms;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 
   .fb-loading-bar--indeterminate::after {
     inset-inline-start: 32.5%;
-    animation: none;
+    animation: none !important;
   }
 
   progress.fb-loading-bar--indeterminate::-webkit-progress-bar {
     background-position: 50% 0;
-    animation: none;
+    animation: none !important;
   }
 
   progress.fb-loading-bar--indeterminate::-moz-progress-bar {
     background-position: 50% 0;
-    animation: none;
+    animation: none !important;
   }
 }
 

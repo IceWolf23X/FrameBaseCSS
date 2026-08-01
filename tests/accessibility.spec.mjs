@@ -69,14 +69,74 @@ test("automatic theme follows the emulated system preference", async ({ page }) 
   await expect(page.locator("html")).toHaveCSS("background-color", "rgb(47, 50, 53)");
 });
 
+/** Verifies that ordinary motion remains enabled with the default browser preference. */
+test("normal motion keeps component animation enabled", async ({ page }) => {
+  await page.goto("/docs/components.html");
+
+  await expect(page.locator(".fb-spinner--md")).not.toHaveCSS("animation-duration", "0.00001s");
+  await expect(page.locator(".fb-spinner--md")).toHaveCSS("animation-iteration-count", "infinite");
+});
+
+/** Verifies reduced motion in an explicit context without changing global defaults. */
+test("reduced motion limits component animation", async ({ browser }) => {
+  const context = await browser.newContext({
+    colorScheme: "dark",
+    locale: "en-US",
+    reducedMotion: "reduce",
+    timezoneId: "UTC",
+  });
+  const page = await context.newPage();
+
+  try {
+    await page.goto("http://127.0.0.1:4173/docs/components.html");
+    const prefersReducedMotion = await page.evaluate(
+      () => matchMedia("(prefers-reduced-motion: reduce)").matches,
+    );
+
+    expect(prefersReducedMotion).toBe(true);
+    // Read the normalized computed value so equivalent browser serializations compare numerically.
+    const animationDurationSeconds = await page.locator(".fb-spinner--md").evaluate((element) =>
+      Number.parseFloat(getComputedStyle(element).animationDuration),
+    );
+    expect(animationDurationSeconds).toBeCloseTo(0.00001, 8);
+    await expect(page.locator(".fb-spinner--md")).toHaveCSS("animation-iteration-count", "1");
+  } finally {
+    await context.close();
+  }
+});
+
 /** Exercises native keyboard disclosure, skip-link focus, popover, and modal dialog behavior. */
-test("native interactive contracts remain keyboard and focus operable", async ({ page }) => {
+test("native interactive contracts remain keyboard and focus operable", async ({
+  browserName,
+  page,
+}) => {
   await page.goto("/index.html");
-  await page.keyboard.press("Tab");
+  if (browserName === "webkit") {
+    // WebKit automation does not enable Safari's optional full-keyboard link navigation.
+    await page.locator(".fb-skip-link").focus();
+  } else {
+    await page.keyboard.press("Tab");
+  }
   await expect(page.locator(".fb-skip-link")).toBeFocused();
 
-  await page.locator('[popovertarget="demo-popover"]').click();
-  await expect(page.locator("#demo-popover")).toBeVisible();
+  const disclosure = page.locator("#native-controls details").filter({
+    hasText: "How do I customize the theme?",
+  });
+  await disclosure.locator("summary").focus();
+  await page.keyboard.press("Enter");
+  await expect(disclosure).toHaveAttribute("open", "");
+
+  // Detects native popover support so older engines exercise the documented fallback contract.
+  const supportsPopover = await page.evaluate(
+    () => typeof HTMLElement.prototype.showPopover === "function",
+  );
+  if (supportsPopover) {
+    await page.locator('[popovertarget="demo-popover"]').click();
+    await expect(page.locator("#demo-popover")).toBeVisible();
+  } else {
+    await expect(page.locator('[popovertarget="demo-popover"]')).toBeVisible();
+    await expect(page.locator("#demo-popover")).toHaveAttribute("popover", "");
+  }
 
   await page.goto("/docs/components.html#drawer");
   // Opens the native modal through the same browser API a consumer would call.

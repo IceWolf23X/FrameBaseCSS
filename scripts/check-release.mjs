@@ -39,6 +39,14 @@ const publicHtmlFiles = Object.freeze([
   "docs/rtl.html",
 ]);
 
+const versionedCssFiles = Object.freeze([
+  "framebase.css",
+  "framebase-light.css",
+  "framebase-highlight.css",
+  "framebase-themes.css",
+  "framebase-theme-template.css",
+]);
+
 /** Resolves a repository-root file from this script. */
 function repositoryFile(filename) {
   return new URL(`../${filename}`, import.meta.url);
@@ -79,6 +87,31 @@ async function verifyPackageMetadata() {
   for (const filename of requiredFiles.slice(0, 11)) {
     if (!packageJson.files.includes(filename)) {
       throw new Error(`${filename}: missing from package.json files`);
+    }
+  }
+}
+
+/** Verifies that package, source banners, demos, and changelog name one release version. */
+async function verifyVersionContracts() {
+  const packageJson = JSON.parse(await readFile(repositoryFile("package.json"), "utf8"));
+  const expectedVersion = packageJson.version;
+  const changelog = await readFile(repositoryFile("CHANGELOG.md"), "utf8");
+
+  if (!changelog.includes(`## [${expectedVersion}]`)) {
+    throw new Error(`CHANGELOG.md: missing ${expectedVersion} release section`);
+  }
+
+  for (const filename of versionedCssFiles) {
+    const source = await readFile(repositoryFile(filename), "utf8");
+    if (!source.includes(`v${expectedVersion}`)) {
+      throw new Error(`${filename}: release banner does not match ${expectedVersion}`);
+    }
+  }
+
+  for (const filename of ["index.html", "framebase-light-demo.html", "docs/rtl.html"]) {
+    const source = await readFile(repositoryFile(filename), "utf8");
+    if (!source.includes(expectedVersion)) {
+      throw new Error(`${filename}: displayed version does not match ${expectedVersion}`);
     }
   }
 }
@@ -149,6 +182,7 @@ async function verifyPublicLinks() {
 async function main() {
   await verifyRequiredFiles();
   await verifyPackageMetadata();
+  await verifyVersionContracts();
   await verifyThemeContracts();
   await verifyPublicLinks();
   console.log("verified public release assets and package metadata");

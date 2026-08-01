@@ -38,11 +38,11 @@ the current completion work.
 | `scripts/check-release.mjs` | Release-readiness check | Verifies required public/governance files, package publish eligibility, and the package `files` allowlist. |
 | `scripts/serve-static.mjs` | Browser-test server | Localhost-only, traversal-safe static server used by Playwright without a runtime web dependency. |
 | `.htmlvalidate.json` | HTML policy | Applies recommended semantic validation plus heading, raw-character, native-element, and integrity-related project decisions. |
-| `playwright.config.mjs` | Browser-test configuration | Pins deterministic locale, timezone, motion, viewport defaults, screenshot paths, static server, retries, and CI reports. |
-| `tests/accessibility.spec.mjs` | Semantic and axe tests | Scans all public pages, checks mobile overflow, 200% text sizing, ARIA states, skip-link focus, popover, and dialog behavior. |
-| `tests/visual.spec.mjs` | Visual regression tests | Captures dark/light, desktop/tablet/mobile/narrow, print, focus/hover/invalid, native controls, popover, drawer, loading, toast, menu, responsive table, navigation, calendar, and preference states. |
-| `tests/__screenshots__/` | Committed visual baselines | Deterministic Chromium reference images used by `toHaveScreenshot`; changes require manual visual review. |
-| `.github/workflows/css-distribution.yml` | Read-only CI | Installs locked development dependencies and pinned Chromium, runs the complete release/HTML/axe/visual check, and uploads diagnostics only after failure. |
+| `playwright.config.mjs` | Browser-test configuration | Pins deterministic locale, timezone, dark system default, normal motion, Chromium/Firefox/WebKit projects, platform-specific screenshot paths, static server, retries, and CI reports. |
+| `tests/accessibility.spec.mjs` | Cross-browser semantic and axe tests | Scans all public pages and checks mobile overflow, 200% text sizing, ARIA states, normal/reduced motion, skip-link focus, progressive popover behavior, and dialog behavior in all three engines. |
+| `tests/visual.spec.mjs` | Chromium visual regression tests | Blocks optional remote demo scripts and captures dark/light, desktop/tablet/mobile/narrow, print, focus/hover/invalid, native controls, popover, drawer, loading, toast, menu, responsive table, navigation, calendar, and preference states with a strict tolerance. |
+| `tests/__screenshots__/` | Committed visual baselines | Deterministic Chromium reference images separated into `-win32` and `-linux` baselines; changes require manual visual review. |
+| `.github/workflows/css-distribution.yml` | Read-only CI | Installs locked dependencies and pinned Chromium, Firefox, and WebKit, runs the complete release/HTML/axe/browser/visual check, and uploads diagnostics only after failure. |
 
 ## Governance and hosting
 

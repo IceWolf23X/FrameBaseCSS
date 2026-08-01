@@ -24,10 +24,10 @@ jobs:
       - name: Install locked build dependencies
         run: npm ci
 
-      - name: Install the pinned Chromium test browser
-        run: npx playwright install --with-deps chromium
+      - name: Install the pinned Playwright browsers
+        run: npx playwright install --with-deps chromium firefox webkit
 
-      - name: Verify distribution, HTML, accessibility, and visual contracts
+      - name: Verify distribution, HTML, accessibility, browser, and visual contracts
         run: npm run check
 
       - name: Upload browser diagnostics after a failure
