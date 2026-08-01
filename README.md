@@ -166,6 +166,11 @@ JavaScript; only automatic highlighting is omitted. Do not load a separate
 Highlight.js visual theme unless it is intended to override the FrameBaseCSS
 addon.
 
+The code documentation in both public demos renders the same CSS source with
+and without Highlight.js side by side. The plain example uses the library's
+`nohighlight` opt-out class, so the comparison demonstrates real runtime
+behavior rather than manually reproduced token colors.
+
 Highlight.js is an independent project distributed under the
 [BSD 3-Clause License](https://github.com/highlightjs/highlight.js/blob/main/LICENSE).
 

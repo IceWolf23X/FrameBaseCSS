@@ -1388,6 +1388,42 @@
                   matching minified theme. Provide your own Highlight.js build and
                   declare each language with a <code>language-*</code> class.
                 </p>
+                <p>
+                  Both examples below contain exactly the same CSS. The first uses
+                  Highlight.js&rsquo; <code>nohighlight</code> class and keeps the
+                  neutral FrameBaseCSS code presentation; the second is parsed as
+                  CSS and receives token colors from the optional addon.
+                </p>
+                <div class="fb-grid fb-grid--2">
+                  <div class="fb-code-block">
+                    <div class="fb-code-header">
+                      <span class="fb-code-file">Without Highlight.js</span>
+                      <span class="fb-code-language">Plain CSS</span>
+                    </div>
+                    <pre><code class="nohighlight">:root {
+  --brand-color: #35c6d4;
+}
+
+.button:hover {
+  color: var(--brand-color);
+  transform: translateY(-2px);
+}</code></pre>
+                  </div>
+                  <div class="fb-code-block">
+                    <div class="fb-code-header">
+                      <span class="fb-code-file">With Highlight.js</span>
+                      <span class="fb-code-language">CSS</span>
+                    </div>
+                    <pre><code class="language-css">:root {
+  --brand-color: #35c6d4;
+}
+
+.button:hover {
+  color: var(--brand-color);
+  transform: translateY(-2px);
+}</code></pre>
+                  </div>
+                </div>
                 <div class="fb-code-block">
                   <div class="fb-code-header">
                     <span class="fb-code-file">optional-highlight.html</span>
@@ -1589,7 +1625,7 @@
 
     <footer class="fb-site-footer">
       <div class="fb-container fb-container--wide fb-cluster">
-        <span>FrameBaseCSS offline documentation</span>
+        <span>FrameBaseCSS documentation</span>
         <span aria-hidden="true">·</span>
         <a href="#top">Back to top</a>
       </div>
