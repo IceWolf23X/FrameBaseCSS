@@ -23,6 +23,21 @@ Public documentation:
 - No runtime JavaScript, remote font, image, package manager, or build tool
   required for the core CSS.
 
+## For developers and AI-assisted workflows
+
+FrameBaseCSS is designed as a shared presentation contract for both developers
+and AI-assisted development tools. A developer can compose documented classes
+directly, while an AI can generate clean semantic HTML against the same stable,
+tested CSS foundation instead of repeatedly inventing alignment, centering,
+spacing, formatting, responsive layout, and component states.
+
+Providing this repository and its HTML contracts as project context lets an AI
+focus on structure, content, and application-specific behavior. Reusing the
+existing contracts can reduce corrective iterations and the amount of prompt
+and output context required, potentially saving development time, model tokens,
+and usage costs. Generated HTML and application behavior should still receive
+normal human review and project-specific testing.
+
 ## Quick start
 
 ```html
