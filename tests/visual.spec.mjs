@@ -114,8 +114,10 @@ test("component contracts remain stable at the tablet breakpoint", async ({ page
 /** Captures native dialog drawer geometry and its modal backdrop. */
 test("open drawer remains stable", async ({ page }) => {
   await openVisualFixture(page, "/docs/components.html");
-  // Opens the native dialog for its modal visual state.
-  await page.locator("#component-drawer").evaluate((dialog) => dialog.showModal());
+  // Exercises the same documentation trigger a visitor uses.
+  await page.getByRole("button", { name: "Drawer trigger preview" }).click();
+  // Keeps the inert backdrop content fixed while the screenshot targets drawer geometry.
+  await page.evaluate(() => window.scrollTo({ top: 0, left: 0, behavior: "instant" }));
 
   await expect.soft(page).toHaveScreenshot("components-open-drawer.png", {
     ...screenshotOptions,

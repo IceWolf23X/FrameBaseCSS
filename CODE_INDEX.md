@@ -23,7 +23,8 @@ the current completion work.
 | `index.html` | GitHub Pages homepage and mega-demo | Dark public entry point, complete historical contract reference, realistic rendering fixture, and optional Highlight.js 11.11.1 verification. |
 | `framebase-light-demo.html` | Fixed-light mega-demo | Same component HTML as `index.html`; only theme entry and reciprocal theme link differ. |
 | `docs/index.html` | Focused documentation hub | Routes component, theme, accessibility, browser, RTL, and mega-demo documentation. |
-| `docs/components.html` | Canonical new-component contracts | Component matrix plus semantic examples, variants, states, accessibility responsibilities, responsive behavior, and JavaScript ownership. Uses one HTML document under all theme values. |
+| `docs/components.html` | Canonical new-component contracts | Component matrix plus semantic examples, variants, states, accessibility responsibilities, responsive behavior, and JavaScript ownership. Uses one HTML document under all theme values and loads its documentation-only behavior controller. |
+| `docs/components-demo.js` | Documentation interaction controller | Opens demo dialogs declared with `data-dialog-target` and restores focus to their trigger after native form-driven closing. It is not a package runtime dependency. |
 | `docs/themes.html` | Theme contract | Documents fixed and attribute-driven themes, automatic system preference, scoped previews, and custom-theme rules. |
 | `docs/accessibility.html` | Accessibility contract | Separates CSS guarantees from author responsibilities for semantics, names, state, keyboard behavior, and announcements. |
 | `docs/browser-support.html` | Browser and fallback matrix | Records directly tested Chromium coverage, feature-derived Firefox/Safari targets, modern feature dependencies, and progressive fallback behavior. |

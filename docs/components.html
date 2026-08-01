@@ -7,6 +7,7 @@
   <meta name="description"
     content="Canonical FrameBaseCSS component contracts, states, accessibility, and responsive behavior.">
   <link rel="stylesheet" href="../framebase-themes.css">
+  <script src="components-demo.js" defer></script>
 </head>
 <body>
   <a class="fb-skip-link" href="#main-content">Skip to content</a>
@@ -186,7 +187,8 @@
           <code>showModal()</code> and <code>close()</code>; FrameBaseCSS supplies only
           layout, animation, safe-area spacing, and size variants.
         </p>
-        <button class="fb-button" type="button" aria-haspopup="dialog">
+        <button class="fb-button" type="button" aria-haspopup="dialog"
+          aria-controls="component-drawer" data-dialog-target="component-drawer">
           Drawer trigger preview
         </button>
         <dialog class="fb-drawer" id="component-drawer"

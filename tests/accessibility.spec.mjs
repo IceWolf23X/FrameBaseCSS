@@ -139,10 +139,13 @@ test("native interactive contracts remain keyboard and focus operable", async ({
   }
 
   await page.goto("/docs/components.html#drawer");
-  // Opens the native modal through the same browser API a consumer would call.
-  await page.locator("#component-drawer").evaluate((dialog) => dialog.showModal());
+  const drawerTrigger = page.getByRole("button", { name: "Drawer trigger preview" });
+  await drawerTrigger.click();
   await expect(page.locator("#component-drawer")).toBeVisible();
   await expect(page.locator("#component-drawer")).toHaveAttribute("open", "");
+  await page.getByRole("button", { name: "Cancel" }).click();
+  await expect(page.locator("#component-drawer")).not.toBeVisible();
+  await expect(drawerTrigger).toBeFocused();
 });
 
 /** Confirms that 200 percent text sizing preserves a usable page-level viewport. */
