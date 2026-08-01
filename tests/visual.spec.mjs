@@ -18,6 +18,13 @@ async function openVisualFixture(page, path) {
   await page.goto(path, { waitUntil: "networkidle" });
   // Waits for any locally available fonts to settle before measuring geometry.
   await page.evaluate(() => document.fonts.ready);
+  // Prevents the fixed skip link from leaking into unrelated element screenshots.
+  const skipLink = page.locator(".fb-skip-link");
+  if (await skipLink.count()) {
+    await skipLink.evaluate((link) => {
+      link.hidden = true;
+    });
+  }
 }
 
 for (const [theme, path] of scenarios) {
@@ -119,10 +126,6 @@ test("open drawer remains stable", async ({ page }) => {
 /** Captures visible focus, hover, disabled, invalid, popover, and open-details states. */
 test("interactive limit states remain visually distinct", async ({ page }) => {
   await openVisualFixture(page, "/index.html#forms");
-  // Removes a fixed-element screenshot artifact outside the form under test.
-  await page.locator(".fb-skip-link").evaluate((link) => {
-    link.hidden = true;
-  });
   await page.locator('#forms input[aria-invalid="true"]').focus();
   await page.locator('#forms .fb-button[type="submit"]').hover();
 
