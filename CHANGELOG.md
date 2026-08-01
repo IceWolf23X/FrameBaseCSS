@@ -17,6 +17,8 @@ No changes yet.
   mobile, print, and RTL documentation states.
 - Public package metadata, CSS subpath exports, release-readiness checks, and
   GitHub contribution templates.
+- An isolated packed-consumer smoke test covering the exact npm file set,
+  exported CSS entry points, and local imports after installation.
 - Loading, toast, dropdown, drawer, responsive-navigation, advanced-table,
   composite-input, icon, badge-overlay, timeline, stepper, and calendar
   presentation contracts.

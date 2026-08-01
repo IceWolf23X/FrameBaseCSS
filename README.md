@@ -64,20 +64,16 @@ No framework, remote font, image, JavaScript, or build step is required.
 JavaScript remains necessary only for application behavior that HTML does not
 provide on its own.
 
-After the `1.2.0` package is intentionally published, install that exact
-version with:
+Install the current release with an explicit version:
 
 ```sh
 npm install framebasecss@1.2.0
 ```
 
 The package exposes the minified dark entry point by default and explicit
-subpaths for `base`, `light`, `themes`, and `highlight`. FrameBaseCSS has not
-been published to npm by this repository update; the metadata is ready, but an
-intentional publication remains a separate maintainer action.
+subpaths for `base`, `light`, `themes`, and `highlight`.
 
-The following version-pinned CDN forms become valid only after `1.2.0` is
-published to npm:
+The same versioned assets are available through jsDelivr and unpkg:
 
 ```html
 <link rel="stylesheet"
@@ -346,6 +342,7 @@ npm run build
 npm run build:css
 npm run check
 npm run check:css
+npm run check:package
 npm run test:html
 npm run test:a11y
 npm run test:visual
@@ -353,6 +350,9 @@ npm run test:visual
 
 `build:css` regenerates all four minified stylesheets. `check:css` performs a
 non-mutating comparison and fails when a generated file is missing or stale.
+`check:package` packs the public allowlist without lifecycle recursion, installs
+the tarball into an isolated temporary consumer, resolves every exported CSS
+entry point, and verifies local CSS imports and the exact installed file set.
 The build preserves MIT license banners and rewrites the generated light
 theme to import `framebase.min.css`; the readable source continues to import
 `framebase.css`.
@@ -381,10 +381,11 @@ between operating systems or increase the tolerance to conceal a regression.
 The `CSS distribution` workflow runs on pushes and pull requests with
 read-only repository permissions. It installs the exact lockfile dependency
 set and pinned Chromium, Firefox, and WebKit browsers, then runs
-`npm run check`. Stale generated
-assets, invalid HTML, axe violations, visual regressions, missing release files,
-or inconsistent package metadata fail the job. Browser diagnostics are uploaded
-only after failure. The workflow never edits the repository or creates commits.
+`npm run check`. Stale generated assets, invalid HTML, axe violations, visual
+regressions, missing release files, inconsistent package metadata, unexpected
+tarball content, or broken installed-package exports fail the job. Browser
+diagnostics are uploaded only after failure. The workflow never edits the
+repository or creates commits.
 
 When updating the project:
 
@@ -425,6 +426,7 @@ appreciated. An optional credit can be added with:
 - `docs/`: focused component, theme, accessibility, browser, and RTL documentation.
 - `scripts/build-css.mjs`: deterministic CSS build and verification script.
 - `scripts/check-release.mjs`: required release-file and package metadata checks.
+- `scripts/check-package.mjs`: isolated packed-consumer installation and export checks.
 - `scripts/serve-static.mjs`: local-only static server for browser tests.
 - `tests/`: Playwright, axe, responsive, state, and visual regression coverage.
 - `package.json` and `package-lock.json`: pinned maintainer tooling.

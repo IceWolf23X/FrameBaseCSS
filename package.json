@@ -7,6 +7,10 @@
     "type": "git",
     "url": "git+https://github.com/IceWolf23X/FrameBaseCSS.git"
   },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "homepage": "https://css.icewolf23x.dev/",
   "bugs": {
     "url": "https://github.com/IceWolf23X/FrameBaseCSS/issues"
@@ -52,7 +56,8 @@
   "scripts": {
     "build": "npm run build:css",
     "build:css": "node scripts/build-css.mjs",
-    "check": "npm test && node scripts/check-release.mjs",
+    "check": "npm test && node scripts/check-release.mjs && node scripts/check-package.mjs",
+    "check:package": "node scripts/check-package.mjs",
     "check:css": "node scripts/build-css.mjs --check",
     "test:html": "html-validate index.html framebase-light-demo.html \"docs/**/*.html\"",
     "test:browser": "playwright test",
@@ -67,8 +72,5 @@
     "@playwright/test": "1.62.1",
     "clean-css": "5.3.3",
     "html-validate": "10.17.0"
-  },
-  "engines": {
-    "node": ">=20.19"
   }
 }

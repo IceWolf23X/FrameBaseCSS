@@ -14,7 +14,7 @@ the current completion work.
 | `framebase-themes.css` / `framebase-themes.min.css` | Theme controller | Imports the matching base asset and supports `data-theme="dark"`, `light`, and `auto`, including scoped light previews. |
 | `framebase-theme-template.css` | Editable custom-theme starter | Imports `framebase.css` and documents every public palette, semantic, typography, spacing, motion, layering, and layout token. No generated copy is committed. |
 | `framebase-highlight.css` / `framebase-highlight.min.css` | Optional Highlight.js addon | Maps FrameBaseCSS tokens to `.hljs-*` output. It supplies presentation only; consumers provide and initialize Highlight.js. |
-| `package.json` / `package-lock.json` | Public package and maintainer lock | Declares MIT metadata, CSS exports, a consumer-safe `files` allowlist, build/check/test commands, and pinned development-only clean-css, Playwright, axe, and html-validate dependencies. |
+| `package.json` / `package-lock.json` | Public package and maintainer lock | Declares MIT metadata, explicit public npm publication settings, CSS exports, a consumer-safe `files` allowlist, build/check/test commands, and pinned development-only clean-css, Playwright, axe, and html-validate dependencies. Node requirements apply only to maintainer tooling, not CSS consumers. |
 
 ## Public documentation
 
@@ -37,13 +37,14 @@ the current completion work.
 | --- | --- | --- |
 | `scripts/build-css.mjs` | Deterministic CSS build | Minifies fixed source/output pairs, preserves MIT banners, rewrites base imports in minified theme entry points, validates the custom template, and supports non-mutating `--check`. |
 | `scripts/check-release.mjs` | Release-readiness check | Verifies required public/governance files, package publish eligibility, and the package `files` allowlist. |
+| `scripts/check-package.mjs` | Packed-consumer smoke test | Creates the npm tarball without recursive lifecycle hooks, validates its exact allowlisted contents, installs it into a temporary project, resolves every public export, and checks local CSS imports. |
 | `scripts/serve-static.mjs` | Browser-test server | Localhost-only, traversal-safe static server used by Playwright without a runtime web dependency. |
 | `.htmlvalidate.json` | HTML policy | Applies recommended semantic validation plus heading, raw-character, native-element, and integrity-related project decisions. |
 | `playwright.config.mjs` | Browser-test configuration | Pins deterministic locale, timezone, dark system default, normal motion, Chromium/Firefox/WebKit projects, platform-specific screenshot paths, static server, retries, and CI reports. |
 | `tests/accessibility.spec.mjs` | Cross-browser semantic and axe tests | Scans all public pages and checks mobile overflow, 200% text sizing, ARIA states, normal/reduced motion, skip-link focus, progressive popover behavior, and dialog behavior in all three engines. |
 | `tests/visual.spec.mjs` | Chromium visual regression tests | Blocks optional remote demo scripts and captures dark/light, desktop/tablet/mobile/narrow, print, focus/hover/invalid, native controls, popover, drawer, loading, toast, menu, responsive table, navigation, calendar, and preference states with a strict tolerance. |
 | `tests/__screenshots__/` | Committed visual baselines | Deterministic Chromium reference images separated into `-win32` and `-linux` baselines; changes require manual visual review. |
-| `.github/workflows/css-distribution.yml` | Read-only CI | Installs locked dependencies and pinned Chromium, Firefox, and WebKit, runs the complete release/HTML/axe/browser/visual check, and uploads diagnostics only after failure. |
+| `.github/workflows/css-distribution.yml` | Read-only CI | Installs locked dependencies and pinned Chromium, Firefox, and WebKit, runs the complete release/HTML/axe/browser/visual and packed-consumer checks, and uploads diagnostics only after failure. |
 
 ## Governance and hosting
 

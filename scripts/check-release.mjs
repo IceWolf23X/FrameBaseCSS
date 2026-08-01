@@ -18,6 +18,7 @@ const requiredFiles = Object.freeze([
   "SECURITY.md",
   "VERSIONING.md",
   "CODE_INDEX.md",
+  "scripts/check-package.mjs",
   "index.html",
   "framebase-light-demo.html",
   "docs/index.html",
@@ -82,6 +83,15 @@ async function verifyPackageMetadata() {
 
   if (packageJson.private === true) {
     throw new Error("package.json must remain eligible for an intentional public release");
+  }
+
+  if (packageJson.publishConfig?.access !== "public"
+    || packageJson.publishConfig?.registry !== "https://registry.npmjs.org/") {
+    throw new Error("package.json must publish explicitly to the public npm registry");
+  }
+
+  if (packageJson.engines) {
+    throw new Error("package.json must not impose maintainer Node requirements on CSS consumers");
   }
 
   for (const filename of requiredFiles.slice(0, 11)) {

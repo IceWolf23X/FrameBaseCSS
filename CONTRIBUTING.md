@@ -43,6 +43,7 @@ the regenerated distributions with the source.
 npm run test:html
 npm run test:a11y
 npm run test:visual
+npm run check:package
 npm run check
 ```
 
