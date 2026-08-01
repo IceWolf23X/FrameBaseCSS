@@ -1,16 +1,74 @@
 {
   "name": "framebasecss",
   "version": "1.1.0",
-  "private": true,
-  "description": "Maintainer tooling for FrameBaseCSS distribution assets.",
+  "description": "A plug-and-use, framework-free CSS foundation for semantic HTML sites and AI-assisted workflows.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IceWolf23X/FrameBaseCSS.git"
+  },
+  "homepage": "https://css.icewolf23x.dev/",
+  "bugs": {
+    "url": "https://github.com/IceWolf23X/FrameBaseCSS/issues"
+  },
+  "keywords": [
+    "css",
+    "design-system",
+    "framework",
+    "semantic-html",
+    "responsive",
+    "accessibility",
+    "dark-theme",
+    "light-theme",
+    "ai"
+  ],
+  "files": [
+    "framebase.css",
+    "framebase.min.css",
+    "framebase-light.css",
+    "framebase-light.min.css",
+    "framebase-theme-template.css",
+    "framebase-highlight.css",
+    "framebase-highlight.min.css",
+    "framebase-themes.css",
+    "framebase-themes.min.css",
+    "README.md",
+    "LICENSE"
+  ],
+  "style": "framebase.min.css",
+  "exports": {
+    ".": "./framebase.min.css",
+    "./base": "./framebase.min.css",
+    "./base.css": "./framebase.css",
+    "./light": "./framebase-light.min.css",
+    "./light.css": "./framebase-light.css",
+    "./highlight": "./framebase-highlight.min.css",
+    "./highlight.css": "./framebase-highlight.css",
+    "./themes": "./framebase-themes.min.css",
+    "./themes.css": "./framebase-themes.css",
+    "./theme-template.css": "./framebase-theme-template.css",
+    "./package.json": "./package.json"
+  },
   "scripts": {
+    "build": "npm run build:css",
     "build:css": "node scripts/build-css.mjs",
-    "check:css": "node scripts/build-css.mjs --check"
+    "check": "npm test && node scripts/check-release.mjs",
+    "check:css": "node scripts/build-css.mjs --check",
+    "test:html": "html-validate index.html framebase-light-demo.html \"docs/**/*.html\"",
+    "test:browser": "playwright test",
+    "test:browser:update": "playwright test --update-snapshots=all",
+    "test:visual": "playwright test tests/visual.spec.mjs",
+    "test:a11y": "playwright test tests/accessibility.spec.mjs",
+    "test": "npm run check:css && npm run test:html && npm run test:browser",
+    "prepack": "npm run check"
   },
   "devDependencies": {
-    "clean-css": "5.3.3"
+    "@axe-core/playwright": "4.12.1",
+    "@playwright/test": "1.62.1",
+    "clean-css": "5.3.3",
+    "html-validate": "10.17.0"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20.19"
   }
 }

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Component contracts — FrameBaseCSS</title>
+  <meta name="description"
+    content="Canonical FrameBaseCSS component contracts, states, accessibility, and responsive behavior.">
+  <link rel="stylesheet" href="../framebase-themes.css">
+</head>
+<body>
+  <a class="fb-skip-link" href="#main-content">Skip to content</a>
+  <header class="fb-site-header">
+    <div class="fb-container fb-container--wide fb-navbar">
+      <a class="fb-brand" href="../index.html">
+        <span class="fb-brand-mark" aria-hidden="true">FB</span>
+        FrameBaseCSS
+      </a>
+      <nav class="fb-nav-region" aria-label="Documentation">
+        <ul class="fb-nav">
+          <li><a href="../index.html">Overview</a></li>
+          <li><a href="components.html" aria-current="page">Components</a></li>
+          <li><a href="themes.html">Themes</a></li>
+          <li><a href="accessibility.html">Accessibility</a></li>
+          <li><a href="browser-support.html">Browsers</a></li>
+          <li><a href="rtl.html">RTL</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="fb-main">
+    <div class="fb-container fb-stack">
+      <header class="fb-doc-header">
+        <p class="fb-doc-eyebrow">Public HTML contracts</p>
+        <h1 class="fb-doc-title">Components and states</h1>
+        <p class="fb-doc-subtitle">
+          These examples use semantic HTML and FrameBaseCSS only. JavaScript is
+          required solely when application behavior cannot be supplied by a native
+          element; the stylesheet never claims to provide that behavior.
+        </p>
+      </header>
+
+      <section id="component-matrix" class="fb-doc-section">
+        <h2>Component matrix</h2>
+        <div class="fb-table-wrap" tabindex="0"
+          aria-label="Component support matrix, horizontally scrollable">
+          <table class="fb-table--compact fb-table--striped">
+            <caption>Public component capabilities and behavior ownership</caption>
+            <thead>
+              <tr>
+                <th scope="col">Component</th>
+                <th scope="col">Variants</th>
+                <th scope="col">States</th>
+                <th scope="col">Accessibility contract</th>
+                <th scope="col">JS required</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Loading</th><td>spinner, bar, skeleton</td><td>busy, determined, indeterminate</td><td><code>aria-busy</code>, status text</td><td>No</td></tr>
+              <tr><th scope="row">Toast</th><td>info, success, warning, danger</td><td>entering, open, closed</td><td>status, alert, live region</td><td>Lifecycle only</td></tr>
+              <tr><th scope="row">Dropdown</th><td>start, end, destructive</td><td>selected, disabled, open</td><td>native details or consumer menu keyboard model</td><td>Optional</td></tr>
+              <tr><th scope="row">Drawer</th><td>start, end, narrow, wide</td><td>open, closed</td><td>native dialog focus and accessible name</td><td>Open/close only</td></tr>
+              <tr><th scope="row">Data table</th><td>density, sticky, responsive</td><td>sorted, selected, loading, empty</td><td>caption, scopes, sort state</td><td>Data behavior</td></tr>
+              <tr><th scope="row">Composite input</th><td>addon, search, PIN, segmented</td><td>focus, disabled, invalid, success</td><td>labels and described-by text</td><td>Action behavior</td></tr>
+              <tr><th scope="row">Timeline</th><td>activity, audit, changelog</td><td>current and semantic states</td><td>ordered list and time element</td><td>No</td></tr>
+              <tr><th scope="row">Stepper</th><td>horizontal, vertical</td><td>complete, current, upcoming, error</td><td>ordered list and current step</td><td>No</td></tr>
+              <tr><th scope="row">Calendar</th><td>presentation grid</td><td>today, selected, disabled, outside</td><td>named group and native buttons</td><td>Selection behavior</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="contract-reference" class="fb-doc-section">
+        <h2>Class and state reference</h2>
+        <div class="fb-table-wrap" tabindex="0"
+          aria-label="Class reference, horizontally scrollable">
+          <table class="fb-table--compact">
+            <caption>Canonical extension points for the components on this page</caption>
+            <thead><tr><th scope="col">Family</th><th scope="col">Classes and attributes</th><th scope="col">Consumer behavior</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Loading</th><td><code>.fb-spinner--sm</code>, <code>--md</code>, <code>--lg</code>; <code>.fb-loading-bar--indeterminate</code>; skeleton text, title, avatar, card; <code>aria-busy</code>; <code>--fb-progress</code></td><td>Update progress values and busy state.</td></tr>
+              <tr><th scope="row">Toast</th><td><code>.fb-toast--success</code>, <code>--warning</code>, <code>--danger</code>; top/bottom regions; <code>data-state</code></td><td>Create, announce, time, and dismiss messages.</td></tr>
+              <tr><th scope="row">Menu</th><td><code>.fb-dropdown--end</code>; label, separator, shortcut, selected/checked, disabled, danger</td><td>Implement the full menu keyboard model when ARIA menu roles are used.</td></tr>
+              <tr><th scope="row">Drawer</th><td><code>.fb-drawer--start</code>, <code>--narrow</code>, <code>--wide</code>; header, body, footer; <code>open</code>; <code>data-state</code></td><td>Open, close, label, and restore focus.</td></tr>
+              <tr><th scope="row">Table</th><td>sticky header/first column; compact/comfortable; selected, expanded, detail, loading, empty, total; responsive</td><td>Sort, select, expand, load, and write matching <code>data-label</code> values.</td></tr>
+              <tr><th scope="row">Inputs</th><td>addon, search, segmented, PIN, drop area, inline, required, help, error, success</td><td>Copy, reveal, upload, validate, and move PIN focus.</td></tr>
+              <tr><th scope="row">Timeline</th><td>current, success, warning, danger and timestamp</td><td>No behavior required; optional details remain native.</td></tr>
+              <tr><th scope="row">Stepper</th><td>horizontal, vertical, complete, current, error; <code>--fb-step-count</code></td><td>Keep current step and application progress synchronized.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="loading" class="fb-doc-section">
+        <h2>Loading states</h2>
+        <p>Use visible text or an accessible status with every visual indicator.</p>
+        <div class="fb-card-grid">
+          <article class="fb-card fb-stack" aria-busy="true">
+            <h3 class="fb-card-title">Spinners and button</h3>
+            <div class="fb-cluster" role="status">
+              <span class="fb-spinner fb-spinner--sm" aria-hidden="true"></span>
+              <span class="fb-spinner fb-spinner--md" aria-hidden="true"></span>
+              <span class="fb-spinner fb-spinner--lg" aria-hidden="true"></span>
+              <span>Loading records</span>
+            </div>
+            <button class="fb-button" type="button" aria-busy="true">
+              <span class="fb-spinner fb-spinner--sm" aria-hidden="true"></span>
+              Saving
+            </button>
+          </article>
+          <article class="fb-card fb-stack">
+            <h3 class="fb-card-title">Progress bars</h3>
+            <progress class="fb-loading-bar" aria-label="Upload" value="68" max="100">68%</progress>
+            <progress class="fb-loading-bar fb-loading-bar--indeterminate"
+              aria-label="Connecting"></progress>
+          </article>
+          <article class="fb-card fb-stack" aria-label="Skeleton preview">
+            <span class="fb-skeleton fb-skeleton--title" aria-hidden="true"></span>
+            <span class="fb-skeleton fb-skeleton--text" aria-hidden="true"></span>
+            <span class="fb-skeleton fb-skeleton--text" aria-hidden="true"></span>
+            <div class="fb-cluster">
+              <span class="fb-skeleton fb-skeleton--avatar" aria-hidden="true"></span>
+              <span class="u-text-muted">Reserved layout while content loads</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="notifications" class="fb-doc-section">
+        <h2>Toast notifications</h2>
+        <p>
+          Use <code>role="status"</code> for ordinary updates and
+          <code>role="alert"</code> only for urgent information. The consumer owns
+          creation, timing, focus decisions, and dismissal.
+        </p>
+        <section class="fb-toast-region" aria-live="polite"
+          aria-label="Notifications">
+          <div class="fb-toast fb-toast--success" role="status" data-state="open">
+            <p class="fb-toast-title">Deployment complete</p>
+            <button class="fb-icon-button fb-toast-close" type="button"
+              aria-label="Dismiss deployment notification">×</button>
+            <p class="fb-toast-message">The production assets are available.</p>
+            <div class="fb-toast-actions fb-cluster">
+              <button class="fb-button fb-button--sm" type="button">View</button>
+            </div>
+          </div>
+          <div class="fb-toast fb-toast--danger" role="alert" data-state="open">
+            <p class="fb-toast-title">Upload failed</p>
+            <button class="fb-icon-button fb-toast-close" type="button"
+              aria-label="Dismiss upload error">×</button>
+            <p class="fb-toast-message">Check the file and try again.</p>
+          </div>
+        </section>
+      </section>
+
+      <section id="menus" class="fb-doc-section">
+        <h2>Dropdown and menu</h2>
+        <p>
+          Native <code>details</code> supplies disclosure behavior. If an application
+          uses ARIA menu roles, it owns the complete arrow-key and focus model.
+        </p>
+        <details class="fb-dropdown" open>
+          <summary class="fb-button fb-button--secondary">Project actions</summary>
+          <ul class="fb-menu" role="menu" aria-label="Project actions">
+            <li class="fb-menu-label" role="presentation">Workspace</li>
+            <li role="none"><button class="fb-menu-item" type="button" role="menuitem">
+              Open <span class="fb-menu-shortcut">Ctrl+O</span>
+            </button></li>
+            <li role="none"><button class="fb-menu-item" type="button" role="menuitemradio"
+              aria-checked="true">Pin project</button></li>
+            <li role="none"><button class="fb-menu-item" type="button" role="menuitem" disabled>
+              Archive unavailable
+            </button></li>
+            <li class="fb-menu-separator" role="separator"></li>
+            <li role="none"><button class="fb-menu-item fb-menu-item--danger" type="button"
+              role="menuitem">Delete project</button></li>
+          </ul>
+        </details>
+      </section>
+
+      <section id="drawer" class="fb-doc-section">
+        <h2>Drawer</h2>
+        <p>
+          The drawer uses a native <code>dialog</code>. Application code calls
+          <code>showModal()</code> and <code>close()</code>; FrameBaseCSS supplies only
+          layout, animation, safe-area spacing, and size variants.
+        </p>
+        <button class="fb-button" type="button" aria-haspopup="dialog">
+          Drawer trigger preview
+        </button>
+        <dialog class="fb-drawer" id="component-drawer"
+          aria-labelledby="component-drawer-title">
+          <header class="fb-drawer-header">
+            <h2 id="component-drawer-title" class="u-no-margin">Project settings</h2>
+          </header>
+          <div class="fb-drawer-body fb-stack">
+            <p>The body owns vertical scrolling while header and footer remain visible.</p>
+            <label for="drawer-name">Project name</label>
+            <input id="drawer-name" name="drawer-name" type="text" value="FrameBaseCSS">
+          </div>
+          <form class="fb-drawer-footer fb-cluster" method="dialog">
+            <button class="fb-button" type="submit" value="save">Save</button>
+            <button class="fb-button fb-button--secondary" type="submit" value="cancel">Cancel</button>
+          </form>
+        </dialog>
+      </section>
+
+      <section id="responsive-navigation" class="fb-doc-section">
+        <h2>Responsive navigation</h2>
+        <p>
+          At the mobile breakpoint the toggle becomes visible and the panel responds
+          to <code>data-open="true"</code> or a native open <code>details</code> parent.
+        </p>
+        <div class="fb-card">
+          <div class="fb-tabs" role="tablist" aria-label="Workspace view">
+            <button class="fb-tab" type="button" role="tab" aria-selected="true">Overview</button>
+            <button class="fb-tab" type="button" role="tab" aria-selected="false">Activity</button>
+          </div>
+          <button class="fb-button fb-nav-toggle" type="button"
+            aria-expanded="true" aria-controls="mobile-nav-example">Menu</button>
+          <nav class="fb-nav-panel" id="mobile-nav-example" data-open="true"
+            aria-label="Responsive navigation example">
+            <ul class="fb-nav">
+              <li><a href="#responsive-navigation" aria-current="page">Overview</a></li>
+              <li><a href="#data-table">Data</a></li>
+              <li><a href="#inputs">Forms</a></li>
+            </ul>
+          </nav>
+        </div>
+      </section>
+
+      <section id="data-table" class="fb-doc-section">
+        <h2>Advanced data table</h2>
+        <p>
+          Real table elements preserve relationships. On narrow screens the optional
+          responsive contract uses each cell's <code>data-label</code> as its visible
+          card label.
+        </p>
+        <div class="fb-table-wrap" tabindex="0"
+          aria-label="Build table, horizontally scrollable">
+          <table class="fb-table--striped fb-table--sticky fb-table--sticky-first fb-table--responsive">
+            <caption>Build status; sorted by duration ascending</caption>
+            <thead>
+              <tr>
+                <th scope="col"><input type="checkbox" aria-label="Select all builds"></th>
+                <th scope="col" aria-sort="none"><button class="fb-table-sort" type="button">Build</button></th>
+                <th scope="col">Status</th>
+                <th scope="col" aria-sort="ascending"><button class="fb-table-sort" type="button">Duration</button></th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="fb-table-row--selected">
+                <td data-label="Select"><input type="checkbox" checked aria-label="Select build 184"></td>
+                <th scope="row" data-label="Build">#184</th>
+                <td data-label="Status"><span class="fb-status fb-status--success">Passed</span></td>
+                <td data-label="Duration" class="fb-cell-number">42 s</td>
+                <td data-label="Actions"><button class="fb-button fb-button--sm" type="button">Open</button></td>
+              </tr>
+              <tr>
+                <td data-label="Select"><input type="checkbox" aria-label="Select build 183"></td>
+                <th scope="row" data-label="Build">#183</th>
+                <td data-label="Status"><span class="fb-status fb-status--warning">Running</span></td>
+                <td data-label="Duration" class="fb-cell-number">1 m 18 s</td>
+                <td data-label="Actions"><button class="fb-button fb-button--sm fb-button--secondary" type="button">Logs</button></td>
+              </tr>
+              <tr class="fb-table-total">
+                <th scope="row" colspan="3" data-label="Total">Total runtime</th>
+                <td data-label="Duration" class="fb-cell-number">2 m</td>
+                <td data-label="Actions"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="inputs" class="fb-doc-section">
+        <h2>Composite inputs</h2>
+        <div class="fb-card-grid">
+          <article class="fb-card fb-stack">
+            <h3 class="fb-card-title">Addons and actions</h3>
+            <div class="fb-field">
+              <label for="site-url">Website address</label>
+              <div class="fb-input-group">
+                <span class="fb-input-addon" aria-hidden="true">https://</span>
+                <input id="site-url" name="site-url" type="url" value="example.com">
+                <button class="fb-button" type="button">Copy</button>
+              </div>
+              <span class="fb-field-success">Address is available.</span>
+            </div>
+            <div class="fb-field">
+              <label for="component-search">Search</label>
+              <div class="fb-search-field">
+                <svg class="fb-icon" aria-hidden="true" viewBox="0 0 24 24">
+                  <circle cx="11" cy="11" r="7"></circle>
+                  <path d="m16 16 4 4"></path>
+                </svg>
+                <input id="component-search" type="search" placeholder="Find a component">
+              </div>
+            </div>
+          </article>
+          <article class="fb-card fb-stack">
+            <h3 class="fb-card-title">Segmented control and PIN</h3>
+            <fieldset>
+              <legend>Density</legend>
+              <div class="fb-segmented-control">
+                <span><input id="density-compact" type="radio" name="density" checked><label for="density-compact">Compact</label></span>
+                <span><input id="density-comfortable" type="radio" name="density"><label for="density-comfortable">Comfortable</label></span>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Verification code</legend>
+              <div class="fb-pin-group">
+                <input type="text" inputmode="numeric" maxlength="1" aria-label="Digit 1" value="4">
+                <input type="text" inputmode="numeric" maxlength="1" aria-label="Digit 2" value="2">
+                <input type="text" inputmode="numeric" maxlength="1" aria-label="Digit 3">
+                <input type="text" inputmode="numeric" maxlength="1" aria-label="Digit 4">
+              </div>
+            </fieldset>
+          </article>
+          <article class="fb-card fb-stack">
+            <h3 class="fb-card-title">File drop presentation</h3>
+            <label class="fb-drop-area">
+              <span><strong>Choose a file</strong><br><small>or drop one here when application code supports it</small></span>
+              <input class="u-sr-only" id="component-file" type="file">
+            </label>
+            <div class="fb-inline-field">
+              <label for="inline-email">Email <span class="fb-required" aria-hidden="true">*</span></label>
+              <input id="inline-email" type="email" required aria-describedby="inline-email-help">
+              <span id="inline-email-help" class="fb-field-help">Required for notifications.</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="complementary" class="fb-doc-section">
+        <h2>Icons, badges, timeline, and stepper</h2>
+        <div class="fb-card-grid">
+          <article class="fb-card fb-stack">
+            <h3 class="fb-card-title">Icon contract and overlays</h3>
+            <div class="fb-cluster">
+              <button class="fb-icon-button" type="button" aria-label="Search">
+                <svg class="fb-icon fb-icon--lg" aria-hidden="true" viewBox="0 0 24 24">
+                  <circle cx="11" cy="11" r="7"></circle><path d="m16 16 4 4"></path>
+                </svg>
+              </button>
+              <span class="fb-badge-anchor">
+                <span class="fb-avatar" role="img" aria-label="Ada profile"></span>
+                <span class="fb-badge fb-badge--counter fb-badge--overlay" aria-hidden="true">99+</span>
+                <span class="u-sr-only">More than 99 notifications</span>
+              </span>
+              <span class="fb-badge-anchor">
+                <svg class="fb-icon fb-icon--lg" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 18h16M7 18V9a5 5 0 0 1 10 0v9"></path></svg>
+                <span class="fb-badge fb-badge--dot fb-badge--overlay"><span class="u-sr-only">New notification</span></span>
+              </span>
+            </div>
+          </article>
+          <article class="fb-card">
+            <h3 class="fb-card-title">Activity timeline</h3>
+            <ol class="fb-timeline">
+              <li class="fb-timeline-item fb-timeline-item--success"><strong>Build passed</strong><time class="fb-timeline-time" datetime="2026-08-01T09:20:00Z">09:20 UTC</time></li>
+              <li class="fb-timeline-item fb-timeline-item--current"><strong>Deploying</strong><time class="fb-timeline-time" datetime="2026-08-01T09:24:00Z">09:24 UTC</time></li>
+              <li class="fb-timeline-item"><strong>Production verification</strong><span class="fb-timeline-time">Upcoming</span></li>
+            </ol>
+          </article>
+        </div>
+        <ol class="fb-stepper" style="--fb-step-count: 4">
+          <li class="fb-stepper-item fb-stepper-item--complete">Account</li>
+          <li class="fb-stepper-item fb-stepper-item--complete">Project</li>
+          <li class="fb-stepper-item fb-stepper-item--current" aria-current="step">Review</li>
+          <li class="fb-stepper-item">Publish</li>
+        </ol>
+      </section>
+
+      <section id="calendar" class="fb-doc-section">
+        <h2>Calendar presentation</h2>
+        <p>This is a visual calendar grid, not a date-picker implementation.</p>
+        <div class="fb-calendar" role="group" aria-label="August 2026 calendar">
+          <div class="fb-calendar-header">
+            <button class="fb-icon-button" type="button" aria-label="Previous month">←</button>
+            <strong>August 2026</strong>
+            <button class="fb-icon-button" type="button" aria-label="Next month">→</button>
+          </div>
+          <span class="fb-calendar-weekday">Mon</span><span class="fb-calendar-weekday">Tue</span><span class="fb-calendar-weekday">Wed</span><span class="fb-calendar-weekday">Thu</span><span class="fb-calendar-weekday">Fri</span><span class="fb-calendar-weekday">Sat</span><span class="fb-calendar-weekday">Sun</span>
+          <button class="fb-calendar-day fb-calendar-day--outside" type="button" disabled>27</button>
+          <button class="fb-calendar-day fb-calendar-day--outside" type="button" disabled>28</button>
+          <button class="fb-calendar-day fb-calendar-day--outside" type="button" disabled>29</button>
+          <button class="fb-calendar-day fb-calendar-day--outside" type="button" disabled>30</button>
+          <button class="fb-calendar-day fb-calendar-day--outside" type="button" disabled>31</button>
+          <button class="fb-calendar-day fb-calendar-day--today" type="button" aria-current="date">1</button>
+          <button class="fb-calendar-day" type="button">2</button>
+          <button class="fb-calendar-day" type="button" data-event>3</button>
+          <button class="fb-calendar-day fb-calendar-day--selected" type="button" aria-pressed="true">4</button>
+          <button class="fb-calendar-day" type="button">5</button>
+          <button class="fb-calendar-day" type="button">6</button>
+          <button class="fb-calendar-day" type="button">7</button>
+          <button class="fb-calendar-day" type="button">8</button>
+          <button class="fb-calendar-day" type="button">9</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="fb-site-footer">
+    <div class="fb-container fb-cluster">
+      <span>FrameBaseCSS component contracts</span>
+      <a href="https://github.com/IceWolf23X/FrameBaseCSS">GitHub repository</a>
+    </div>
+  </footer>
+</body>
+</html>

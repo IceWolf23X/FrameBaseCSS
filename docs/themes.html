@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Themes — FrameBaseCSS</title>
+  <link rel="stylesheet" href="../framebase-themes.css">
+</head>
+<body>
+  <a class="fb-skip-link" href="#main-content">Skip to content</a>
+  <main id="main-content" class="fb-main">
+    <div class="fb-container fb-stack">
+      <nav class="fb-breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">FrameBaseCSS</a></li><li><a href="components.html">Documentation</a></li><li aria-current="page">Themes</li></ol></nav>
+      <header class="fb-doc-header"><p class="fb-doc-eyebrow">Theme contract</p><h1 class="fb-doc-title">Dark, light, auto, and custom themes</h1><p class="fb-doc-subtitle">Theme files override public tokens only. Component markup and component rules stay identical.</p></header>
+      <section class="fb-doc-section"><h2>Official entry points</h2><div class="fb-table-wrap"><table><caption>Choose one theme strategy per document</caption><thead><tr><th scope="col">Asset</th><th scope="col">Behavior</th><th scope="col">HTML attribute</th></tr></thead><tbody><tr><th scope="row"><code>framebase.css</code></th><td>Canonical dark theme</td><td>None</td></tr><tr><th scope="row"><code>framebase-light.css</code></th><td>Fixed light theme</td><td>None</td></tr><tr><th scope="row"><code>framebase-themes.css</code></th><td>Dark, light, or system preference</td><td><code>data-theme</code></td></tr></tbody></table></div></section>
+      <section class="fb-doc-section"><h2>One HTML contract</h2><div class="fb-code-block"><div class="fb-code-header"><span class="fb-code-file">index.html</span><span class="fb-code-language">HTML</span></div><pre><code>&lt;html lang="en" data-theme="auto"&gt;
+  &lt;link rel="stylesheet" href="framebase-themes.css"&gt;
+&lt;/html&gt;</code></pre></div><p>Use <code>dark</code>, <code>light</code>, or <code>auto</code>. A consumer may change that attribute with its own preference control; FrameBaseCSS does not store preferences or ship runtime JavaScript.</p></section>
+      <section class="fb-doc-section"><h2>Scoped preview</h2><div class="fb-grid fb-grid--2"><article class="fb-card" data-theme="dark"><h3 class="fb-card-title">Dark scope</h3><button class="fb-button" type="button">Action</button></article><article class="fb-card" data-theme="light"><h3 class="fb-card-title">Light scope</h3><button class="fb-button" type="button">Same action</button></article></div></section>
+      <section class="fb-doc-section"><h2>Custom theme</h2><p>Copy <code>framebase-theme-template.css</code>, keep its base import first, delete tokens that should inherit, and validate contrast in every semantic state. Do not copy component rules into a theme.</p></section>
+    </div>
+  </main>
+</body>
+</html>

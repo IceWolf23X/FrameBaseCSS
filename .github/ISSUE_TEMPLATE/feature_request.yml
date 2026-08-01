@@ -1,0 +1,25 @@
+name: Feature request
+description: Propose a reusable CSS or documentation contract.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Reusable problem
+      description: Explain the recurring site-building problem, not only a visual preference.
+    validations:
+      required: true
+  - type: textarea
+    id: contract
+    attributes:
+      label: Proposed semantic HTML and CSS contract
+      description: Include states, responsive behavior, accessibility, and JavaScript ownership.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Existing alternatives considered
+    validations:
+      required: true

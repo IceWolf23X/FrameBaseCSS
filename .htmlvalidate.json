@@ -1,0 +1,9 @@
+{
+  "extends": ["html-validate:recommended"],
+  "rules": {
+    "heading-level": "error",
+    "no-raw-characters": "error",
+    "prefer-native-element": "error",
+    "require-sri": "off"
+  }
+}

@@ -1,0 +1,40 @@
+name: Bug report
+description: Report a reproducible defect in a documented FrameBaseCSS contract.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Do not disclose security vulnerabilities here; use the Security policy.
+  - type: input
+    id: version
+    attributes:
+      label: FrameBaseCSS version
+      placeholder: 1.1.0
+    validations:
+      required: true
+  - type: dropdown
+    id: asset
+    attributes:
+      label: Asset
+      options:
+        - framebase.css
+        - framebase-light.css
+        - framebase-highlight.css
+        - Documentation
+        - Maintainer tooling
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Include semantic HTML, browser/version, viewport, and exact steps.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true

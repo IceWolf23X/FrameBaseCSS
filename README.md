@@ -10,7 +10,7 @@ The component API has one readable canonical base stylesheet:
 are optional overlays that do not duplicate component or layout rules.
 
 Public documentation:
-[`icewolf23x.github.io/FrameBaseCSS`](https://icewolf23x.github.io/FrameBaseCSS/).
+[`css.icewolf23x.dev`](https://css.icewolf23x.dev/).
 
 ## Design goals
 
@@ -41,7 +41,7 @@ normal human review and project-specific testing.
 ## Quick start
 
 ```html
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -64,12 +64,37 @@ No framework, remote font, image, JavaScript, or build step is required.
 JavaScript remains necessary only for application behavior that HTML does not
 provide on its own.
 
+Install the prepared package after its first npm release:
+
+```sh
+npm install framebasecss@1.1.0
+```
+
+The package exposes the minified dark entry point by default and explicit
+subpaths for `base`, `light`, `themes`, and `highlight`. FrameBaseCSS has not
+been published to npm by this repository update; the metadata is ready, but an
+intentional publication remains a separate maintainer action.
+
+Version-pinned CDN forms for a published `1.1.0` package are:
+
+```html
+<link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/framebasecss@1.1.0/framebase.min.css">
+<link rel="stylesheet"
+  href="https://unpkg.com/framebasecss@1.1.0/framebase.min.css">
+```
+
+Replace the asset name with `framebase-light.min.css`,
+`framebase-themes.min.css`, or `framebase-highlight.min.css` as required. Keep
+the explicit version; do not use `latest` in production documentation.
+
 ## Distribution files
 
 | Purpose | Readable source | Minified distribution |
 | --- | --- | --- |
 | Dark default theme and components | `framebase.css` | `framebase.min.css` |
 | Light theme entry point | `framebase-light.css` | `framebase-light.min.css` |
+| Dark/light/auto theme controller | `framebase-themes.css` | `framebase-themes.min.css` |
 | Optional Highlight.js theme | `framebase-highlight.css` | `framebase-highlight.min.css` |
 | Editable custom-theme starter | `framebase-theme-template.css` | Not generated |
 
@@ -110,7 +135,16 @@ an offline verification page. It includes:
 - responsive tables, code, and terminals;
 - figures, galleries, and avatars;
 - static tabs, pagination, procedures, and empty states;
+- loading indicators, skeletons, toasts, dropdown menus, and drawers;
+- responsive navigation, advanced data tables, and composite inputs;
+- icon sizing, badge overlays, timelines, steppers, and calendar presentation;
 - utilities, accessibility, responsive behavior, and print styles.
+
+The consultable documentation starts at [`docs/index.html`](docs/index.html).
+Its component matrix and complete new contracts are in
+[`docs/components.html`](docs/components.html), with dedicated theme,
+accessibility, browser-support, and RTL verification pages. The mega-demo stays
+available as the broad rendering fixture rather than being replaced.
 
 To browse it locally:
 
@@ -144,6 +178,22 @@ Do not link both files at the same time.
 [`framebase-light-demo.html`](framebase-light-demo.html) uses exactly the same
 markup as the dark documentation page. Only the `framebase-light.css` link and
 the reciprocal theme switch differ.
+
+For one HTML document that supports an explicit dark, light, or automatic
+system theme, link the controller instead:
+
+```html
+<html lang="en" data-theme="auto">
+  <head>
+    <link rel="stylesheet" href="framebase-themes.css">
+  </head>
+</html>
+```
+
+Accepted values are `dark`, `light`, and `auto`. The consumer may change the
+attribute and persist a preference with its own application code; the CSS does
+not ship preference storage or runtime JavaScript. Component HTML remains
+identical across all three values.
 
 ### Custom theme starter
 
@@ -185,7 +235,7 @@ initialize your preferred Highlight.js build:
     <span class="fb-code-language">CSS</span>
   </div>
   <pre><code class="language-css">:root {
-  --fb-color-primary: #35c6d4;
+  --fb-color-primary: #3dcdda;
 }</code></pre>
 </div>
 
@@ -243,20 +293,58 @@ cascade without modifying generated or internal component rules.
 ## Browser requirements
 
 FrameBaseCSS uses modern CSS, including custom properties, `color-mix()`,
-`:has()`, and `overflow: clip`. It targets modern versions of major browsers.
+`:has()`, logical properties, dynamic viewport units, and `overflow: clip`.
+The fully enhanced compatibility target is:
+
+| Browser | Minimum target | Evidence level |
+| --- | ---: | --- |
+| Chrome / Chromium | 114 | Feature-derived; Chromium 151 tested locally |
+| Microsoft Edge | 114 | Feature-derived |
+| Mozilla Firefox | 125 | Feature-derived |
+| Apple Safari | 17 | Feature-derived |
+
+The repository currently automates Chromium 151 through Playwright 1.62.1 on
+desktop, tablet, narrow mobile, print, reduced-motion, increased-contrast,
+dark, light, auto, and RTL scenarios. GitHub Actions is configured to repeat
+the pinned Chromium suite on Ubuntu; Firefox and Safari are compatibility
+targets and are not yet claimed as directly tested.
+
+`color-mix()` and `:has()` are progressive visual enhancements. Without them,
+semantic content and native states remain usable but some derived backgrounds
+and parent-aware accents are omitted. The Popover API is optional: use native
+`details` or consumer behavior for older engines. Native `dialog` is the
+recommended modal and drawer foundation. No legacy polyfills are bundled.
+See [`docs/browser-support.html`](docs/browser-support.html) for the tested
+matrix and fallback details.
+
+## Versioning
+
+FrameBaseCSS follows Semantic Versioning. Additive components and tokens are
+minor changes; compatible defect corrections are patches; removing or renaming
+classes, tokens, package exports, or required markup is major. Public
+deprecations remain for at least one complete minor release when a safe alias
+is possible. See [`VERSIONING.md`](VERSIONING.md) and
+[`CHANGELOG.md`](CHANGELOG.md).
 
 ## Maintainer build
 
-The readable stylesheets are the canonical sources. Their `.min.css`
+The readable stylesheets are the canonical sources. Maintainer tooling requires
+Node.js 20.19 or newer. Their `.min.css`
 counterparts are generated distribution assets and must not be edited by hand.
 
 ```powershell
 npm ci
+npx playwright install chromium
+npm run build
 npm run build:css
+npm run check
 npm run check:css
+npm run test:html
+npm run test:a11y
+npm run test:visual
 ```
 
-`build:css` regenerates all three minified stylesheets. `check:css` performs a
+`build:css` regenerates all four minified stylesheets. `check:css` performs a
 non-mutating comparison and fails when a generated file is missing or stale.
 The build preserves MIT license banners and rewrites the generated light
 theme to import `framebase.min.css`; the readable source continues to import
@@ -274,8 +362,10 @@ level-two rule restructuring.
 
 The `CSS distribution` workflow runs on pushes and pull requests with
 read-only repository permissions. It installs the exact lockfile dependency
-set and runs `npm run check:css`; missing or stale generated assets fail the
-job. The workflow never edits the repository or creates automated commits.
+set and pinned Chromium browser, then runs `npm run check`. Stale generated
+assets, invalid HTML, axe violations, visual regressions, missing release files,
+or inconsistent package metadata fail the job. Browser diagnostics are uploaded
+only after failure. The workflow never edits the repository or creates commits.
 
 When updating the project:
 
@@ -309,12 +399,18 @@ appreciated. An optional credit can be added with:
 - `framebase-light.css`: light theme importing the canonical source.
 - `framebase-light.min.css`: generated minified light-theme distribution.
 - `framebase-theme-template.css`: validated editable starter for custom themes.
+- `framebase-themes.css` and `framebase-themes.min.css`: dark/light/auto token controller.
 - `framebase-highlight.css`: optional Highlight.js output theme.
 - `framebase-highlight.min.css`: generated minified Highlight.js theme.
 - `framebase-light-demo.html`: offline light-theme visual check.
+- `docs/`: focused component, theme, accessibility, browser, and RTL documentation.
 - `scripts/build-css.mjs`: deterministic CSS build and verification script.
+- `scripts/check-release.mjs`: required release-file and package metadata checks.
+- `scripts/serve-static.mjs`: local-only static server for browser tests.
+- `tests/`: Playwright, axe, responsive, state, and visual regression coverage.
 - `package.json` and `package-lock.json`: pinned maintainer tooling.
 - `.github/workflows/css-distribution.yml`: generated-asset CI verification.
+- `CHANGELOG.md`, `CONTRIBUTING.md`, `SECURITY.md`, and `VERSIONING.md`: project governance.
 - `.nojekyll`: static GitHub Pages publishing without Jekyll transforms.
 - `.gitignore`: excludes local npm installation artifacts.
 - `LICENSE`: MIT license terms and copyright notice.

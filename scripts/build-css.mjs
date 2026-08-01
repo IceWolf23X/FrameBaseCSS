@@ -6,6 +6,7 @@ const assets = Object.freeze([
   ["framebase.css", "framebase.min.css"],
   ["framebase-light.css", "framebase-light.min.css"],
   ["framebase-highlight.css", "framebase-highlight.min.css"],
+  ["framebase-themes.css", "framebase-themes.min.css"],
 ]);
 
 const sourceOnlyAssets = Object.freeze(["framebase-theme-template.css"]);
@@ -42,7 +43,7 @@ function minifyStylesheet(source, sourceName) {
     throw new Error(`${sourceName}: the MIT license banner was not preserved`);
   }
 
-  if (sourceName === "framebase-light.css") {
+  if (["framebase-light.css", "framebase-themes.css"].includes(sourceName)) {
     const sourceImport = /@import\s+url\(["']?(?:\.\/)?framebase\.css["']?\)/;
     if (!sourceImport.test(styles)) {
       throw new Error(`${sourceName}: the base stylesheet import was not preserved`);
@@ -61,7 +62,7 @@ async function prepareAssets() {
       const minified = minifyStylesheet(source, sourceName);
 
       const baseImport = /@import\s+url\(["']?framebase\.min\.css["']?\)/;
-      if (sourceName === "framebase-light.css" &&
+      if (["framebase-light.css", "framebase-themes.css"].includes(sourceName) &&
           !baseImport.test(minified)) {
         throw new Error(`${sourceName}: the minified base import was not generated`);
       }

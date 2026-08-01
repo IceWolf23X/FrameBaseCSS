@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Accessibility — FrameBaseCSS</title>
+  <link rel="stylesheet" href="../framebase-themes.css">
+</head>
+<body>
+  <a class="fb-skip-link" href="#main-content">Skip to content</a>
+  <main id="main-content" class="fb-main"><div class="fb-container fb-stack">
+    <nav class="fb-breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">FrameBaseCSS</a></li><li><a href="components.html">Documentation</a></li><li aria-current="page">Accessibility</li></ol></nav>
+    <header class="fb-doc-header"><p class="fb-doc-eyebrow">Consumer contract</p><h1 class="fb-doc-title">Accessibility</h1><p class="fb-doc-subtitle">CSS can preserve focus, contrast, motion preferences, and readable layout. Correct semantics, names, state, keyboard behavior, and announcements still come from HTML and application code.</p></header>
+    <section class="fb-doc-section"><h2>Required author responsibilities</h2><ol class="fb-steps"><li class="fb-step"><strong>Start with native HTML.</strong> Use buttons, links, inputs, details, dialog, progress, and tables for their intended purpose.</li><li class="fb-step"><strong>Name every control.</strong> Visible labels are preferred; icon-only buttons require an accessible name.</li><li class="fb-step"><strong>Expose state.</strong> Keep <code>aria-expanded</code>, <code>aria-selected</code>, <code>aria-invalid</code>, <code>aria-busy</code>, and <code>aria-current</code> synchronized with behavior.</li><li class="fb-step"><strong>Own keyboard behavior.</strong> Custom menu, tab, drawer, and dialog scripts must implement their complete interaction model.</li></ol></section>
+    <section class="fb-doc-section"><h2>Feedback semantics</h2><div class="fb-grid fb-grid--2"><div class="fb-callout fb-callout--info"><p class="fb-callout-title">Ordinary update</p><p>Use a polite live region or <code>role="status"</code> without moving focus.</p></div><div class="fb-callout fb-callout--danger"><p class="fb-callout-title">Urgent failure</p><p>Reserve <code>role="alert"</code> for information requiring immediate attention.</p></div></div></section>
+    <section class="fb-doc-section"><h2>Automated coverage</h2><p>The repository validates both themes with html-validate and axe, exercises mobile overflow, and captures visual regressions. Automation cannot prove screen-reader usability or replace keyboard and zoom review on the final application.</p></section>
+  </div></main>
+</body>
+</html>

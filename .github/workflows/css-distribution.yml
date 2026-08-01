@@ -8,7 +8,7 @@ permissions:
   contents: read
 
 jobs:
-  verify-minified-css:
+  verify-distribution:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,5 +24,19 @@ jobs:
       - name: Install locked build dependencies
         run: npm ci
 
-      - name: Verify committed distribution files
-        run: npm run check:css
+      - name: Install the pinned Chromium test browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Verify distribution, HTML, accessibility, and visual contracts
+        run: npm run check
+
+      - name: Upload browser diagnostics after a failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-diagnostics
+          path: |
+            playwright-report/
+            test-results/
+          if-no-files-found: ignore
+          retention-days: 14

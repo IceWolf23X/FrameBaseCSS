@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -20,12 +20,14 @@
           FrameBaseCSS
         </a>
 
-        <ul class="fb-nav" aria-label="Main navigation">
-          <li><a href="#top" aria-current="location">Introduction</a></li>
-          <li><a href="#components">Examples</a></li>
-          <li><a href="#forms">Forms</a></li>
-          <li><a href="#documentation">HTML contracts</a></li>
-        </ul>
+        <nav class="fb-nav-region" aria-label="Main navigation">
+          <ul class="fb-nav">
+            <li><a href="#top" aria-current="location">Introduction</a></li>
+            <li><a href="#components">Examples</a></li>
+            <li><a href="#forms">Forms</a></li>
+            <li><a href="#documentation">HTML contracts</a></li>
+          </ul>
+        </nav>
 
         <div class="fb-navbar-actions">
           <a class="fb-button fb-button--ghost fb-button--sm"
@@ -91,7 +93,7 @@
           </aside>
         </div>
 
-        <div class="fb-metrics" aria-label="Key features">
+        <div class="fb-metrics">
           <div class="fb-metric">
             <span class="fb-metric-value">1</span>
             <span class="fb-metric-label">canonical CSS file</span>
@@ -166,6 +168,7 @@
                 <div class="fb-table-wrap" tabindex="0"
                   aria-label="Recent activity, horizontally scrollable">
                   <table class="fb-table--compact">
+                    <caption class="u-sr-only">Recent deployment activity</caption>
                     <thead>
                       <tr>
                         <th scope="col">Event</th>
@@ -204,7 +207,7 @@
 
               <article class="fb-card">
                 <h3 class="fb-card-title">Deployment console</h3>
-                <pre class="fb-terminal" aria-label="Terminal output">$ framebase deploy --environment production
+                <pre class="fb-terminal">$ framebase deploy --environment production
 ✓ CSS validated
 ✓ Offline demo verified
 ✓ 0 external dependencies
@@ -252,7 +255,7 @@
                     <svg class="fb-avatar" viewBox="0 0 48 48" role="img"
                       aria-label="Ada Ferri avatar">
                       <rect width="48" height="48" fill="#464b50"/>
-                      <circle cx="24" cy="18" r="9" fill="#35c6d4"/>
+                      <circle cx="24" cy="18" r="9" fill="#3dcdda"/>
                       <path d="M8 46c2-11 8-16 16-16s14 5 16 16" fill="#0e96a6"/>
                     </svg>
                     <span><strong>Ada Ferri</strong><br>
@@ -335,8 +338,9 @@
               </div>
             </div>
 
-            <aside class="fb-card fb-card--subtle">
-              <h3 class="fb-card-title">System status</h3>
+            <aside class="fb-card fb-card--subtle"
+              aria-labelledby="system-status-title">
+              <h3 class="fb-card-title" id="system-status-title">System status</h3>
               <p class="fb-status fb-status--success">API operational</p>
               <label for="build-progress">Build</label>
               <progress id="build-progress" value="78" max="100">78%</progress>
@@ -570,11 +574,11 @@
               <legend>Preferences</legend>
               <div class="fb-cluster">
                 <label class="fb-check">
-                  <input type="checkbox" name="preference" checked>
+                  <input type="checkbox" name="build-notifications" checked>
                   Build notifications
                 </label>
                 <label class="fb-check">
-                  <input type="checkbox" name="preference">
+                  <input type="checkbox" name="weekly-report">
                   Weekly report
                 </label>
                 <label class="fb-check">
@@ -614,7 +618,7 @@
               <div class="fb-field">
                 <label for="accent-color">Identification color</label>
                 <input id="accent-color" name="accent-color" type="color"
-                  value="#35c6d4">
+                  value="#3dcdda">
               </div>
             </div>
 
@@ -689,7 +693,7 @@
               <span class="fb-code-language">CSS</span>
             </div>
             <pre><code class="language-css">:root {
-  --fb-color-primary: #35c6d4;
+  --fb-color-primary: #3dcdda;
   --fb-radius-md: 7px;
   --fb-container-max: 1200px;
 }</code></pre>
@@ -726,7 +730,7 @@
                   <rect x="44" y="122" width="162" height="234" rx="7" fill="#3a3e42"
                     stroke="#697078"/>
                   <rect x="230" y="122" width="366" height="105" rx="7" fill="#464b50"
-                    stroke="#35c6d4"/>
+                    stroke="#3dcdda"/>
                   <rect x="230" y="251" width="171" height="105" rx="7" fill="#3a3e42"
                     stroke="#697078"/>
                   <rect x="425" y="251" width="171" height="105" rx="7" fill="#3a3e42"
@@ -744,8 +748,8 @@
                 <svg viewBox="0 0 640 400" role="img"
                   aria-label="FrameBaseCSS color palette">
                   <rect width="640" height="400" fill="#282b2e"/>
-                  <circle cx="180" cy="200" r="92" fill="#35c6d4"/>
-                  <circle cx="320" cy="200" r="92" fill="#45d16f" fill-opacity=".8"/>
+                  <circle cx="180" cy="200" r="92" fill="#3dcdda"/>
+                  <circle cx="320" cy="200" r="92" fill="#49d473" fill-opacity=".8"/>
                   <circle cx="460" cy="200" r="92" fill="#f0b84b" fill-opacity=".8"/>
                   <text x="320" y="372" fill="#f3f6f8" text-anchor="middle"
                     font-size="24">SEMANTIC TOKENS</text>
@@ -764,7 +768,7 @@
                   <rect width="640" height="400" fill="#282b2e"/>
                   <rect x="52" y="55" width="536" height="290" rx="8" fill="#3a3e42"
                     stroke="#697078"/>
-                  <g fill="#35c6d4">
+                  <g fill="#3dcdda">
                     <rect x="90" y="98" width="170" height="14" rx="4"/>
                     <rect x="90" y="146" width="280" height="14" rx="4"/>
                   </g>
@@ -774,7 +778,7 @@
                     <rect x="90" y="219" width="410" height="12" rx="4"/>
                     <rect x="90" y="267" width="250" height="12" rx="4"/>
                   </g>
-                  <rect x="90" y="291" width="365" height="12" rx="4" fill="#45d16f"/>
+                  <rect x="90" y="291" width="365" height="12" rx="4" fill="#49d473"/>
                 </svg>
               </div>
               <figcaption>
@@ -788,7 +792,7 @@
 
       <section id="documentation" aria-labelledby="documentation-title">
         <div class="fb-doc-shell">
-          <aside class="fb-doc-sidebar">
+          <div class="fb-doc-sidebar">
             <nav class="fb-doc-nav-panel" aria-label="Documentation sections">
               <p class="fb-doc-nav-title">HTML contracts</p>
               <ul class="fb-doc-nav-list">
@@ -806,7 +810,7 @@
                 <li><a href="#doc-media">Media</a></li>
               </ul>
             </nav>
-          </aside>
+          </div>
 
           <div class="fb-doc-main">
             <article class="fb-doc-content">
@@ -837,7 +841,7 @@
                   or layout contract is required.
                 </p>
                 <div class="fb-stack">
-                  <aside class="fb-callout fb-callout--info">
+                  <div class="fb-callout fb-callout--info">
                   <p class="fb-callout-title">
                     For developers and AI-assisted workflows
                   </p>
@@ -853,7 +857,7 @@
                     costs. Generated content and application behavior still require
                     normal human review and project-specific testing.
                   </p>
-                  </aside>
+                  </div>
                   <div class="fb-code-block">
                     <div class="fb-code-header">
                       <span class="fb-code-file">index.html</span>
@@ -1470,7 +1474,7 @@
                       <span class="fb-code-language">Plain CSS</span>
                     </div>
                     <pre><code class="nohighlight">:root {
-  --brand-color: #35c6d4;
+  --brand-color: #3dcdda;
 }
 
 .button:hover {
@@ -1484,7 +1488,7 @@
                       <span class="fb-code-language">CSS</span>
                     </div>
                     <pre><code class="language-css">:root {
-  --brand-color: #35c6d4;
+  --brand-color: #3dcdda;
 }
 
 .button:hover {
@@ -1614,6 +1618,7 @@
                 <div class="fb-table-wrap" tabindex="0"
                   aria-label="Utility reference, horizontally scrollable">
                   <table class="fb-table--compact fb-table--striped">
+                    <caption class="u-sr-only">Utility class reference</caption>
                     <thead>
                       <tr>
                         <th scope="col">Class</th>
@@ -1664,7 +1669,7 @@
             </article>
           </div>
 
-          <aside class="fb-doc-toc">
+          <div class="fb-doc-toc">
             <nav class="fb-doc-toc-panel" aria-label="Page contents">
               <p class="fb-doc-toc-title">On this page</p>
               <ul class="fb-doc-toc-list">
@@ -1688,7 +1693,7 @@
                 <li><a href="#doc-utilities">Utility</a></li>
               </ul>
             </nav>
-          </aside>
+          </div>
         </div>
       </section>
     </main>
@@ -1699,6 +1704,8 @@
         <span aria-hidden="true">·</span>
         <a href="https://github.com/IceWolf23X/FrameBaseCSS"
           target="_blank" rel="noopener">Source on GitHub</a>
+        <span aria-hidden="true">·</span>
+        <a href="docs/index.html">Focused documentation</a>
         <span aria-hidden="true">·</span>
         <a href="#top">Back to top</a>
       </div>

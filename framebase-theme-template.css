@@ -31,20 +31,38 @@ FrameBaseCSS keeps its canonical accessible print palette automatically.
   --fb-color-border: #697078;
   --fb-color-text-muted: #b8c0c7;
   --fb-color-text: #f3f6f8;
-  --fb-color-primary: #35c6d4;
+  --fb-color-primary: #3dcdda;
   --fb-color-primary-hover: #65d5df;
   --fb-color-on-primary: #172023;
   --fb-color-secondary: #0e96a6;
   --fb-color-info: #8feaf2;
-  --fb-color-success: #45d16f;
+  --fb-color-success: #49d473;
   --fb-color-warning: #f0b84b;
   --fb-color-on-warning: #172023;
-  --fb-color-danger: #f05b4f;
+  --fb-color-danger: #ffaaa2;
   --fb-color-danger-action: #a83f37;
   --fb-color-danger-action-hover: #c24b42;
   --fb-color-on-danger: #ffffff;
   --fb-color-code-background: #282b2e;
   --fb-color-backdrop: rgb(0 0 0 / 0.62);
+
+  /* Semantic aliases: customize only for a genuinely distinct role. */
+  --fb-color-focus-ring: var(--fb-color-primary);
+  --fb-color-link: var(--fb-color-primary);
+  --fb-color-link-hover: var(--fb-color-info);
+  --fb-color-disabled-text: var(--fb-color-text-muted);
+  --fb-color-disabled-background: var(--fb-color-surface-alt);
+  --fb-color-input-background: var(--fb-color-code-background);
+  --fb-color-input-border: var(--fb-color-border);
+  --fb-color-input-focus: var(--fb-color-primary);
+  --fb-color-selected-background:
+    color-mix(in srgb, var(--fb-color-primary) 13%, var(--fb-color-surface));
+  --fb-color-hover-surface:
+    color-mix(in srgb, var(--fb-color-primary) 7%, var(--fb-color-surface));
+  --fb-color-active-surface:
+    color-mix(in srgb, var(--fb-color-primary) 13%, var(--fb-color-surface));
+  --fb-color-skeleton:
+    color-mix(in srgb, var(--fb-color-surface-raised) 76%, var(--fb-color-surface));
 
   /* Typography: remove this group to retain the canonical type system. */
   --fb-font-mono:
@@ -88,7 +106,17 @@ FrameBaseCSS keeps its canonical accessible print palette automatically.
   --fb-shadow-soft: 0 2px 10px rgb(0 0 0 / 0.14);
   --fb-shadow-inset: inset 0 1px 0 rgb(255 255 255 / 0.025);
   --fb-shadow-overlay: 0 10px 35px rgb(0 0 0 / 0.35);
-  --fb-transition-fast: 140ms ease;
+  --fb-motion-duration-fast: 140ms;
+  --fb-motion-duration-base: 220ms;
+  --fb-motion-easing: ease;
+  --fb-transition-fast:
+    var(--fb-motion-duration-fast) var(--fb-motion-easing);
+
+  /* Layering: preserve the order even when changing the exact values. */
+  --fb-z-sticky: 20;
+  --fb-z-dropdown: 100;
+  --fb-z-overlay: 500;
+  --fb-z-toast: 700;
 
   /* Global dimensions: remove values that the project does not customize. */
   --fb-container-max: 1200px;
@@ -98,7 +126,9 @@ FrameBaseCSS keeps its canonical accessible print palette automatically.
   --fb-layout-gap: 1.25rem;
   --fb-page-padding: clamp(0.9rem, 2.5vw, 1.6rem);
   --fb-sticky-offset: 1rem;
+  --fb-control-height-sm: 2rem;
   --fb-control-height: 2.5rem;
+  --fb-control-height-lg: 3rem;
 }
 
 /* Keep muted text and boundaries distinct when stronger contrast is requested. */
