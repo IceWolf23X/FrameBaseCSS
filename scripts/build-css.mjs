@@ -8,6 +8,8 @@ const assets = Object.freeze([
   ["framebase-highlight.css", "framebase-highlight.min.css"],
 ]);
 
+const sourceOnlyAssets = Object.freeze(["framebase-theme-template.css"]);
+
 const checkOnly = process.argv.includes("--check");
 
 /** Resolves a repository-root asset from this script's fixed asset list. */
@@ -69,6 +71,21 @@ async function prepareAssets() {
   );
 }
 
+/** Validates editable CSS templates that intentionally have no generated output. */
+async function validateSourceOnlyAssets() {
+  for (const sourceName of sourceOnlyAssets) {
+    const source = await readFile(assetUrl(sourceName), "utf8");
+    minifyStylesheet(source, sourceName);
+
+    const baseImport = /@import\s+url\(["']?(?:\.\/)?framebase\.css["']?\)/;
+    if (!baseImport.test(source)) {
+      throw new Error(`${sourceName}: the canonical base import is missing`);
+    }
+
+    console.log(`verified ${sourceName} (editable source)`);
+  }
+}
+
 /** Writes generated assets or verifies that committed copies are current. */
 async function processAssets(preparedAssets) {
   for (const { minified, outputName } of preparedAssets) {
@@ -98,6 +115,7 @@ async function processAssets(preparedAssets) {
 
 /** Runs the deterministic build or non-mutating verification workflow. */
 async function main() {
+  await validateSourceOnlyAssets();
   const preparedAssets = await prepareAssets();
   await processAssets(preparedAssets);
 }

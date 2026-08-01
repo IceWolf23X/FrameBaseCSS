@@ -56,6 +56,7 @@ provide on its own.
 | Dark default theme and components | `framebase.css` | `framebase.min.css` |
 | Light theme entry point | `framebase-light.css` | `framebase-light.min.css` |
 | Optional Highlight.js theme | `framebase-highlight.css` | `framebase-highlight.min.css` |
+| Editable custom-theme starter | `framebase-theme-template.css` | Not generated |
 
 Use either the readable or minified file for each selected layer, never both.
 The minified files expose the same public CSS and HTML contracts as their
@@ -129,6 +130,27 @@ Do not link both files at the same time.
 markup as the dark documentation page. Only the `framebase-light.css` link and
 the reciprocal theme switch differ.
 
+### Custom theme starter
+
+Copy [`framebase-theme-template.css`](framebase-theme-template.css), rename the
+copy for the project, and edit its documented token groups. It is a complete
+entry point that imports `framebase.css`, so the page links only the renamed
+theme:
+
+```html
+<link rel="stylesheet" href="my-theme.css">
+```
+
+The starter initially reproduces the default dark theme and exposes the public
+palette, typography, spacing, shape, motion, and global layout tokens. Delete
+unchanged declarations to inherit their canonical values. Review semantic
+foreground/background pairs and the `prefers-contrast` overrides whenever the
+palette changes.
+
+The template intentionally has no committed `.min.css` counterpart because it
+is an editable starting point rather than a finished distribution theme. The
+maintainer build validates its syntax, license banner, and canonical import.
+
 ## Optional syntax highlighting
 
 [`framebase-highlight.css`](framebase-highlight.css) is an optional theme
@@ -181,7 +203,10 @@ those checks pass.
 
 ## Customization
 
-Override tokens after the main stylesheet:
+For a reusable complete theme, start from
+[`framebase-theme-template.css`](framebase-theme-template.css). For a small
+project-specific adjustment, override only the required tokens after the main
+stylesheet:
 
 ```css
 :root {
@@ -268,6 +293,7 @@ appreciated. An optional credit can be added with:
 - `index.html`: GitHub Pages homepage, documentation, and dark visual check.
 - `framebase-light.css`: light theme importing the canonical source.
 - `framebase-light.min.css`: generated minified light-theme distribution.
+- `framebase-theme-template.css`: validated editable starter for custom themes.
 - `framebase-highlight.css`: optional Highlight.js output theme.
 - `framebase-highlight.min.css`: generated minified Highlight.js theme.
 - `framebase-light-demo.html`: offline light-theme visual check.

@@ -791,6 +791,7 @@
                   <a href="#doc-overview" aria-current="location">Usage</a>
                 </li>
                 <li><a href="#doc-light-theme">Light theme</a></li>
+                <li><a href="#doc-custom-theme">Custom themes</a></li>
                 <li><a href="#doc-layouts">Layout</a></li>
                 <li><a href="#doc-navigation">Navigation</a></li>
                 <li><a href="#doc-content">Content</a></li>
@@ -948,6 +949,50 @@
                     <a class="fb-button fb-button--secondary"
                       href="framebase-light-demo.html">
                       Open the light verification
+                    </a>
+                  </div>
+                </div>
+              </section>
+
+              <section id="doc-custom-theme" class="fb-doc-section">
+                <h2 class="fb-anchor-heading">
+                  <a href="#doc-custom-theme">2.2 Custom theme starter</a>
+                </h2>
+                <p>
+                  Copy <code>framebase-theme-template.css</code>, rename the copy,
+                  and replace only the global tokens the project needs to change.
+                  The template imports <code>framebase.css</code>, so the renamed
+                  file becomes the page&rsquo;s single theme entry point.
+                </p>
+                <div class="fb-code-block">
+                  <div class="fb-code-header">
+                    <span class="fb-code-file">my-theme.css</span>
+                    <span class="fb-code-language">CSS</span>
+                  </div>
+                  <pre><code class="language-css">@import url("./framebase.css");
+
+:root {
+  --fb-color-scheme: dark;
+  --fb-color-background: #1f2330;
+  --fb-color-surface: #292e3d;
+  --fb-color-text: #f4f6fb;
+  --fb-color-primary: #a8b5ff;
+  --fb-color-on-primary: #171a24;
+}</code></pre>
+                </div>
+                <div class="fb-stack">
+                  <div class="fb-callout fb-callout--info">
+                    <p class="fb-callout-title">Editable source</p>
+                    <p>
+                      The starter deliberately has no generated minified copy.
+                      Delete unchanged declarations to inherit their canonical
+                      values, and verify contrast pairs after changing the palette.
+                    </p>
+                  </div>
+                  <div class="fb-cluster">
+                    <a class="fb-button fb-button--secondary"
+                      href="framebase-theme-template.css" download>
+                      Download the theme template
                     </a>
                   </div>
                 </div>
@@ -1602,6 +1647,7 @@
                 <li><a href="#doc-overview" aria-current="true">Installation</a></li>
                 <li><a href="#doc-tokens">Tokens</a></li>
                 <li><a href="#doc-light-theme">Light theme</a></li>
+                <li><a href="#doc-custom-theme">Custom themes</a></li>
                 <li><a href="#doc-layouts">Layout</a></li>
                 <li><a href="#doc-hero">Hero</a></li>
                 <li><a href="#doc-navigation">Navigation</a></li>
