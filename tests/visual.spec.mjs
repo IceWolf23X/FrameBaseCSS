@@ -32,15 +32,15 @@ for (const [theme, path] of scenarios) {
   test(`${theme} theme keeps the primary component layouts stable`, async ({ page }) => {
     await openVisualFixture(page, path);
 
-    await expect(page.locator("#public-site")).toHaveScreenshot(
+    await expect.soft(page.locator("#public-site")).toHaveScreenshot(
       `${theme}-public-site.png`,
       screenshotOptions,
     );
-    await expect(page.locator("#forms > .fb-container")).toHaveScreenshot(
+    await expect.soft(page.locator("#forms > .fb-container")).toHaveScreenshot(
       `${theme}-form-system.png`,
       screenshotOptions,
     );
-    await expect(page.locator("#doc-overview")).toHaveScreenshot(
+    await expect.soft(page.locator("#doc-overview")).toHaveScreenshot(
       `${theme}-documentation-overview.png`,
       screenshotOptions,
     );
@@ -52,7 +52,7 @@ test("dark theme keeps the mobile hero stable", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await openVisualFixture(page, "/index.html");
 
-  await expect(page.locator("#public-site")).toHaveScreenshot(
+  await expect.soft(page.locator("#public-site")).toHaveScreenshot(
     "dark-public-site-mobile.png",
     screenshotOptions,
   );
@@ -67,19 +67,19 @@ for (const theme of ["dark", "light"]) {
       root.dataset.theme = selectedTheme;
     }, theme);
 
-    await expect(page.locator("#loading")).toHaveScreenshot(
+    await expect.soft(page.locator("#loading")).toHaveScreenshot(
       `components-${theme}-loading.png`, screenshotOptions,
     );
-    await expect(page.locator("#notifications")).toHaveScreenshot(
+    await expect.soft(page.locator("#notifications")).toHaveScreenshot(
       `components-${theme}-toast.png`, screenshotOptions,
     );
-    await expect(page.locator("#menus .fb-menu")).toHaveScreenshot(
+    await expect.soft(page.locator("#menus .fb-menu")).toHaveScreenshot(
       `components-${theme}-menu.png`, screenshotOptions,
     );
-    await expect(page.locator("#data-table")).toHaveScreenshot(
+    await expect.soft(page.locator("#data-table")).toHaveScreenshot(
       `components-${theme}-table.png`, screenshotOptions,
     );
-    await expect(page.locator("#complementary")).toHaveScreenshot(
+    await expect.soft(page.locator("#complementary")).toHaveScreenshot(
       `components-${theme}-complementary.png`, screenshotOptions,
     );
   });
@@ -90,13 +90,13 @@ test("component contracts remain stable in a narrow mobile layout", async ({ pag
   await page.setViewportSize({ width: 320, height: 800 });
   await openVisualFixture(page, "/docs/components.html");
 
-  await expect(page.locator("#responsive-navigation")).toHaveScreenshot(
+  await expect.soft(page.locator("#responsive-navigation")).toHaveScreenshot(
     "components-mobile-navigation.png", screenshotOptions,
   );
-  await expect(page.locator("#data-table")).toHaveScreenshot(
+  await expect.soft(page.locator("#data-table")).toHaveScreenshot(
     "components-mobile-table.png", screenshotOptions,
   );
-  await expect(page.locator("#calendar")).toHaveScreenshot(
+  await expect.soft(page.locator("#calendar")).toHaveScreenshot(
     "components-mobile-calendar.png", screenshotOptions,
   );
 });
@@ -106,7 +106,7 @@ test("component contracts remain stable at the tablet breakpoint", async ({ page
   await page.setViewportSize({ width: 820, height: 900 });
   await openVisualFixture(page, "/docs/components.html");
 
-  await expect(page.locator("#inputs")).toHaveScreenshot(
+  await expect.soft(page.locator("#inputs")).toHaveScreenshot(
     "components-tablet-inputs.png", screenshotOptions,
   );
 });
@@ -117,7 +117,7 @@ test("open drawer remains stable", async ({ page }) => {
   // Opens the native dialog for its modal visual state.
   await page.locator("#component-drawer").evaluate((dialog) => dialog.showModal());
 
-  await expect(page).toHaveScreenshot("components-open-drawer.png", {
+  await expect.soft(page).toHaveScreenshot("components-open-drawer.png", {
     ...screenshotOptions,
     fullPage: false,
   });
@@ -129,15 +129,17 @@ test("interactive limit states remain visually distinct", async ({ page }) => {
   await page.locator('#forms input[aria-invalid="true"]').focus();
   await page.locator('#forms .fb-button[type="submit"]').hover();
 
-  await expect(page.locator("#forms > .fb-container")).toHaveScreenshot(
+  await expect.soft(page.locator("#forms > .fb-container")).toHaveScreenshot(
     "states-focus-hover-invalid.png", screenshotOptions,
   );
   // Invokes the native declarative popover trigger without adding demo logic.
   await page.locator('[popovertarget="demo-popover"]').evaluate((button) => button.click());
-  await expect(page.locator("#demo-popover")).toHaveScreenshot(
+  await expect.soft(page.locator("#demo-popover")).toHaveScreenshot(
     "states-open-popover.png", screenshotOptions,
   );
-  await expect(page.locator("#native-controls")).toHaveScreenshot(
+  // Closes the native overlay before capturing the unrelated controls section.
+  await page.locator("#demo-popover").evaluate((popover) => popover.hidePopover());
+  await expect.soft(page.locator("#native-controls")).toHaveScreenshot(
     "states-native-controls.png", screenshotOptions,
   );
 });
@@ -155,7 +157,7 @@ test("user preference media queries remain stable", async ({ page }) => {
   });
   await openVisualFixture(page, "/docs/components.html");
 
-  await expect(page.locator("#loading")).toHaveScreenshot(
+  await expect.soft(page.locator("#loading")).toHaveScreenshot(
     "preferences-reduced-motion-high-contrast.png", screenshotOptions,
   );
 });
@@ -165,7 +167,7 @@ test("print layout remains stable", async ({ page }) => {
   await page.emulateMedia({ media: "print", colorScheme: "light" });
   await openVisualFixture(page, "/index.html");
 
-  await expect(page.locator("#public-site")).toHaveScreenshot(
+  await expect.soft(page.locator("#public-site")).toHaveScreenshot(
     "print-public-site.png", screenshotOptions,
   );
 });
@@ -174,17 +176,17 @@ test("print layout remains stable", async ({ page }) => {
 test("right-to-left component geometry remains stable", async ({ page }) => {
   await openVisualFixture(page, "/docs/rtl.html");
 
-  await expect(page.locator("#forms .fb-input-group")).toHaveScreenshot(
+  await expect.soft(page.locator("#forms .fb-input-group")).toHaveScreenshot(
     "rtl-input-group.png", screenshotOptions,
   );
-  await expect(page.locator("#forms .fb-menu")).toHaveScreenshot(
+  await expect.soft(page.locator("#forms .fb-menu")).toHaveScreenshot(
     "rtl-menu.png", screenshotOptions,
   );
   // Closes the menu before capturing the following section in isolation.
   await page.locator("#forms .fb-dropdown").evaluate((details) => {
     details.open = false;
   });
-  await expect(page.locator("#timeline")).toHaveScreenshot(
+  await expect.soft(page.locator("#timeline")).toHaveScreenshot(
     "rtl-timeline-and-stepper.png", screenshotOptions,
   );
 });
@@ -194,7 +196,7 @@ test("right-to-left mobile table remains stable", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await openVisualFixture(page, "/docs/rtl.html");
 
-  await expect(page.locator(".fb-table-wrap")).toHaveScreenshot(
+  await expect.soft(page.locator(".fb-table-wrap")).toHaveScreenshot(
     "rtl-mobile-table.png", screenshotOptions,
   );
 });
